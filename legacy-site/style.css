@@ -1,0 +1,787 @@
+/* ===========================
+   TOKENS
+=========================== */
+:root {
+  /* CHANGE: full maroon palette (was brown + orange henna + bright gold) */
+  --espresso: rgb(139,0,0);
+  /* was #2B1710 -> primary dark maroon (nav, footer bg) */
+  --espresso-deep: rgb(139,0,0);
+  /* was #1C0F0A -> deepest maroon-black */
+  --henna: rgb(139,0,0);
+  /* was #A9552E orange -> main maroon accent */
+  --henna-light: rgb(139,0,0);
+  /* was #C67746 -> lighter maroon for hover */
+  --gold: rgb(139,0,0);
+  /* was bright gold #C9974D -> muted dusty-rose maroon accent, not bright */
+  --cream: #F3E8E5;
+  /* was #F7EEE3 -> warm off-white with maroon undertone */
+  --blush: #D8AFAE;
+  /* was peach #E9C9B9 -> dusty rose-maroon */
+  --text-dark: #2A0710;
+  --text-light: #F3E8E5;
+
+  /* CHANGE: added separate font per section instead of reusing 2 fonts everywhere */
+  --font-display: 'Yeseva One', serif;
+  /* logo */
+  --font-hero: 'Playfair Display', serif;
+  /* hero heading */
+  --font-serif: 'Cormorant Garamond', serif;
+  /* commitment / reviews */
+  --font-about: 'Marcellus', serif;
+  /* about heading */
+  --font-services: 'Prata', serif;
+  /* services heading */
+  --font-gallery: 'Cinzel', serif;
+  /* gallery/contact heading - subtle tattoo-ink feel */
+  --font-body: 'Jost', sans-serif;
+  /* nav, paragraphs */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-light);
+  /* CHANGE: was var(--text-dark), since background is now dark maroon everywhere */
+  background: var(--espresso);
+  /* CHANGE: was var(--cream) */
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--henna);
+  margin-bottom: 0.6rem;
+}
+
+.eyebrow.center {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgb(142, 130, 62);
+  /* CHANGE: was rgba(28,15,10,0.85) brown -> maroon */
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-light);
+  letter-spacing: 0.03em;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+}
+
+.nav-links a {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-light);
+}
+
+/* ===========================
+   HERO / SLIDER
+=========================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* CHANGE: was 'cover' (cropped the image); 'contain' shows it completely */
+  background: var(--espresso-deep);
+  /* fills empty space around image with theme color */
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(42, 7, 16, 0.5) 0%, rgba(42, 7, 16, 0.2) 40%, rgba(42, 7, 16, 0.7) 100%);
+  /* CHANGE: was rgba(28,15,10,...) brown */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-light);
+  z-index: 5;
+  padding: 0 1.5rem;
+}
+
+.hero-overlay .eyebrow {
+  color: var(--blush);
+}
+
+.hero-overlay h1 {
+  font-family: var(--font-hero);
+  /* CHANGE: was var(--font-display), same as logo font */
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--text-light);
+  margin: 0.3rem 0;
+}
+
+.hero-overlay .tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  max-width: 480px;
+  color: var(--blush);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(247, 238, 227, 0.15);
+  border: 1px solid rgba(247, 238, 227, 0.4);
+  color: var(--text-light);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 6;
+  transition: background 0.3s ease;
+}
+
+.arrow:hover {
+  background: rgba(247, 238, 227, 0.3);
+}
+
+.arrow-left {
+  left: 1.5rem;
+}
+
+.arrow-right {
+  right: 1.5rem;
+}
+
+.dots {
+  position: absolute;
+  bottom: 5.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+  z-index: 6;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(247, 238, 227, 0.4);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
+/* CHANGE: .hero-curve rule removed (orange curve deleted per request) */
+
+/* ===========================
+   COMMITMENT STRIP
+=========================== */
+.commitment {
+  background: var(--henna);
+  color: var(--text-light);
+  text-align: center;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.commitment h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  max-width: 800px;
+  margin: 0 auto 1rem;
+  line-height: 1.4;
+}
+
+.commitment p {
+  max-width: 620px;
+  margin: 0 auto;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--blush);
+}
+
+/* ===========================
+   ABOUT
+=========================== */
+.about {
+  background: var(--henna-light);
+  /* CHANGE: About section now has its own full-width maroon background */
+  padding: 6rem 2rem;
+}
+
+.about-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-image {
+  flex: 1 1 320px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 4px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  box-shadow: 0 24px 48px -18px rgba(43, 23, 16, 0.35);
+}
+
+.about-content {
+  flex: 1 1 380px;
+}
+
+.about-content h2 {
+  font-family: var(--font-about);
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  /* CHANGE: was var(--espresso), needed light text on new dark maroon bg */
+}
+
+.about-content p {
+  color: var(--blush);
+  /* CHANGE: was #5a4237 dark brown, needed light color for readability on maroon bg */
+  line-height: 1.75;
+  margin-bottom: 1.6rem;
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--text-light);
+  /* CHANGE: was var(--henna), too close to new maroon bg color */
+  color: var(--text-light);
+  /* CHANGE: was var(--henna) */
+  padding: 0.8rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: var(--text-light);
+  /* CHANGE: was var(--henna) */
+  color: var(--espresso-deep);
+  /* CHANGE: was var(--text-light) */
+}
+
+/* ===========================
+   SERVICES
+=========================== */
+.services {
+  background: var(--espresso);
+  /* CHANGE: was var(--blush) light pink -> maroon */
+  padding: 5rem 2rem;
+}
+
+.services h2 {
+  font-family: var(--font-services);
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: var(--text-light);
+  /* CHANGE: was var(--espresso), needed light text on dark maroon bg */
+}
+
+.service-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.8rem;
+}
+
+.service-card {
+  background: var(--henna-light);
+  /* CHANGE: was var(--cream), now a maroon card face */
+  padding: 2.4rem 1.8rem;
+  border-radius: 6px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+  /* CHANGE: shadow darkened to work on dark bg */
+}
+
+.service-icon {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--blush);
+  /* CHANGE: was var(--gold) bright, now muted rose to match maroon theme */
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+  color: var(--text-light);
+  /* CHANGE: was var(--espresso) dark text, needed light text on maroon card */
+}
+
+.service-card p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--blush);
+  /* CHANGE: was #6b5346 dark brown */
+}
+
+/* ===========================
+   GALLERY
+=========================== */
+.gallery {
+  padding: 5rem 2rem;
+  background: var(--henna);
+  /* CHANGE: new - gallery section now has its own maroon background, full width */
+}
+
+.gallery h2 {
+  font-family: var(--font-gallery);
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: var(--text-light);
+  /* CHANGE: was var(--espresso), needed light text on maroon bg */
+}
+
+.gallery-grid {
+  max-width: 1200px;
+  /* CHANGE: added, previously inherited from parent .gallery which is now full-width */
+  margin: 0 auto;
+  /* CHANGE: added, to keep grid centered */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 1/1;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* ===========================
+   REVIEWS
+=========================== */
+.reviews {
+  background: var(--espresso);
+  color: var(--text-light);
+  padding: 5rem 2rem;
+}
+
+.reviews h2 {
+  font-family: var(--font-serif);
+  /* CHANGE: was var(--font-display) */
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: var(--text-light);
+}
+
+.review-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+
+.review-card {
+  background: rgba(247, 238, 227, 0.05);
+  border: 1px solid rgba(247, 238, 227, 0.15);
+  padding: 2rem;
+  border-radius: 6px;
+}
+
+.stars {
+  color: var(--gold);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.review-card p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  color: var(--blush);
+}
+
+.reviewer {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ===========================
+   CONTACT
+=========================== */
+.contact {
+  padding: 5rem 2rem;
+  background: var(--henna-light);
+  /* CHANGE: was var(--cream) */
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.contact-text {
+  flex: 1 1 340px;
+}
+
+.contact-text h2 {
+  font-family: var(--font-gallery);
+  font-size: 2.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  /* CHANGE: was var(--espresso) */
+}
+
+.contact-text p {
+  color: var(--blush);
+  /* CHANGE: was #5a4237 dark brown */
+  line-height: 1.7;
+  margin-bottom: 1.6rem;
+}
+
+.contact-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--gold);
+  /* CHANGE: was var(--henna), too close to new bg color; now muted rose for contrast */
+}
+
+.contact-form {
+  flex: 1 1 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: var(--font-body);
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--blush);
+  border-radius: 4px;
+  background: #fff;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  background: var(--henna);
+  color: var(--text-light);
+  border: none;
+  padding: 0.9rem 2.4rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: var(--espresso);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.footer {
+  background: var(--espresso-deep);
+  color: var(--blush);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.socials {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.socials a {
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.socials a:hover {
+  color: var(--text-light);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: auto;
+    max-height: 100vh;
+    background: var(--espresso-deep);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.2rem;
+    padding:5rem 1.5rem 2.5rem;
+    transition: right 0.35s ease;
+    overflow-y: auto;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .about {
+    margin: 4rem auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .slide,
+  .gallery-item img,
+  .service-card,
+  .arrow,
+  .dot,
+  .nav-links a::after {
+    transition: none !important;
+  }
+}
+/* ===========================
+   FLOATING CONTACT BUTTONS
+=========================== */
+.floating-contact {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.float-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.float-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Background Colors */
+.float-btn.whatsapp {
+  background-color: #25d366;
+}
+
+.float-btn.phone {
+  background-color: #0084ff;
+  /* Facebook/Call Blue */
+}
+
+.float-btn.gmail {
+  background-color: #ea4335;
+}

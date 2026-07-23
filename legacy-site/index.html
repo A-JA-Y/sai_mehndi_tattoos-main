@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Mehndi & Tattoo | Bridal & Party Mehndi Artist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&family=Yeseva+One&family=Playfair+Display:ital,wght@0,600;1,500&family=Marcellus&family=Prata&family=Cinzel:wght@500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons (Moved to <head>) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Floating Action Buttons (Moved inside <body>) -->
+  <div class="floating-contact">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919899942258?text=Hello!%20I%20want%20to%20book%20an%20appointment." target="_blank"
+      class="float-btn whatsapp" title="WhatsApp Us">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Phone -->
+    <a href="tel:+919899942258" class="float-btn phone" title="Call Us">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <!-- Gmail -->
+    <a href="mailto:devakumar786@gmail.com?subject=Inquiry%20for%20Mehndi/Tattoo%20Services" onclick="openGmail(event)"
+      class="float-btn gmail" title="Email Us">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="logo">Sai <span>Mehndi & Tattoo</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact Me</a>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO SLIDER ===== -->
+  <section class="hero" id="home">
+    <div class="slider">
+      <div class="slide active">
+        <img src="Mehandi designs.jpg" alt="Bridal mehndi design on hands">
+      </div>
+      <div class="slide">
+        <img src="Los Angeles Wedding Photography - Amer & Ozma.jpg" alt="Intricate mehndi patterns">
+      </div>
+
+      <div class="hero-overlay">
+        <p class="eyebrow">Bridal &middot; Party &middot; Arabic Mehndi</p>
+        <h1>Sai Mehndi & Tattoo</h1>
+        <p class="tagline">Turning every occasion into a work of art, one design at a time</p>
+      </div>
+
+      <button class="arrow arrow-left" id="prevBtn" aria-label="Previous slide">&#10094;</button>
+      <button class="arrow arrow-right" id="nextBtn" aria-label="Next slide">&#10095;</button>
+
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- ===== COMMITMENT STRIP ===== -->
+  <section class="commitment">
+    <h2>Committed to making your special occasion a memorable one</h2>
+    <p>With over a decade of experience creating intricate bridal and festive mehndi designs, every pattern is drawn
+      with care, patience and a personal touch &mdash; so your hands tell a story worth remembering.</p>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-image">
+        <img src="WhatsApp Image 2026-07-21 at 1.40.24 PM.jpeg" alt="Sai, mehndi artist">
+      </div>
+      <div class="about-content">
+        <p class="eyebrow">About Me</p>
+        <h2>Hi, I'm Dev Kumar</h2>
+        <p>Ever since childhood, I have had a deep passion for design and painting. During my school days, I
+          participated in numerous competitions and brought home many first-prize trophies for my school. I formally
+          learned painting and sketching, starting with facial portraits and smaller sketches, before transitioning this
+          art onto hands.
+          <br><br>
+          With continuous dedication and hard work, I learned the art of Mehendi in 2008. My passion for painting and
+          Mehendi only grew stronger over time. Gradually, I began winning Mehendi competitions and started training
+          young students so that they too could become skilled artisans and earn a respectable livelihood.
+          <br><br>
+          As my artistic journey evolved, a thought struck me: "If I can apply Mehendi, why not create tattoos?" Driven
+          by this idea, I pursued the art of tattooing and began taking professional tattoo classes.
+          <br><br>
+          In 2011, I made my mark at the national level by competing in prestigious competitions hosted by Grihshobha,
+          Meri Saheli, Mahila Yug, and The Times of India, ultimately winning the Grihshobha National Certificate for
+          2011.
+          <br><br>
+          I continued to push my boundaries and expand my education so that this art form keeps thriving among the
+          younger generation. Today's youth, children, and students looking for a new direction can learn Mehendi,
+          Tattoo Making, and Nail Art. This art field is an excellent career foundation for the future—students who have
+          completed their 10th or 12th grade can join these classes and build a successful career as skilled artists.
+          <br><br>
+          Over the last 18 years dedicated to the world of art, I have won many competitions and achieved a great deal.
+          From every contest I won, I gained valuable insights, and from every contest I didn't, I learned even more.
+        </p>
+        <a href="#contact" class="btn-outline">Get in touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <p class="eyebrow center">What I Offer</p>
+    <h2 class="center">Services</h2>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">01</div>
+        <h3>Bridal Mehndi</h3>
+        <p>Elaborate, full-hand and full-leg bridal designs crafted for your big day, with fine detailing and a rich,
+          deep stain.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">02</div>
+        <h3>Party Mehndi</h3>
+        <p>Quick, elegant designs perfect for festivals, sangeet nights and get-togethers &mdash; beautiful without the
+          long wait.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">03</div>
+        <h3>Arabic Design</h3>
+        <p>Bold, flowing floral patterns with clean lines &mdash; a modern favourite for both hands and feet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery" id="gallery">
+    <p class="eyebrow center">A Peek Into My Work</p>
+    <h2 class="center">Gallery</h2>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="download (91).jpg" alt="Mehndi design 1"></div>
+      <div class="gallery-item"><img src="download (92).jpg" alt="Mehndi design 2"></div>
+      <div class="gallery-item"><img src="mehndi.jpg" alt="Mehndi design 3"></div>
+      <div class="gallery-item"><img src="mehndi design.jpg" alt="Mehndi design 4"></div>
+      <div class="gallery-item"><img src="mehndi designs 🏵️.jpg" alt="Mehndi design 5"></div>
+      <div class="gallery-item"><img src="download (91).jpg" alt="Mehndi design 6"></div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section class="reviews" id="reviews">
+    <p class="eyebrow center">Kind Words</p>
+    <h2 class="center">Reviews</h2>
+
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Sai did my bridal mehndi and it was beyond beautiful. The design lasted for weeks and everyone kept asking
+          who did it!"</p>
+        <span class="reviewer">&mdash; Priya Sharma</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Super talented and so patient with all my requests. My whole family got their mehndi done for Diwali,
+          everyone loved it."</p>
+        <span class="reviewer">&mdash; Anjali Verma</span>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Booked for my sangeet, the design was intricate and finished right on time. Highly recommend for any
+          occasion."</p>
+        <span class="reviewer">&mdash; Ritu Malhotra</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <p class="eyebrow">Get In Touch</p>
+        <h2>Book Your Appointment</h2>
+        <p>Tattoo Classes</p>
+        <p>Mehndi Classes</p>
+        <p>Nail Art Classes</p>
+        <p>Bridal Booking</p>
+
+        <ul class="contact-details">
+          <li style="color:white">&#128222; +91 9899942258, 9311641163</li>
+          <li style="color:white">&#9993; devakumar786@gmail.com</li>
+          <li style="color:white">&#128205; Sai Mehndi & Tattoo Studio Shop No. 22, Minni Khanna Market, West Patel
+            Nagar, New Delhi-110008, India</li>
+        </ul>
+      </div>
+
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <textarea placeholder="Tell me about your occasion" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>&copy; 2026 Sai Mehndi & Tattoo. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="Facebook">Facebook</a>
+      <a href="https://wa.me/919899942258" target="_blank" aria-label="WhatsApp">WhatsApp</a>
+    </div>
+  </footer>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+
+</html>
