@@ -9,7 +9,7 @@ import { site } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "A curated look at bridal, Arabic and festive mehndi designs created at Sai Mehndi & Tattoo, New Delhi.",
+    "The full portfolio of Sai Mehndi & Tattoo, New Delhi — bridal, Arabic and festive mehndi, tattoos, pencil sketches, nail art and event moments.",
 };
 
 export default function GalleryPage() {
@@ -22,7 +22,7 @@ export default function GalleryPage() {
             Ink, henna &amp; <em className="text-henna">detail</em>
           </>
         }
-        description="Filter by style, tap any piece to view it up close. Every design here was drawn freehand — no stencils, no shortcuts."
+        description="Mehndi, tattoos, sketches, nail art and moments from events — filter by category, tap any piece to view it up close. Every design here was drawn freehand — no stencils, no shortcuts."
       />
 
       <section className="py-20 md:py-28">
@@ -51,6 +51,8 @@ export default function GalleryPage() {
             <Magnetic className="inline-block">
               <a
                 href={site.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-solid"
                 aria-label="Open Instagram profile"
               >

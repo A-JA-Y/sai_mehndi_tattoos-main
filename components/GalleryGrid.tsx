@@ -3,28 +3,84 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Expand, X } from "lucide-react";
-import { galleryItems, type GalleryItem } from "@/lib/data";
+import { ArrowLeft, ArrowRight, Expand, Plus, X } from "lucide-react";
+import {
+  galleryImages,
+  type GalleryImage,
+  type MehndiStyle,
+} from "@/lib/gallery";
 import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
-const categories = ["All", "Bridal", "Arabic", "Festive"] as const;
+const PAGE_SIZE = 18;
+
+const categories = [
+  { key: "all", label: "All" },
+  { key: "mehndi", label: "Mehndi" },
+  { key: "tattoo", label: "Tattoos" },
+  { key: "sketch", label: "Sketches" },
+  { key: "nail-art", label: "Nail Art" },
+  { key: "event", label: "Events" },
+] as const;
+
+type CategoryKey = (typeof categories)[number]["key"];
+
+const mehndiStyles: { key: MehndiStyle | "all"; label: string }[] = [
+  { key: "all", label: "All Styles" },
+  { key: "bridal", label: "Bridal" },
+  { key: "arabic", label: "Arabic" },
+  { key: "festive", label: "Festive" },
+  { key: "minimal", label: "Minimal" },
+];
 
 export default function GalleryGrid() {
-  const [filter, setFilter] = useState<(typeof categories)[number]>("All");
+  const [filter, setFilter] = useState<CategoryKey>("all");
+  const [style, setStyle] = useState<MehndiStyle | "all">("all");
+  const [shown, setShown] = useState(PAGE_SIZE);
   const [selected, setSelected] = useState<number | null>(null);
 
-  const items = galleryItems.filter(
-    (item) => filter === "All" || item.category === filter,
-  );
+  const items = galleryImages.filter((item) => {
+    if (filter !== "all" && item.category !== filter) return false;
+    if (filter === "mehndi" && style !== "all" && item.style !== style)
+      return false;
+    return true;
+  });
+
+  const visible = items.slice(0, shown);
+  const remaining = items.length - visible.length;
+
+  const countFor = (key: CategoryKey) =>
+    key === "all"
+      ? galleryImages.length
+      : galleryImages.filter((i) => i.category === key).length;
+
+  const styleCountFor = (key: MehndiStyle | "all") =>
+    key === "all"
+      ? countFor("mehndi")
+      : galleryImages.filter(
+          (i) => i.category === "mehndi" && i.style === key,
+        ).length;
+
+  const selectFilter = (key: CategoryKey) => {
+    setFilter(key);
+    setStyle("all");
+    setShown(PAGE_SIZE);
+    setSelected(null);
+  };
+
+  const selectStyle = (key: MehndiStyle | "all") => {
+    setStyle(key);
+    setShown(PAGE_SIZE);
+    setSelected(null);
+  };
 
   const step = useCallback(
     (dir: number) => {
       setSelected((s) =>
-        s === null ? s : (s + dir + items.length) % items.length,
+        s === null ? s : (s + dir + visible.length) % visible.length,
       );
     },
-    [items.length],
+    [visible.length],
   );
 
   // Keyboard navigation + scroll lock for the lightbox
@@ -46,38 +102,75 @@ export default function GalleryGrid() {
   return (
     <>
       {/* Filter pills */}
-      <div className="mb-12 flex flex-wrap justify-center gap-2">
+      <div className="mb-6 flex flex-wrap justify-center gap-2">
         {categories.map((cat) => (
           <button
-            key={cat}
-            onClick={() => {
-              setFilter(cat);
-              setSelected(null);
-            }}
+            key={cat.key}
+            onClick={() => selectFilter(cat.key)}
             className={cn(
-              "relative rounded-full px-6 py-2.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300",
-              filter === cat ? "text-ink" : "text-sand hover:text-cream",
+              "relative rounded-full px-5 py-2.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 md:px-6",
+              filter === cat.key ? "text-ink" : "text-sand hover:text-cream",
             )}
           >
-            {filter === cat && (
+            {filter === cat.key && (
               <motion.span
                 layoutId="gallery-pill"
                 transition={{ duration: 0.5, ease: EASE }}
                 className="absolute inset-0 rounded-full bg-henna"
               />
             )}
-            <span className="relative">{cat}</span>
+            <span className="relative">
+              {cat.label}
+              <span className="ml-1.5 text-[9px] opacity-60">
+                {countFor(cat.key)}
+              </span>
+            </span>
           </button>
         ))}
       </div>
 
+      {/* Mehndi style sub-filter */}
+      <AnimatePresence initial={false}>
+        {filter === "mehndi" && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.35, ease: EASE }}
+            className="overflow-hidden"
+          >
+            <div className="mb-6 flex flex-wrap justify-center gap-2">
+              {mehndiStyles.filter((s) => styleCountFor(s.key) > 0).map((s) => (
+                <button
+                  key={s.key}
+                  onClick={() => selectStyle(s.key)}
+                  className={cn(
+                    "rounded-full border px-4 py-1.5 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300",
+                    style === s.key
+                      ? "border-henna/70 text-henna"
+                      : "border-cream/15 text-sand hover:border-cream/40 hover:text-cream",
+                  )}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Count */}
+      <p className="mb-8 text-center text-[11px] tracking-[0.25em] text-sand/70 uppercase">
+        Showing {visible.length} of {items.length}
+      </p>
+
       {/* Grid */}
       <motion.div layout className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
         <AnimatePresence mode="popLayout">
-          {items.map((item, i) => (
+          {visible.map((item, i) => (
             <motion.button
               layout
-              key={item.src + item.category}
+              key={item.src}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
@@ -96,7 +189,7 @@ export default function GalleryGrid() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="absolute inset-x-0 bottom-0 flex translate-y-3 items-center justify-between p-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 <span className="text-[10px] font-medium tracking-[0.25em] text-cream uppercase">
-                  {item.category}
+                  {labelFor(item)}
                 </span>
                 <Expand className="h-4 w-4 text-henna" />
               </div>
@@ -105,13 +198,26 @@ export default function GalleryGrid() {
         </AnimatePresence>
       </motion.div>
 
+      {/* Show more */}
+      {remaining > 0 && (
+        <div className="mt-12 text-center">
+          <button
+            onClick={() => setShown((s) => s + PAGE_SIZE)}
+            className="btn-outline"
+          >
+            <Plus className="h-4 w-4" />
+            Show more ({remaining} left)
+          </button>
+        </div>
+      )}
+
       {/* Lightbox */}
       <AnimatePresence>
-        {selected !== null && items[selected] && (
+        {selected !== null && visible[selected] && (
           <Lightbox
-            item={items[selected]}
+            item={visible[selected]}
             index={selected}
-            total={items.length}
+            total={visible.length}
             onClose={() => setSelected(null)}
             onStep={step}
           />
@@ -121,6 +227,13 @@ export default function GalleryGrid() {
   );
 }
 
+function labelFor(item: GalleryImage) {
+  const cat = categories.find((c) => c.key === item.category)?.label ?? "";
+  return item.category === "mehndi" && item.style
+    ? `${item.style} ${cat}`
+    : cat;
+}
+
 function Lightbox({
   item,
   index,
@@ -128,7 +241,7 @@ function Lightbox({
   onClose,
   onStep,
 }: {
-  item: GalleryItem;
+  item: GalleryImage;
   index: number;
   total: number;
   onClose: () => void;
@@ -191,7 +304,7 @@ function Lightbox({
           />
         </div>
         <figcaption className="mt-4 flex items-center justify-between text-xs tracking-[0.2em] text-sand uppercase">
-          <span>{item.category}</span>
+          <span>{labelFor(item)}</span>
           <span>
             {index + 1} / {total}
           </span>

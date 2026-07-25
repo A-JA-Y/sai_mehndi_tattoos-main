@@ -13,8 +13,9 @@ export const site = {
   mapEmbed:
     "https://www.google.com/maps?q=Minni%20Khanna%20Market%2C%20West%20Patel%20Nagar%2C%20New%20Delhi%20110008&output=embed",
   socials: {
-    instagram: "#",
-    facebook: "#",
+    instagram:
+      "https://www.instagram.com/sai_mehandi_and_tattoo_studio?igsh=ZmI4cW41OGoydTBr",
+    facebook: "https://www.facebook.com/profile.php?id=100063898994178",
   },
 };
 
@@ -54,7 +55,7 @@ export const services: Service[] = [
       "Deep, long-lasting stain",
       "Trial design available before the wedding",
     ],
-    image: "/images/hero-2.jpg",
+    image: "/assets-mehndi/img-096.jpg",
   },
   {
     slug: "party-mehndi",
@@ -69,7 +70,7 @@ export const services: Service[] = [
       "Trending festive patterns",
       "At-studio or at-venue service",
     ],
-    image: "/images/gallery-3.jpg",
+    image: "/assets-mehndi/img-121.jpg",
   },
   {
     slug: "arabic-designs",
@@ -84,7 +85,7 @@ export const services: Service[] = [
       "Perfect for hands & feet",
       "Pairs beautifully with western wear",
     ],
-    image: "/images/gallery-2.jpg",
+    image: "/assets-mehndi/img-070.jpg",
   },
   {
     slug: "tattoo-art",
@@ -99,7 +100,7 @@ export const services: Service[] = [
       "Fine-line, script & ornamental styles",
       "Free touch-up guidance",
     ],
-    image: "/images/gallery-1.jpg",
+    image: "/assets-mehndi/img-062.jpg",
   },
   {
     slug: "nail-art",
@@ -114,7 +115,7 @@ export const services: Service[] = [
       "Colour-matched to your outfit",
       "Quick add-on to any booking",
     ],
-    image: "/images/gallery-4.jpg",
+    image: "/assets-mehndi/img-014.jpg",
   },
   {
     slug: "classes",
@@ -129,7 +130,7 @@ export const services: Service[] = [
       "Career guidance for young artists",
       "Certificate on completion",
     ],
-    image: "/images/gallery-5.jpg",
+    image: "/assets-mehndi/img-024.jpg",
   },
 ];
 
@@ -204,22 +205,6 @@ export const faqs = [
     q: "How do I join the classes?",
     a: "Call or WhatsApp the studio to know the current batch timings. Courses in Mehndi, Tattoo Making and Nail Art are open to students (10th/12th pass) and hobbyists alike.",
   },
-];
-
-export type GalleryItem = {
-  src: string;
-  alt: string;
-  category: "Bridal" | "Arabic" | "Festive";
-};
-
-export const galleryItems: GalleryItem[] = [
-  { src: "/images/hero-2.jpg", alt: "Bridal couple with intricate mehndi", category: "Bridal" },
-  { src: "/images/gallery-1.jpg", alt: "Detailed bridal mehndi design", category: "Bridal" },
-  { src: "/images/gallery-2.jpg", alt: "Arabic floral mehndi trail", category: "Arabic" },
-  { src: "/images/hero-1.jpg", alt: "Festive mehndi on both hands", category: "Festive" },
-  { src: "/images/gallery-4.jpg", alt: "Full-hand bridal mehndi", category: "Bridal" },
-  { src: "/images/gallery-5.jpg", alt: "Arabic design with bold flowers", category: "Arabic" },
-  { src: "/images/gallery-3.jpg", alt: "Elegant festive mehndi design", category: "Festive" },
 ];
 
 export const timeline = [

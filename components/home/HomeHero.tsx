@@ -8,13 +8,9 @@ import { ArrowRight } from "lucide-react";
 import Magnetic from "@/components/Magnetic";
 import Mandala from "@/components/Mandala";
 import { site } from "@/lib/data";
+import { heroSlides as slides } from "@/lib/gallery";
 import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-
-const slides = [
-  { src: "/images/hero-1.jpg", alt: "Intricate festive mehndi on both hands" },
-  { src: "/images/hero-2.jpg", alt: "Bridal couple showing detailed mehndi" },
-];
 
 /** Masked line reveal for the display heading */
 function Line({ children, delay }: { children: React.ReactNode; delay: number }) {

@@ -11,11 +11,12 @@ import Parallax from "@/components/Parallax";
 import Magnetic from "@/components/Magnetic";
 import Mandala from "@/components/Mandala";
 import { WhatsAppIcon } from "@/components/icons";
-import { galleryItems, marqueeItems, services, site, stats, waLink } from "@/lib/data";
+import { marqueeItems, services, site, stats, waLink } from "@/lib/data";
+import { ctaBannerSrc, homePreview } from "@/lib/gallery";
 
 export default function HomePage() {
   const featured = services.slice(0, 3);
-  const previews = galleryItems.slice(0, 6);
+  const previews = homePreview;
 
   return (
     <>
@@ -217,7 +218,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden py-28 md:py-40">
         <Parallax>
           <Image
-            src="/images/hero-2.jpg"
+            src={ctaBannerSrc}
             alt=""
             fill
             sizes="100vw"

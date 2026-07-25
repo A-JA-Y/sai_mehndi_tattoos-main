@@ -46,6 +46,8 @@ export default function Footer() {
             <div className="mt-6 flex gap-3">
               <a
                 href={site.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-henna hover:text-henna"
               >
@@ -53,6 +55,8 @@ export default function Footer() {
               </a>
               <a
                 href={site.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-henna hover:text-henna"
               >
