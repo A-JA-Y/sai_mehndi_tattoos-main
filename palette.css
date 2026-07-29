@@ -1,0 +1,60 @@
+:root {
+/* whitesmoke */
+--whitesmoke-100: #eee;
+/* white */
+--white-100: #fff;
+--white-200: #ffffff;
+/* black */
+--black-100: rgba(0,0,0,0.5);
+--black-200: rgba(0,0,0,0.3);
+--black-300: rgba(0,0,0,0.4);
+--black-400: rgba(0,0,0,0);
+--black-500: #1c0f0a;
+--black-600: rgba(28,15,10,0.85);
+--black-700: #2b1710;
+--black-800: rgba(43,23,16,0.35);
+--black-900: #2a0710;
+--black-1000: rgba(42,7,16,0.5);
+/* sienna */
+--sienna-100: #a9552e;
+/* peru */
+--peru-100: #c67746;
+--peru-200: #c9974d;
+/* linen */
+--linen-100: #f7eee3;
+--linen-200: rgba(247,238,227,0.15);
+--linen-300: rgba(247,238,227,0.4);
+--linen-400: rgba(247,238,227,0.3);
+--linen-500: rgba(247,238,227,0.05);
+--linen-600: #f3e8e5;
+/* rosybrown */
+--rosybrown-100: #d8afae;
+/* peachpuff */
+--peachpuff-100: #e9c9b9;
+/* dimgray */
+--dimgray-100: #6b5346;
+--dimgray-200: #5a4237;
+/* mediumspringgreen */
+--mediumspringgreen-100: #25d366;
+/* dodgerblue */
+--dodgerblue-100: #0084ff;
+/* tomato */
+--tomato-100: #ea4335;
+/* darkred */
+--darkred-100: rgb(139,0,0);
+/* darkkhaki */
+--darkkhaki-100: rgb(142,130,62);
+/* gray */
+--gray-100: rgba(128,128,128,0.4);
+/* Brand Colors */
+--black: #000000;
+--darkslategray: #383030;
+--black: #181010;
+/* Homepage Colors */
+--black: #47241F;
+--rosybrown: #997055;
+--rosybrown: #D5B4A8;
+--black: #3A2333;
+--sienna: #964326;
+--black: #011E00;
+}

@@ -1,22 +1,23 @@
 @import "tailwindcss";
+@import "../palette.css";
 
 @theme inline {
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+
+  /* Palette applied from palette.css (previous values saved in colors.css) */
+  --color-ink: var(--black-500); /* #1c0f0a */
+  --color-coal: var(--black-700); /* #2b1710 */
+  --color-mocha: var(--darkslategray); /* #383030 */
+  --color-bark: var(--dimgray-200); /* #5a4237 */
+  --color-cream: var(--linen-100); /* #f7eee3 */
+  --color-sand: var(--rosybrown-100); /* #d8afae */
+  --color-henna: var(--peru-100); /* #c67746 */
+  --color-gold: var(--peru-200); /* #c9974d */
+  --color-blush: var(--peachpuff-100); /* #e9c9b9 */
 }
 
 @theme {
-  /* Henna-inspired palette */
-  --color-ink: #140d08;
-  --color-coal: #1d140c;
-  --color-mocha: #2c1f14;
-  --color-bark: #4a3826;
-  --color-cream: #f3e9da;
-  --color-sand: #c9b8a3;
-  --color-henna: #c17f4a;
-  --color-gold: #d9a45f;
-  --color-blush: #e8c9a8;
-
   --animate-marquee: marquee 36s linear infinite;
   --animate-spin-slow: spin-slow 60s linear infinite;
 
@@ -82,7 +83,7 @@
   }
 
   .btn-solid {
-    @apply bg-henna text-ink hover:bg-gold hover:shadow-[0_10px_36px_-10px_rgba(193,127,74,0.65)];
+    @apply bg-henna text-ink hover:bg-gold hover:shadow-[0_10px_36px_-10px_rgba(198,119,70,0.65)];
   }
 
   .btn-outline {
@@ -118,7 +119,7 @@
   /* Outlined watermark text */
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(243, 233, 218, 0.14);
+    -webkit-text-stroke: 1px rgba(247, 238, 227, 0.14);
   }
 
   /* Film-grain overlay */

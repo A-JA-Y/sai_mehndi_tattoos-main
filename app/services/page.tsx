@@ -59,7 +59,7 @@ export default function ServicesPage() {
             <Reveal key={service.slug} delay={(i % 2) * 0.12}>
               <article
                 id={service.slug}
-                className="group relative flex h-full scroll-mt-28 flex-col overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(193,127,74,0.3)]"
+                className="group relative flex h-full scroll-mt-28 flex-col overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(198,119,70,0.3)]"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image

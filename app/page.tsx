@@ -80,7 +80,7 @@ export default function HomePage() {
               <Reveal key={service.slug} delay={i * 0.12}>
                 <Link
                   href={`/services#${service.slug}`}
-                  className="group relative block overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:-translate-y-2 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(193,127,74,0.35)]"
+                  className="group relative block overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:-translate-y-2 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(198,119,70,0.35)]"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image

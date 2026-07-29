@@ -1,0 +1,18 @@
+/*
+ * colors.css — saved copy of the site's previous color palette.
+ * These were the values defined in app/globals.css (@theme) before
+ * palette.css was applied. Restore by pointing the @theme tokens in
+ * app/globals.css back at these values.
+ */
+:root {
+  /* Henna-inspired palette (original) */
+  --color-ink: #140d08;   /* darkest background */
+  --color-coal: #1d140c;  /* card / section background */
+  --color-mocha: #2c1f14; /* gradients, scrollbar thumb */
+  --color-bark: #4a3826;  /* muted borders / accents */
+  --color-cream: #f3e9da; /* primary text */
+  --color-sand: #c9b8a3;  /* secondary text */
+  --color-henna: #c17f4a; /* primary accent */
+  --color-gold: #d9a45f;  /* hover accent */
+  --color-blush: #e8c9a8; /* light accent */
+}
