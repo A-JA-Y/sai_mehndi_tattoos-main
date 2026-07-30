@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { navLinks, site, waLink } from "@/lib/data";
+import { navLinks, services, site, waLink } from "@/lib/data";
 import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -14,13 +14,13 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Glass background after slight scroll + hide-on-scroll-down
+  // Denser glass after slight scroll + hide-on-scroll-down
   useEffect(() => {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 24);
-      setHidden(y > 140 && y - lastY > 4);
+      setHidden(y > 160 && y - lastY > 4);
       lastY = y;
     };
     onScroll();
@@ -40,25 +40,28 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        "fixed inset-x-0 top-0 z-50 transition-transform duration-500",
         hidden && !open && "-translate-y-full",
       )}
     >
       <div
         className={cn(
-          "transition-all duration-500",
-          scrolled && !open
-            ? "border-b border-cream/8 bg-ink/80 backdrop-blur-xl"
-            : "bg-transparent",
+          "transition-colors duration-500",
+          open
+            ? "bg-transparent"
+            : scrolled
+              ? "border-b border-cream/10 bg-ink/90 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.7)] backdrop-blur-xl"
+              : "bg-ink/55 backdrop-blur-md",
         )}
       >
-        <div className="container-x flex h-[76px] items-center justify-between">
+        {/* Main bar */}
+        <div className="container-x flex h-[72px] items-center justify-between">
           <Link
             href="/"
-            className="group relative z-50 font-serif text-2xl tracking-wide text-cream"
+            className="group relative z-50 font-serif text-[22px] tracking-wide text-cream md:text-2xl"
           >
             Sai{" "}
-            <span className="text-henna transition-colors duration-300 group-hover:text-gold">
+            <span className="text-gold transition-colors duration-300 group-hover:text-cream">
               Mehndi & Tattoo
             </span>
           </Link>
@@ -72,15 +75,15 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "link-underline text-[12px] font-medium tracking-[0.22em] uppercase transition-colors duration-300",
-                    active ? "is-active text-henna" : "text-cream/80 hover:text-cream",
+                    "link-underline text-sm font-semibold tracking-[0.16em] uppercase transition-colors duration-300",
+                    active ? "is-active text-gold" : "text-cream hover:text-gold",
                   )}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <Link href="/contact" className="btn-solid !px-6 !py-2.5 text-[11px]">
+            <Link href="/contact" className="btn-solid !px-6 !py-2.5 !text-[13px]">
               Book Now
             </Link>
           </nav>
@@ -94,18 +97,47 @@ export default function Navbar() {
           >
             <span
               className={cn(
-                "h-px w-7 bg-cream transition-all duration-400",
+                "h-[1.5px] w-7 bg-cream transition-all duration-400",
                 open && "translate-y-1 rotate-45",
               )}
             />
             <span
               className={cn(
-                "h-px w-7 bg-cream transition-all duration-400",
+                "h-[1.5px] w-7 bg-cream transition-all duration-400",
                 open && "-translate-y-1 -rotate-45",
               )}
             />
           </button>
         </div>
+
+        {/* Services sub-navbar */}
+        <nav
+          aria-label="Our services"
+          className={cn(
+            "border-t border-cream/10 transition-opacity duration-300",
+            open && "pointer-events-none opacity-0",
+          )}
+        >
+          <div className="no-scrollbar overflow-x-auto">
+            <div className="mx-auto flex h-11 w-max items-center gap-5 px-5 sm:px-8 md:gap-6">
+              {services.map((service, i) => (
+                <Fragment key={service.slug}>
+                  <Link
+                    href={`/services#${service.slug}`}
+                    className="shrink-0 text-[11px] font-semibold tracking-[0.14em] whitespace-nowrap text-cream/75 uppercase transition-colors duration-300 hover:text-gold md:text-xs"
+                  >
+                    {service.title}
+                  </Link>
+                  {i < services.length - 1 && (
+                    <span aria-hidden className="shrink-0 text-[8px] text-gold/50">
+                      ✦
+                    </span>
+                  )}
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        </nav>
       </div>
 
       {/* Mobile full-screen overlay */}
@@ -116,7 +148,7 @@ export default function Navbar() {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="fixed inset-0 z-40 flex flex-col justify-between bg-ink px-8 pt-32 pb-10 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-ink px-8 pt-28 pb-10 lg:hidden"
           >
             <nav className="flex flex-col gap-2">
               {navLinks.map((link, i) => {
@@ -133,7 +165,7 @@ export default function Navbar() {
                       href={link.href}
                       className={cn(
                         "group flex items-baseline gap-4 py-1.5 font-serif text-4xl transition-colors",
-                        active ? "text-henna" : "text-cream hover:text-henna",
+                        active ? "text-gold" : "text-cream hover:text-gold",
                       )}
                     >
                       <span className="text-xs tracking-[0.3em] text-sand/60">
@@ -151,15 +183,23 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="space-y-2 text-sm font-light text-sand"
+              className="space-y-4 pt-8"
             >
-              <a href={waLink("Hello! I want to book an appointment.")} className="block hover:text-henna">
-                {site.phones[0]}
-              </a>
-              <a href={`mailto:${site.email}`} className="block hover:text-henna">
-                {site.email}
-              </a>
-              <p className="pt-1 text-xs text-sand/60">{site.address}</p>
+              <Link href="/contact" className="btn-solid w-full sm:w-auto">
+                Book an Appointment
+              </Link>
+              <div className="space-y-2 text-[15px] text-sand">
+                <a
+                  href={waLink("Hello! I want to book an appointment.")}
+                  className="block hover:text-gold"
+                >
+                  {site.phones[0]}
+                </a>
+                <a href={`mailto:${site.email}`} className="block hover:text-gold">
+                  {site.email}
+                </a>
+                <p className="pt-1 text-xs text-sand/70">{site.address}</p>
+              </div>
             </motion.div>
           </motion.div>
         )}

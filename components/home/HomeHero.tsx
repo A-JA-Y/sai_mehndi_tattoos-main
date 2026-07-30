@@ -94,14 +94,14 @@ export default function HomeHero() {
           transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
           className="eyebrow"
         >
-          <span aria-hidden className="h-px w-10 bg-henna/70" />
+          <span aria-hidden className="h-px w-10 bg-gold/60" />
           Bridal · Party · Arabic · Tattoo
         </motion.p>
 
         <h1 className="mt-6 font-serif text-[clamp(3.2rem,9.5vw,7.6rem)] leading-[0.98] font-medium text-cream">
           <Line delay={0.35}>Every hand</Line>
           <Line delay={0.5}>
-            tells a <em className="text-henna">story.</em>
+            tells a <em className="text-gold">story.</em>
           </Line>
         </h1>
 
@@ -109,7 +109,7 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
-          className="mt-7 max-w-lg text-[15px] leading-relaxed font-light text-cream/80 md:text-base"
+          className="mt-7 max-w-lg text-base leading-relaxed text-cream/90 md:text-[17px]"
         >
           Bridal &amp; festive mehndi, tattoos and nail art by{" "}
           <span className="text-gold">{site.artist}</span> — eighteen years of
@@ -146,7 +146,7 @@ export default function HomeHero() {
             aria-label={`Go to slide ${i + 1}`}
             className={cn(
               "h-1 rounded-full transition-all duration-500",
-              i === current ? "w-8 bg-henna" : "w-3 bg-cream/30 hover:bg-cream/60",
+              i === current ? "w-8 bg-gold" : "w-3 bg-cream/30 hover:bg-cream/60",
             )}
           />
         ))}
@@ -166,7 +166,7 @@ export default function HomeHero() {
           <motion.span
             animate={{ y: ["-100%", "100%"] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-x-0 h-1/2 bg-henna"
+            className="absolute inset-x-0 h-1/2 bg-gold"
           />
         </span>
       </motion.div>

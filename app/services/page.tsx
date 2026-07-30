@@ -46,7 +46,7 @@ export default function ServicesPage() {
         eyebrow="What I Offer"
         title={
           <>
-            Services, from cone <em className="text-henna">to canvas</em>
+            Services, from cone <em className="text-gold">to canvas</em>
           </>
         }
         description="Six crafts under one roof — each priced by design size and detail. Share your occasion and get a quote in minutes on WhatsApp."
@@ -59,7 +59,7 @@ export default function ServicesPage() {
             <Reveal key={service.slug} delay={(i % 2) * 0.12}>
               <article
                 id={service.slug}
-                className="group relative flex h-full scroll-mt-28 flex-col overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(198,119,70,0.3)]"
+                className="group relative flex h-full scroll-mt-36 flex-col overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(167,30,34,0.3)]"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
@@ -70,22 +70,22 @@ export default function ServicesPage() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-106"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/25 to-transparent" />
-                  <span className="absolute top-4 right-5 font-serif text-6xl text-cream/20 italic transition-colors duration-500 group-hover:text-henna/60">
+                  <span className="absolute top-4 right-5 font-serif text-6xl text-cream/20 italic transition-colors duration-500 group-hover:text-gold/60">
                     {service.number}
                   </span>
                 </div>
 
-                <div className="flex flex-1 flex-col p-8">
-                  <h2 className="font-serif text-3xl text-cream transition-colors duration-300 group-hover:text-henna">
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <h2 className="font-serif text-3xl text-cream transition-colors duration-300 group-hover:text-gold">
                     {service.title}
                   </h2>
-                  <p className="mt-4 text-[15px] leading-relaxed font-light text-sand">
+                  <p className="mt-4 text-base leading-relaxed text-sand">
                     {service.description}
                   </p>
-                  <ul className="mt-6 grid gap-2.5 text-sm font-light text-cream/80 sm:grid-cols-2">
+                  <ul className="mt-6 grid gap-2.5 text-[15px] text-cream/90 sm:grid-cols-2">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2.5">
-                        <span aria-hidden className="mt-0.5 text-henna">
+                        <span aria-hidden className="mt-0.5 text-gold">
                           ✦
                         </span>
                         {feature}
@@ -97,7 +97,7 @@ export default function ServicesPage() {
                       href={waLink(`Hello! I'd like to enquire about ${service.title}.`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-2.5 text-[11px] font-medium tracking-[0.25em] text-henna uppercase transition-colors hover:text-gold"
+                      className="group/link inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-gold uppercase transition-colors hover:text-cream"
                     >
                       <WhatsAppIcon className="h-4 w-4" />
                       Enquire about this
@@ -137,7 +137,7 @@ export default function ServicesPage() {
                     {item.step}
                   </span>
                   <h3 className="mt-5 font-serif text-2xl">{item.title}</h3>
-                  <p className="mt-2.5 text-sm leading-relaxed font-light text-ink/65">
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-ink/75">
                     {item.text}
                   </p>
                 </div>
@@ -156,7 +156,7 @@ export default function ServicesPage() {
               eyebrow="Good to Know"
               title={
                 <>
-                  Questions, <em className="text-henna">answered</em>
+                  Questions, <em className="text-gold">answered</em>
                 </>
               }
               description="Everything clients usually ask before booking. Something else on your mind? WhatsApp is the fastest way to reach us."

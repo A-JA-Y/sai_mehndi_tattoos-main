@@ -3,7 +3,7 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import FloatingActions from "@/components/FloatingActions";
 import Providers from "@/components/Providers";
 import { site } from "@/lib/data";
 
@@ -50,7 +50,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <FloatingWhatsApp />
+          <FloatingActions />
           <div aria-hidden className="grain" />
         </Providers>
       </body>

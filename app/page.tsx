@@ -32,7 +32,7 @@ export default function HomePage() {
         <Mandala className="absolute -bottom-40 -left-40 h-[480px] w-[480px] animate-spin-slow text-henna/15" />
         <div className="container-x relative grid items-start gap-12 md:grid-cols-2 md:gap-20">
           <Reveal>
-            <p className="eyebrow">
+            <p className="eyebrow text-henna">
               <span aria-hidden className="h-px w-8 bg-henna/60" />
               The Promise
             </p>
@@ -42,7 +42,7 @@ export default function HomePage() {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-base leading-relaxed font-light text-ink/70 md:text-lg">
+            <p className="text-base leading-relaxed text-ink/80 md:text-lg">
               With over {new Date().getFullYear() - site.since} years of
               experience creating intricate bridal and festive designs, every
               pattern is drawn with care, patience and a personal touch — so
@@ -69,7 +69,7 @@ export default function HomePage() {
             eyebrow="What I Offer"
             title={
               <>
-                Artistry for every <em className="text-henna">occasion</em>
+                Artistry for every <em className="text-gold">occasion</em>
               </>
             }
             description="From eight-hour bridal sittings to fifteen-minute festive designs — and tattoos, nail art and classes beyond the cone."
@@ -80,7 +80,7 @@ export default function HomePage() {
               <Reveal key={service.slug} delay={i * 0.12}>
                 <Link
                   href={`/services#${service.slug}`}
-                  className="group relative block overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:-translate-y-2 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(198,119,70,0.35)]"
+                  className="group relative block overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:-translate-y-2 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(167,30,34,0.35)]"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
@@ -91,18 +91,18 @@ export default function HomePage() {
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/20 to-transparent" />
-                    <span className="absolute top-4 right-5 font-serif text-5xl text-cream/25 italic transition-colors duration-500 group-hover:text-henna/70">
+                    <span className="absolute top-4 right-5 font-serif text-5xl text-cream/25 italic transition-colors duration-500 group-hover:text-gold/70">
                       {service.number}
                     </span>
                   </div>
                   <div className="p-7">
-                    <h3 className="font-serif text-2xl text-cream transition-colors duration-300 group-hover:text-henna">
+                    <h3 className="font-serif text-2xl text-cream transition-colors duration-300 group-hover:text-gold">
                       {service.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed font-light text-sand">
+                    <p className="mt-3 text-[15px] leading-relaxed text-sand">
                       {service.short}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.25em] text-henna uppercase">
+                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-gold uppercase">
                       Explore
                       <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
@@ -120,6 +120,46 @@ export default function HomePage() {
               </Link>
             </Magnetic>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Service index — jump straight to any service */}
+      <section className="border-y border-cream/8 bg-coal/40 py-20 md:py-28">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Find Your Service"
+            title={
+              <>
+                Jump straight to <em className="text-gold">your occasion</em>
+              </>
+            }
+            description="Know exactly what you need? Head directly to any of the six services offered at the studio."
+          />
+          <div className="mx-auto max-w-4xl border-t border-cream/10">
+            {services.map((service, i) => (
+              <Reveal key={service.slug} delay={i * 0.06}>
+                <Link
+                  href={`/services#${service.slug}`}
+                  className="group flex items-center gap-4 border-b border-cream/10 py-5 transition-all duration-300 hover:border-gold/40 hover:pl-2 sm:gap-8 md:py-6"
+                >
+                  <span className="w-9 shrink-0 font-serif text-lg text-gold/70 italic transition-colors duration-300 group-hover:text-gold md:text-xl">
+                    {service.number}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-serif text-2xl text-cream transition-colors duration-300 group-hover:text-gold md:text-3xl">
+                      {service.title}
+                    </h3>
+                    <p className="mt-1 hidden text-[15px] text-sand sm:block">
+                      {service.short}
+                    </p>
+                  </div>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cream/15 text-cream/70 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink md:h-12 md:w-12">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -197,7 +237,7 @@ export default function HomePage() {
             eyebrow="Kind Words"
             title={
               <>
-                Loved by <em className="text-henna">brides</em> across Delhi
+                Loved by <em className="text-gold">brides</em> across Delhi
               </>
             }
           />
@@ -205,7 +245,7 @@ export default function HomePage() {
           <Reveal className="mt-12 text-center" delay={0.1}>
             <Link
               href="/reviews"
-              className="group inline-flex items-center gap-2 text-xs font-medium tracking-[0.25em] text-henna uppercase"
+              className="group inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-gold uppercase"
             >
               Read all reviews
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -229,15 +269,15 @@ export default function HomePage() {
         <div className="container-x relative text-center">
           <Reveal>
             <p className="eyebrow justify-center">
-              <span aria-hidden className="h-px w-8 bg-henna/60" />
+              <span aria-hidden className="h-px w-8 bg-gold/50" />
               Limited slots each season
-              <span aria-hidden className="h-px w-8 bg-henna/60" />
+              <span aria-hidden className="h-px w-8 bg-gold/50" />
             </p>
             <h2 className="mx-auto mt-5 max-w-2xl font-serif text-4xl leading-[1.05] font-medium text-cream md:text-6xl">
               Have a date circled on the{" "}
-              <em className="text-henna">calendar?</em>
+              <em className="text-gold">calendar?</em>
             </h2>
-            <p className="mx-auto mt-6 max-w-md text-[15px] font-light text-sand">
+            <p className="mx-auto mt-6 max-w-md text-base text-sand">
               Wedding-season books up fast. Share your date and let&apos;s
               reserve your sitting before it fills.
             </p>

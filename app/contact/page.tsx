@@ -44,7 +44,7 @@ export default function ContactPage() {
         eyebrow="Get in Touch"
         title={
           <>
-            Book your <em className="text-henna">appointment</em>
+            Book your <em className="text-gold">appointment</em>
           </>
         }
         description="Tell us about your occasion — we usually reply within the hour during studio time."
@@ -57,18 +57,18 @@ export default function ContactPage() {
             {infoCards.map((card, i) => {
               const Icon = card.icon;
               const content = (
-                <div className="flex gap-5 rounded-2xl border border-cream/10 bg-coal p-6 transition-all duration-400 hover:-translate-y-1 hover:border-henna/40">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-henna/12 text-henna">
+                <div className="flex gap-4 rounded-2xl border border-cream/10 bg-coal p-5 transition-all duration-400 hover:-translate-y-1 hover:border-henna/40 sm:gap-5 sm:p-6">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-henna/15 text-gold">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>
-                    <h3 className="text-xs font-medium tracking-[0.25em] text-cream/60 uppercase">
+                    <h3 className="text-xs font-semibold tracking-[0.25em] text-cream/70 uppercase">
                       {card.title}
                     </h3>
                     {card.lines.map((line) => (
                       <p
                         key={line}
-                        className="mt-1.5 text-[15px] leading-relaxed font-light text-cream"
+                        className="mt-1.5 text-[15px] leading-relaxed text-cream"
                       >
                         {line}
                       </p>
@@ -104,7 +104,7 @@ export default function ContactPage() {
                     <p className="font-serif text-xl text-cream">
                       Fastest reply on WhatsApp
                     </p>
-                    <p className="mt-0.5 text-xs font-light text-sand">
+                    <p className="mt-0.5 text-[13px] text-sand">
                       Tap to start a chat instantly
                     </p>
                   </div>
@@ -115,11 +115,11 @@ export default function ContactPage() {
 
           {/* Form */}
           <Reveal delay={0.15}>
-            <div className="rounded-3xl border border-cream/10 bg-coal p-8 md:p-12">
+            <div className="rounded-3xl border border-cream/10 bg-coal p-6 sm:p-8 md:p-12">
               <h2 className="font-serif text-3xl text-cream md:text-4xl">
-                Tell us about your <em className="text-henna">occasion</em>
+                Tell us about your <em className="text-gold">occasion</em>
               </h2>
-              <p className="mt-3 mb-9 text-sm font-light text-sand">
+              <p className="mt-3 mb-9 text-[15px] text-sand">
                 Fields marked * are required — everything else helps us prepare
                 a better quote.
               </p>

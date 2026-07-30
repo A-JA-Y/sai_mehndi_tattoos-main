@@ -23,7 +23,7 @@ export default function AboutPage() {
         eyebrow="About Me"
         title={
           <>
-            The artist behind <em className="text-henna">the art</em>
+            The artist behind <em className="text-gold">the art</em>
           </>
         }
         description="Painter, sketch artist, mehndi designer, tattooist and teacher — one pair of hands, eighteen years of practice."
@@ -48,10 +48,10 @@ export default function AboutPage() {
                 />
               </div>
               <div className="absolute -bottom-6 left-6 rounded-xl border border-cream/10 bg-coal/90 px-6 py-4 backdrop-blur">
-                <p className="font-serif text-2xl text-henna italic">
+                <p className="font-serif text-2xl text-gold italic">
                   {site.artist}
                 </p>
-                <p className="mt-0.5 text-[10px] tracking-[0.3em] text-sand uppercase">
+                <p className="mt-0.5 text-[11px] tracking-[0.3em] text-sand uppercase">
                   Founder · Artist · Teacher
                 </p>
               </div>
@@ -62,11 +62,11 @@ export default function AboutPage() {
             <Reveal>
               <h2 className="font-serif text-3xl leading-snug font-medium text-cream md:text-4xl">
                 &ldquo;If I can apply mehndi,{" "}
-                <em className="text-henna">why not create tattoos?</em>&rdquo;
+                <em className="text-gold">why not create tattoos?</em>&rdquo;
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="mt-7 space-y-5 text-[15px] leading-relaxed font-light text-sand md:text-base">
+              <div className="mt-7 space-y-5 text-base leading-relaxed text-sand md:text-[17px]">
                 <p>
                   Ever since childhood, I have had a deep passion for design and
                   painting. During my school days, I participated in numerous
@@ -127,7 +127,7 @@ export default function AboutPage() {
             eyebrow="The Journey"
             title={
               <>
-                From sketchbook to <em className="text-henna">studio</em>
+                From sketchbook to <em className="text-gold">studio</em>
               </>
             }
           />
@@ -160,7 +160,7 @@ export default function AboutPage() {
                     <h3 className="font-serif text-2xl text-cream md:text-3xl">
                       {item.title}
                     </h3>
-                    <p className="text-sm leading-relaxed font-light text-sand">
+                    <p className="text-[15px] leading-relaxed text-sand">
                       {item.text}
                     </p>
                   </div>
@@ -201,21 +201,21 @@ export default function AboutPage() {
       <section className="py-24 md:py-32">
         <div className="container-x">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha/70 to-coal p-10 md:p-16">
+            <div className="relative overflow-hidden rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha/70 to-coal p-7 sm:p-10 md:p-16">
               <GraduationCap
                 aria-hidden
                 className="absolute -top-6 -right-6 h-40 w-40 text-henna/10"
               />
               <div className="max-w-2xl">
                 <p className="eyebrow">
-                  <span aria-hidden className="h-px w-8 bg-henna/60" />
+                  <span aria-hidden className="h-px w-8 bg-gold/50" />
                   Beyond the studio
                 </p>
                 <h2 className="mt-4 font-serif text-3xl leading-tight font-medium text-cream md:text-5xl">
                   Learn the craft.{" "}
-                  <em className="text-henna">Build a career.</em>
+                  <em className="text-gold">Build a career.</em>
                 </h2>
-                <p className="mt-5 text-[15px] leading-relaxed font-light text-sand">
+                <p className="mt-5 text-base leading-relaxed text-sand">
                   Mehndi, tattoo making and nail art classes for the next
                   generation of artists. Students who have completed 10th or
                   12th grade can turn this art into a real, respectable

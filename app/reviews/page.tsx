@@ -18,7 +18,7 @@ export default function ReviewsPage() {
         eyebrow="Kind Words"
         title={
           <>
-            Stories our clients <em className="text-henna">tell</em>
+            Stories our clients <em className="text-gold">tell</em>
           </>
         }
         description="Real words from brides, families and students — the reason this studio has run on referrals for eighteen years."
@@ -28,7 +28,7 @@ export default function ReviewsPage() {
       <section className="py-16 md:py-20">
         <div className="container-x">
           <Reveal>
-            <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha/60 to-coal px-8 py-12 text-center">
+            <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha/60 to-coal px-6 py-10 text-center sm:px-8 sm:py-12">
               <p className="font-serif text-7xl font-medium text-cream">
                 5.0
               </p>
@@ -39,7 +39,7 @@ export default function ReviewsPage() {
                   </span>
                 ))}
               </div>
-              <p className="max-w-md text-sm font-light text-sand">
+              <p className="max-w-md text-[15px] text-sand">
                 Rated by brides, festive clients and students — every review
                 below came from a real occasion we were lucky to be part of.
               </p>
@@ -53,7 +53,7 @@ export default function ReviewsPage() {
         <div className="container-x grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review, i) => (
             <Reveal key={review.name} delay={(i % 3) * 0.1}>
-              <figure className="group relative flex h-full flex-col rounded-2xl border border-cream/10 bg-coal p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-henna/40">
+              <figure className="group relative flex h-full flex-col rounded-2xl border border-cream/10 bg-coal p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-henna/40 sm:p-8">
                 <span
                   aria-hidden
                   className="pointer-events-none absolute top-3 right-6 font-serif text-7xl leading-none text-henna/12 transition-colors duration-500 select-none group-hover:text-henna/25"
@@ -71,10 +71,10 @@ export default function ReviewsPage() {
                   &ldquo;{review.text}&rdquo;
                 </blockquote>
                 <figcaption className="mt-7 border-t border-cream/10 pt-5">
-                  <p className="text-sm font-medium tracking-[0.18em] text-henna uppercase">
+                  <p className="text-sm font-semibold tracking-[0.18em] text-gold uppercase">
                     {review.name}
                   </p>
-                  <p className="mt-1 text-xs font-light text-sand">
+                  <p className="mt-1 text-[13px] text-sand">
                     {review.occasion}
                   </p>
                 </figcaption>
@@ -91,7 +91,7 @@ export default function ReviewsPage() {
             <h2 className="font-serif text-3xl font-medium md:text-5xl">
               Celebrated with us recently?
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-[15px] font-light text-ink/65">
+            <p className="mx-auto mt-4 max-w-md text-base text-ink/75">
               Your words help other brides find us. Share a line about your
               experience — it means the world.
             </p>

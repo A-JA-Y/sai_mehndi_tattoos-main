@@ -8,14 +8,14 @@ export default function NotFound() {
       <Mandala className="absolute h-[560px] w-[560px] animate-spin-slow text-henna/10" />
       <div className="relative z-10 text-center">
         <p className="eyebrow justify-center">
-          <span aria-hidden className="h-px w-8 bg-henna/60" />
+          <span aria-hidden className="h-px w-8 bg-gold/50" />
           Page not found
-          <span aria-hidden className="h-px w-8 bg-henna/60" />
+          <span aria-hidden className="h-px w-8 bg-gold/50" />
         </p>
         <h1 className="mt-4 font-serif text-8xl font-medium text-cream md:text-9xl">
-          4<span className="text-henna">0</span>4
+          4<span className="text-gold">0</span>4
         </h1>
-        <p className="mx-auto mt-4 max-w-xs text-sm font-light text-sand">
+        <p className="mx-auto mt-4 max-w-xs text-[15px] text-sand">
           This page seems unadorned. Let&apos;s take you back to the beautiful
           part.
         </p>

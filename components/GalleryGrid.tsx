@@ -108,8 +108,8 @@ export default function GalleryGrid() {
             key={cat.key}
             onClick={() => selectFilter(cat.key)}
             className={cn(
-              "relative rounded-full px-5 py-2.5 text-[11px] font-medium tracking-[0.22em] uppercase transition-colors duration-300 md:px-6",
-              filter === cat.key ? "text-ink" : "text-sand hover:text-cream",
+              "relative rounded-full px-5 py-2.5 text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-300 md:px-6",
+              filter === cat.key ? "text-cream" : "text-sand hover:text-cream",
             )}
           >
             {filter === cat.key && (
@@ -145,9 +145,9 @@ export default function GalleryGrid() {
                   key={s.key}
                   onClick={() => selectStyle(s.key)}
                   className={cn(
-                    "rounded-full border px-4 py-1.5 text-[10px] font-medium tracking-[0.2em] uppercase transition-colors duration-300",
+                    "rounded-full border px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300",
                     style === s.key
-                      ? "border-henna/70 text-henna"
+                      ? "border-gold/70 text-gold"
                       : "border-cream/15 text-sand hover:border-cream/40 hover:text-cream",
                   )}
                 >
@@ -160,7 +160,7 @@ export default function GalleryGrid() {
       </AnimatePresence>
 
       {/* Count */}
-      <p className="mb-8 text-center text-[11px] tracking-[0.25em] text-sand/70 uppercase">
+      <p className="mb-8 text-center text-xs tracking-[0.25em] text-sand/80 uppercase">
         Showing {visible.length} of {items.length}
       </p>
 
@@ -188,10 +188,10 @@ export default function GalleryGrid() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="absolute inset-x-0 bottom-0 flex translate-y-3 items-center justify-between p-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                <span className="text-[10px] font-medium tracking-[0.25em] text-cream uppercase">
+                <span className="text-[11px] font-semibold tracking-[0.25em] text-cream uppercase">
                   {labelFor(item)}
                 </span>
-                <Expand className="h-4 w-4 text-henna" />
+                <Expand className="h-4 w-4 text-gold" />
               </div>
             </motion.button>
           ))}
@@ -259,7 +259,7 @@ function Lightbox({
       <button
         onClick={onClose}
         aria-label="Close"
-        className="absolute top-5 right-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-henna hover:text-henna"
+        className="absolute top-5 right-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold"
       >
         <X className="h-5 w-5" />
       </button>
@@ -270,7 +270,7 @@ function Lightbox({
           onStep(-1);
         }}
         aria-label="Previous image"
-        className="absolute left-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-henna hover:text-henna md:left-8"
+        className="absolute left-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold md:left-8"
       >
         <ArrowLeft className="h-5 w-5" />
       </button>
@@ -280,7 +280,7 @@ function Lightbox({
           onStep(1);
         }}
         aria-label="Next image"
-        className="absolute right-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-henna hover:text-henna md:right-8"
+        className="absolute right-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold md:right-8"
       >
         <ArrowRight className="h-5 w-5" />
       </button>

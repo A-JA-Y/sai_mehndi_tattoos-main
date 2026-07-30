@@ -59,10 +59,10 @@ export default function TestimonialCarousel() {
               &ldquo;{review.text}&rdquo;
             </p>
             <footer className="mt-7">
-              <p className="text-sm font-medium tracking-[0.2em] text-henna uppercase">
+              <p className="text-sm font-semibold tracking-[0.2em] text-gold uppercase">
                 {review.name}
               </p>
-              <p className="mt-1 text-xs font-light tracking-wide text-sand">
+              <p className="mt-1 text-[13px] tracking-wide text-sand">
                 {review.occasion}
               </p>
             </footer>
@@ -75,7 +75,7 @@ export default function TestimonialCarousel() {
         <button
           onClick={() => paginate(-1)}
           aria-label="Previous review"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-all duration-300 hover:border-henna hover:text-henna active:scale-90"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-all duration-300 hover:border-gold hover:text-gold active:scale-90"
         >
           <ArrowLeft className="h-4 w-4" />
         </button>
@@ -87,7 +87,7 @@ export default function TestimonialCarousel() {
               aria-label={`Go to review ${i + 1}`}
               className={cn(
                 "h-1.5 rounded-full transition-all duration-400",
-                i === index ? "w-7 bg-henna" : "w-1.5 bg-cream/25 hover:bg-cream/50",
+                i === index ? "w-7 bg-gold" : "w-1.5 bg-cream/25 hover:bg-cream/50",
               )}
             />
           ))}
@@ -95,7 +95,7 @@ export default function TestimonialCarousel() {
         <button
           onClick={() => paginate(1)}
           aria-label="Next review"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-all duration-300 hover:border-henna hover:text-henna active:scale-90"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-all duration-300 hover:border-gold hover:text-gold active:scale-90"
         >
           <ArrowRight className="h-4 w-4" />
         </button>

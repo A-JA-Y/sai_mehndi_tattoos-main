@@ -14,12 +14,12 @@ export default function Footer() {
           <div className="flex flex-col items-start justify-between gap-8 border-b border-cream/10 pb-14 md:flex-row md:items-end">
             <div>
               <p className="eyebrow">
-                <span aria-hidden className="h-px w-8 bg-henna/60" />
+                <span aria-hidden className="h-px w-8 bg-gold/50" />
                 Ready when you are
               </p>
               <h2 className="mt-4 max-w-xl font-serif text-4xl leading-[1.05] font-medium text-cream md:text-6xl">
                 Let&apos;s create something{" "}
-                <em className="text-henna">beautiful</em> together
+                <em className="text-gold">beautiful</em> together
               </h2>
             </div>
             <a
@@ -38,9 +38,9 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 py-14 md:grid-cols-4">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="font-serif text-2xl text-cream">
-              Sai <span className="text-henna">Mehndi & Tattoo</span>
+              Sai <span className="text-gold">Mehndi & Tattoo</span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed font-light text-sand">
+            <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-sand">
               {site.tagline}
             </p>
             <div className="mt-6 flex gap-3">
@@ -49,7 +49,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-henna hover:text-henna"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
               >
                 <Instagram className="h-4 w-4" />
               </a>
@@ -58,7 +58,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-henna hover:text-henna"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
               >
                 <Facebook className="h-4 w-4" />
               </a>
@@ -67,7 +67,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-henna hover:text-henna"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-sand transition-all duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold"
               >
                 <WhatsAppIcon className="h-4 w-4" />
               </a>
@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-medium tracking-[0.3em] text-cream/50 uppercase">
+            <h3 className="text-xs font-semibold tracking-[0.3em] text-cream/60 uppercase">
               Explore
             </h3>
             <ul className="mt-5 space-y-3">
@@ -83,7 +83,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="link-underline text-sm font-light text-sand hover:text-cream"
+                    className="link-underline text-[15px] text-sand hover:text-cream"
                   >
                     {link.label}
                   </Link>
@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-medium tracking-[0.3em] text-cream/50 uppercase">
+            <h3 className="text-xs font-semibold tracking-[0.3em] text-cream/60 uppercase">
               Services
             </h3>
             <ul className="mt-5 space-y-3">
@@ -101,7 +101,7 @@ export default function Footer() {
                 <li key={s.slug}>
                   <Link
                     href={`/services#${s.slug}`}
-                    className="link-underline text-sm font-light text-sand hover:text-cream"
+                    className="link-underline text-[15px] text-sand hover:text-cream"
                   >
                     {s.title}
                   </Link>
@@ -111,16 +111,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-medium tracking-[0.3em] text-cream/50 uppercase">
+            <h3 className="text-xs font-semibold tracking-[0.3em] text-cream/60 uppercase">
               Visit
             </h3>
-            <ul className="mt-5 space-y-4 text-sm font-light text-sand">
+            <ul className="mt-5 space-y-4 text-[15px] text-sand">
               <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-henna" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 {site.address}
               </li>
               <li className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-henna" />
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 <span>
                   {site.phones[0]}
                   <br />
@@ -128,7 +128,7 @@ export default function Footer() {
                 </span>
               </li>
               <li className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-henna" />
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 <a href={`mailto:${site.email}`} className="hover:text-cream">
                   {site.email}
                 </a>
@@ -138,12 +138,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-3 border-t border-cream/10 py-7 text-xs font-light tracking-wide text-sand/60 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-cream/10 py-7 text-xs tracking-wide text-sand/70 md:flex-row">
           <p>
             © {year} {site.name}. All rights reserved.
           </p>
           <p>
-            Crafted with <span className="text-henna">♥</span> by Funkey Graphics
+            Crafted with <span className="text-gold">♥</span> by Funkey Graphics
           </p>
         </div>
       </div>

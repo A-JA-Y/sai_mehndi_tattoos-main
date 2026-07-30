@@ -27,7 +27,7 @@ export default function Accordion({
               <span
                 className={cn(
                   "font-serif text-xl transition-colors duration-300 md:text-2xl",
-                  isOpen ? "text-henna" : "text-cream group-hover:text-henna",
+                  isOpen ? "text-gold" : "text-cream group-hover:text-gold",
                 )}
               >
                 {item.q}
@@ -36,8 +36,8 @@ export default function Accordion({
                 className={cn(
                   "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-400",
                   isOpen
-                    ? "rotate-45 border-henna text-henna"
-                    : "border-cream/20 text-sand group-hover:border-henna group-hover:text-henna",
+                    ? "rotate-45 border-gold text-gold"
+                    : "border-cream/20 text-sand group-hover:border-gold group-hover:text-gold",
                 )}
               >
                 <Plus className="h-4 w-4" />
@@ -52,7 +52,7 @@ export default function Accordion({
                   transition={{ duration: 0.45, ease: EASE }}
                   className="overflow-hidden"
                 >
-                  <p className="max-w-2xl pb-7 text-[15px] leading-relaxed font-light text-sand">
+                  <p className="max-w-2xl pb-7 text-[15px] leading-relaxed text-sand">
                     {item.a}
                   </p>
                 </motion.div>

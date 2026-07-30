@@ -56,7 +56,7 @@ export default function ContactForm() {
                 cy="26"
                 r="24"
                 fill="none"
-                stroke="#c17f4a"
+                stroke="#f7ebab"
                 strokeWidth="1.5"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
@@ -65,7 +65,7 @@ export default function ContactForm() {
               <motion.path
                 d="M15 27 L23 34 L38 19"
                 fill="none"
-                stroke="#c17f4a"
+                stroke="#f7ebab"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -77,7 +77,7 @@ export default function ContactForm() {
             <h3 className="mt-6 font-serif text-3xl text-cream">
               Almost there!
             </h3>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed font-light text-sand">
+            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-sand">
               Your booking details have been prepared in WhatsApp — just press
               send there and we&apos;ll get back to you shortly. You can also
               call us directly at {site.phones[0]}.
@@ -197,7 +197,7 @@ export default function ContactForm() {
                 <Send className="h-4 w-4" />
                 Send via WhatsApp
               </motion.button>
-              <p className="flex items-center gap-2 text-xs font-light text-sand">
+              <p className="flex items-center gap-2 text-[13px] text-sand">
                 <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
                 Opens WhatsApp with your details pre-filled
               </p>

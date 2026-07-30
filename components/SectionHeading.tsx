@@ -27,10 +27,22 @@ export default function SectionHeading({
         className,
       )}
     >
-      <p className={cn("eyebrow", centered && "justify-center")}>
-        <span aria-hidden className="h-px w-8 bg-henna/60" />
+      <p
+        className={cn(
+          "eyebrow",
+          centered && "justify-center",
+          invert && "text-henna",
+        )}
+      >
+        <span
+          aria-hidden
+          className={cn("h-px w-8", invert ? "bg-henna/60" : "bg-gold/50")}
+        />
         {eyebrow}
-        <span aria-hidden className="h-px w-8 bg-henna/60" />
+        <span
+          aria-hidden
+          className={cn("h-px w-8", invert ? "bg-henna/60" : "bg-gold/50")}
+        />
       </p>
       <h2
         className={cn(
@@ -43,8 +55,8 @@ export default function SectionHeading({
       {description && (
         <p
           className={cn(
-            "mt-5 text-[15px] leading-relaxed font-light md:text-base",
-            invert ? "text-ink/65" : "text-sand",
+            "mt-5 text-base leading-relaxed md:text-[17px]",
+            invert ? "text-ink/75" : "text-sand",
           )}
         >
           {description}

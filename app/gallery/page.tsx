@@ -19,7 +19,7 @@ export default function GalleryPage() {
         eyebrow="A Peek Into My Work"
         title={
           <>
-            Ink, henna &amp; <em className="text-henna">detail</em>
+            Ink, henna &amp; <em className="text-gold">detail</em>
           </>
         }
         description="Mehndi, tattoos, sketches, nail art and moments from events — filter by category, tap any piece to view it up close. Every design here was drawn freehand — no stencils, no shortcuts."
@@ -38,13 +38,13 @@ export default function GalleryPage() {
         <div className="container-x flex flex-col items-center gap-6 text-center">
           <Reveal>
             <p className="eyebrow justify-center">
-              <span aria-hidden className="h-px w-8 bg-henna/60" />
+              <span aria-hidden className="h-px w-8 bg-gold/50" />
               Fresh work every week
-              <span aria-hidden className="h-px w-8 bg-henna/60" />
+              <span aria-hidden className="h-px w-8 bg-gold/50" />
             </p>
             <h2 className="mt-4 font-serif text-3xl font-medium text-cream md:text-5xl">
               See the latest designs on{" "}
-              <em className="text-henna">Instagram</em>
+              <em className="text-gold">Instagram</em>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>

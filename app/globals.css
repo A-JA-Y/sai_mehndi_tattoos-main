@@ -12,8 +12,8 @@
   --color-bark: var(--dimgray-200); /* #5a4237 */
   --color-cream: var(--linen-100); /* #f7eee3 */
   --color-sand: var(--rosybrown-100); /* #d8afae */
-  --color-henna: var(--peru-100); /* #c67746 */
-  --color-gold: var(--peru-200); /* #c9974d */
+  --color-henna: var(--firebrick-100); /* #a71e22 */
+  --color-gold: var(--palegoldenrod-100); /* #f7ebab */
   --color-blush: var(--peachpuff-100); /* #e9c9b9 */
 }
 
@@ -48,7 +48,7 @@
   }
 
   ::selection {
-    @apply bg-henna text-ink;
+    @apply bg-henna text-cream;
   }
 
   /* Slim themed scrollbar */
@@ -72,18 +72,19 @@
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
+  /* Gold reads best on dark sections; add `text-henna` in markup on cream sections */
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-[11px] font-medium tracking-[0.35em] text-henna uppercase md:text-xs;
+    @apply inline-flex items-center gap-3 text-xs font-semibold tracking-[0.32em] text-gold uppercase md:text-[13px];
   }
 
   .btn-solid,
   .btn-outline,
   .btn-outline-dark {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-[13px] font-medium tracking-[0.18em] uppercase transition-all duration-300;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold tracking-[0.16em] uppercase transition-all duration-300;
   }
 
   .btn-solid {
-    @apply bg-henna text-ink hover:bg-gold hover:shadow-[0_10px_36px_-10px_rgba(198,119,70,0.65)];
+    @apply bg-henna text-cream hover:bg-gold hover:text-ink hover:shadow-[0_10px_36px_-10px_rgba(167,30,34,0.65)];
   }
 
   .btn-outline {
@@ -91,7 +92,7 @@
   }
 
   .btn-outline-dark {
-    @apply border border-ink/30 text-ink hover:border-henna hover:bg-henna hover:text-ink;
+    @apply border border-ink/30 text-ink hover:border-henna hover:bg-henna hover:text-cream;
   }
 
   /* Animated underline for nav links */
@@ -109,17 +110,17 @@
 
   /* Minimal form fields */
   .field {
-    @apply w-full border-b border-cream/20 bg-transparent py-3 text-[15px] text-cream transition-colors duration-300 outline-none placeholder:text-sand/50 focus:border-henna;
+    @apply w-full border-b border-cream/25 bg-transparent py-3 text-base text-cream transition-colors duration-300 outline-none placeholder:text-sand/60 focus:border-gold;
   }
 
   .field-label {
-    @apply mb-1.5 block text-[11px] font-medium tracking-[0.25em] text-sand uppercase;
+    @apply mb-1.5 block text-xs font-semibold tracking-[0.25em] text-sand uppercase;
   }
 
   /* Outlined watermark text */
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(247, 238, 227, 0.14);
+    -webkit-text-stroke: 1px rgba(247, 238, 227, 0.2);
   }
 
   /* Film-grain overlay */

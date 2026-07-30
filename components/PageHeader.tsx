@@ -20,18 +20,18 @@ export default function PageHeader({
       <div className="container-x relative">
         <Reveal>
           <p className="eyebrow">
-            <span aria-hidden className="h-px w-8 bg-henna/60" />
+            <span aria-hidden className="h-px w-8 bg-gold/50" />
             {eyebrow}
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-[1.02] font-medium text-cream md:text-7xl">
+          <h1 className="mt-5 max-w-3xl font-serif text-[2.6rem] leading-[1.05] font-medium text-cream sm:text-5xl sm:leading-[1.02] md:text-7xl">
             {title}
           </h1>
         </Reveal>
         {description && (
           <Reveal delay={0.2}>
-            <p className="mt-6 max-w-xl text-[15px] leading-relaxed font-light text-sand md:text-base">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-sand md:text-[17px]">
               {description}
             </p>
           </Reveal>
