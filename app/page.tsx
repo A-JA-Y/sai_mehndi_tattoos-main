@@ -7,9 +7,11 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import StatCounter from "@/components/StatCounter";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import Parallax from "@/components/Parallax";
+import GsapParallax from "@/components/GsapParallax";
 import Magnetic from "@/components/Magnetic";
 import Mandala from "@/components/Mandala";
+import CoverMedia from "@/components/CoverMedia";
+import TiltCard from "@/components/TiltCard";
 import { WhatsAppIcon } from "@/components/icons";
 import { marqueeItems, services, site, stats, waLink } from "@/lib/data";
 import { ctaBannerSrc, homePreview } from "@/lib/gallery";
@@ -23,7 +25,7 @@ export default function HomePage() {
       <HomeHero />
 
       {/* Marquee strip */}
-      <section className="border-y border-henna/20 bg-henna py-5 text-ink">
+      <section className="border-y border-henna/20 bg-henna py-5 text-cream">
         <Marquee items={marqueeItems} />
       </section>
 
@@ -36,7 +38,7 @@ export default function HomePage() {
               <span aria-hidden className="h-px w-8 bg-henna/60" />
               The Promise
             </p>
-            <h2 className="mt-5 font-serif text-4xl leading-[1.08] font-medium md:text-5xl lg:text-[3.4rem]">
+            <h2 className="mt-5 font-serif text-[2.75rem] leading-[1.05] font-medium tracking-[-0.01em] md:text-6xl lg:text-[4rem]">
               Committed to making your special occasion an{" "}
               <em className="text-henna">unforgettable</em> one
             </h2>
@@ -77,26 +79,26 @@ export default function HomePage() {
 
           <div className="grid gap-5 md:grid-cols-3">
             {featured.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 0.12}>
+              <Reveal key={service.slug} delay={i * 0.1}>
+                <TiltCard className="rounded-2xl">
                 <Link
                   href={`/services#${service.slug}`}
-                  className="group relative block overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:-translate-y-2 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(167,30,34,0.35)]"
+                  className="group relative block overflow-hidden rounded-2xl border border-ink/10 bg-coal transition-all duration-300 hover:-translate-y-2 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(168,30,34,0.35)]"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={service.image}
+                    <CoverMedia
+                      src={service.video}
+                      poster={service.image}
                       alt={service.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                      className="transition-transform duration-500 ease-out group-hover:scale-108"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/20 to-transparent" />
-                    <span className="absolute top-4 right-5 font-serif text-5xl text-cream/25 italic transition-colors duration-500 group-hover:text-gold/70">
+                    <span className="absolute top-4 right-5 font-serif text-5xl text-cream/25 italic transition-colors duration-300 group-hover:text-gold/70">
                       {service.number}
                     </span>
                   </div>
                   <div className="p-7">
-                    <h3 className="font-serif text-2xl text-cream transition-colors duration-300 group-hover:text-gold">
+                    <h3 className="font-serif text-2xl text-ink transition-colors duration-300 group-hover:text-henna">
                       {service.title}
                     </h3>
                     <p className="mt-3 text-[15px] leading-relaxed text-sand">
@@ -108,13 +110,14 @@ export default function HomePage() {
                     </span>
                   </div>
                 </Link>
+                </TiltCard>
               </Reveal>
             ))}
           </div>
 
           <Reveal className="mt-12 text-center" delay={0.2}>
             <Magnetic className="inline-block">
-              <Link href="/services" className="btn-outline">
+              <Link href="/services" className="btn-outline-dark">
                 View all services
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -124,7 +127,7 @@ export default function HomePage() {
       </section>
 
       {/* Service index — jump straight to any service */}
-      <section className="border-y border-cream/8 bg-coal/40 py-20 md:py-28">
+      <section className="border-y border-ink/8 bg-coal/40 py-20 md:py-28">
         <div className="container-x">
           <SectionHeading
             eyebrow="Find Your Service"
@@ -135,25 +138,25 @@ export default function HomePage() {
             }
             description="Know exactly what you need? Head directly to any of the six services offered at the studio."
           />
-          <div className="mx-auto max-w-4xl border-t border-cream/10">
+          <div className="mx-auto max-w-4xl border-t border-ink/10">
             {services.map((service, i) => (
               <Reveal key={service.slug} delay={i * 0.06}>
                 <Link
                   href={`/services#${service.slug}`}
-                  className="group flex items-center gap-4 border-b border-cream/10 py-5 transition-all duration-300 hover:border-gold/40 hover:pl-2 sm:gap-8 md:py-6"
+                  className="group flex items-center gap-4 border-b border-ink/10 py-5 transition-all duration-300 hover:border-henna/40 hover:pl-2 sm:gap-8 md:py-6"
                 >
-                  <span className="w-9 shrink-0 font-serif text-lg text-gold/70 italic transition-colors duration-300 group-hover:text-gold md:text-xl">
+                  <span className="w-14 shrink-0 font-serif text-4xl text-outline-henna italic transition-all duration-300 group-hover:text-henna group-hover:[-webkit-text-stroke:0] md:w-16 md:text-5xl">
                     {service.number}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-serif text-2xl text-cream transition-colors duration-300 group-hover:text-gold md:text-3xl">
+                    <h3 className="font-serif text-2xl text-ink transition-colors duration-300 group-hover:text-henna md:text-3xl">
                       {service.title}
                     </h3>
                     <p className="mt-1 hidden text-[15px] text-sand sm:block">
                       {service.short}
                     </p>
                   </div>
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cream/15 text-cream/70 transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink md:h-12 md:w-12">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink/70 transition-all duration-300 group-hover:border-henna group-hover:bg-henna group-hover:text-cream md:h-12 md:w-12">
                     <ArrowUpRight className="h-4 w-4" />
                   </span>
                 </Link>
@@ -164,7 +167,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats band */}
-      <section className="border-y border-cream/8 bg-coal/60">
+      <section className="border-y border-ink/8 bg-coal/60">
         <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 md:grid-cols-4 md:py-20">
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.1}>
@@ -231,7 +234,7 @@ export default function HomePage() {
 
       {/* Reviews teaser */}
       <section className="relative overflow-hidden py-24 md:py-36">
-        <Mandala className="absolute top-1/2 left-1/2 h-[720px] w-[720px] -translate-x-1/2 -translate-y-1/2 text-cream/4" />
+        <Mandala className="absolute top-1/2 left-1/2 h-[720px] w-[720px] -translate-x-1/2 -translate-y-1/2 text-ink/4" />
         <div className="container-x relative">
           <SectionHeading
             eyebrow="Kind Words"
@@ -256,7 +259,7 @@ export default function HomePage() {
 
       {/* CTA banner with parallax */}
       <section className="relative overflow-hidden py-28 md:py-40">
-        <Parallax>
+        <GsapParallax speed={0.3}>
           <Image
             src={ctaBannerSrc}
             alt=""
@@ -264,7 +267,7 @@ export default function HomePage() {
             sizes="100vw"
             className="scale-110 object-cover"
           />
-        </Parallax>
+        </GsapParallax>
         <div className="absolute inset-0 bg-ink/80" />
         <div className="container-x relative text-center">
           <Reveal>
@@ -273,11 +276,11 @@ export default function HomePage() {
               Limited slots each season
               <span aria-hidden className="h-px w-8 bg-gold/50" />
             </p>
-            <h2 className="mx-auto mt-5 max-w-2xl font-serif text-4xl leading-[1.05] font-medium text-cream md:text-6xl">
+            <h2 className="mx-auto mt-5 max-w-2xl font-serif text-[2.75rem] leading-[1.03] font-medium tracking-[-0.01em] text-cream drop-shadow-[0_6px_28px_rgba(0,0,0,0.4)] md:text-7xl">
               Have a date circled on the{" "}
               <em className="text-gold">calendar?</em>
             </h2>
-            <p className="mx-auto mt-6 max-w-md text-base text-sand">
+            <p className="mx-auto mt-6 max-w-md text-base text-cream/80">
               Wedding-season books up fast. Share your date and let&apos;s
               reserve your sitting before it fills.
             </p>

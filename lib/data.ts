@@ -1,5 +1,5 @@
 export const site = {
-  name: "Sai Mehndi & Tattoo",
+  name: "Sai Mehandi & Tattoo",
   shortName: "Sai",
   artist: "Dev Kumar",
   tagline: "Turning every occasion into a work of art, one design at a time.",
@@ -14,8 +14,10 @@ export const site = {
     "https://www.google.com/maps?q=Minni%20Khanna%20Market%2C%20West%20Patel%20Nagar%2C%20New%20Delhi%20110008&output=embed",
   socials: {
     instagram:
-      "https://www.instagram.com/sai_mehandi_and_tattoo_studio?igsh=ZmI4cW41OGoydTBr",
-    facebook: "https://www.facebook.com/profile.php?id=100063898994178",
+      "https://www.instagram.com/sai_mehandi_and_tattoo_studio?utm_source=qr&igsh=emRjcGcwaW43dGpw",
+    facebook: "https://www.facebook.com/share/1JiS6UXDYL/",
+    youtube: "https://www.youtube.com/@saimehandiandtattoostudio",
+    twitter: "https://x.com/SaiTattoo",
   },
 };
 
@@ -39,13 +41,15 @@ export type Service = {
   description: string;
   features: string[];
   image: string;
+  /** Autoplay/muted background video shown once footage is added to /public/videos/. */
+  video: string;
 };
 
 export const services: Service[] = [
   {
-    slug: "bridal-mehndi",
+    slug: "bridal-mehandi",
     number: "01",
-    title: "Bridal Mehndi",
+    title: "Bridal Mehandi",
     short: "Elaborate full-hand & full-leg designs for your big day.",
     description:
       "The centrepiece of every wedding. Elaborate, story-woven bridal designs crafted over hours of fine detailing — portraits, motifs and moments from your journey, finished with a rich, deep stain that photographs beautifully.",
@@ -56,11 +60,12 @@ export const services: Service[] = [
       "Trial design available before the wedding",
     ],
     image: "/assets-mehndi/img-096.jpg",
+    video: "/videos/bridal-mehandi.mp4",
   },
   {
-    slug: "party-mehndi",
+    slug: "party-mehandi",
     number: "02",
-    title: "Party & Festival Mehndi",
+    title: "Party & Festival Mehandi",
     short: "Quick, elegant designs for sangeet, Diwali, Eid & more.",
     description:
       "Beautiful without the long wait. Elegant designs sized for sangeet nights, Karva Chauth, Diwali, Eid and family get-togethers — refined patterns applied swiftly so everyone gets their turn.",
@@ -71,6 +76,7 @@ export const services: Service[] = [
       "At-studio or at-venue service",
     ],
     image: "/assets-mehndi/img-121.jpg",
+    video: "/videos/party-mehandi.mp4",
   },
   {
     slug: "arabic-designs",
@@ -86,6 +92,7 @@ export const services: Service[] = [
       "Pairs beautifully with western wear",
     ],
     image: "/assets-mehndi/img-070.jpg",
+    video: "/videos/arabic-designs.mp4",
   },
   {
     slug: "tattoo-art",
@@ -93,7 +100,7 @@ export const services: Service[] = [
     title: "Tattoo Art",
     short: "Professional tattoos, from fine line work to portraits.",
     description:
-      "Born from a sketch artist's hand. Professional tattoo work spanning minimal line art, script, ornamental patterns and detailed portraits — drawn first, inked with care.",
+      "Born from a sketch artist's hand. Professional tattoo work spanning minimal line art, script, ornamental patterns and detailed portraits — drawn first, inked with care. Priced by size, by hour or by session — see the full price list below.",
     features: [
       "Custom design consultation",
       "Hygienic, single-use equipment",
@@ -101,6 +108,7 @@ export const services: Service[] = [
       "Free touch-up guidance",
     ],
     image: "/assets-mehndi/img-062.jpg",
+    video: "/videos/tattoo-art.mp4",
   },
   {
     slug: "nail-art",
@@ -108,22 +116,23 @@ export const services: Service[] = [
     title: "Nail Art",
     short: "Creative nail art to complete your occasion look.",
     description:
-      "The finishing touch. Hand-painted nail art that echoes your mehndi and outfit — from subtle festive shimmer to detailed statement nails for brides.",
+      "The finishing touch. Hand-painted nail art that echoes your mehandi and outfit — from subtle festive shimmer to detailed statement nails for brides.",
     features: [
+      "French tip, ombre & marble art",
+      "Chrome, cat-eye & glitter finishes",
+      "Gel & acrylic extensions",
       "Bridal & festive nail styling",
-      "Hand-painted detailing",
-      "Colour-matched to your outfit",
-      "Quick add-on to any booking",
     ],
     image: "/assets-mehndi/img-014.jpg",
+    video: "/videos/nail-art.mp4",
   },
   {
     slug: "classes",
     number: "06",
     title: "Classes & Training",
-    short: "Learn Mehndi, Tattoo & Nail Art as a career skill.",
+    short: "Learn Mehandi, Tattoo & Nail Art as a career skill.",
     description:
-      "Art as a livelihood. Structured courses in Mehndi, Tattoo Making and Nail Art for students and hobbyists — the same skills that built this studio, taught step by step. Students who have completed 10th or 12th grade can build a real career as skilled artists.",
+      "Art as a livelihood. Structured courses in Mehandi, Tattoo Making and Nail Art for students and hobbyists — the same skills that built this studio, taught step by step. Students who have completed 10th or 12th grade can build a real career as skilled artists. Basic batches start at ₹7,000/month, Advance batches at ₹8,000/month.",
     features: [
       "Beginner to professional levels",
       "Hands-on practice from day one",
@@ -131,14 +140,212 @@ export const services: Service[] = [
       "Certificate on completion",
     ],
     image: "/assets-mehndi/img-024.jpg",
+    video: "/videos/classes.mp4",
   },
 ];
 
 export const stats = [
   { value: 18, suffix: "+", label: "Years of Artistry" },
-  { value: 1000, suffix: "+", label: "Occasions Adorned" },
-  { value: 100, suffix: "+", label: "Students Trained" },
+  { value: 10000, suffix: "+", label: "Occasions Adorned" },
+  { value: 1000, suffix: "+", label: "Students Trained" },
   { value: 4, suffix: "", label: "Art Forms Mastered" },
+];
+
+/* ------------------------------------------------------------------ */
+/* Classes & Training — curriculum sourced from studio enrolment forms */
+/* ------------------------------------------------------------------ */
+
+export type ClassLevel = {
+  tier: "Basic" | "Advance";
+  price: number;
+  priceUnit: string;
+  admissionFee?: number;
+  highlights: string[];
+};
+
+export type ClassProgram = {
+  slug: string;
+  title: string;
+  short: string;
+  poster: string;
+  reel?: string; // Instagram reel permalink shown as the card's autoplay video
+  levels: ClassLevel[];
+  note?: string;
+};
+
+export const classPrograms: ClassProgram[] = [
+  {
+    slug: "mehandi-classes",
+    title: "Mehandi Classes",
+    short: "From your first outline to full bridal artistry.",
+    poster: "/assets-mehndi/img-171.jpg",
+    reel: "https://www.instagram.com/reel/DYxxNthyF2Q/",
+    levels: [
+      {
+        tier: "Basic",
+        price: 7000,
+        priceUnit: "/month",
+        highlights: [
+          "Mehandi internals, design & outline",
+          "Bail patterns & full-hand coverage",
+          "Five-finger cover bail",
+          "Back and front full-cover hand",
+          "Red & black mehandi application",
+          "Bangles mehandi",
+        ],
+      },
+      {
+        tier: "Advance",
+        price: 8000,
+        priceUnit: "/month",
+        admissionFee: 18000,
+        highlights: [
+          "Normal & heavy bridal mehandi",
+          "Portrait mehandi (face wali)",
+          "Madhubani mehandi — pattern, dulhan, taashe, kalash, doli, shri, ganesh",
+          "Bridal heavy & normal leg mehandi",
+          "3D bridal mehandi",
+        ],
+      },
+    ],
+    note: "Certificate on completion. Advance registration fee of ₹18,000 is non-refundable.",
+  },
+  {
+    slug: "tattoo-training",
+    title: "Tattoo Training",
+    short: "Machine handling to full portrait realism, taught hands-on.",
+    poster: "/assets-mehndi/img-057.jpg",
+    reel: "https://www.instagram.com/reel/DLVxvqhTtlk/",
+    levels: [
+      {
+        tier: "Basic",
+        price: 7000,
+        priceUnit: "/month",
+        highlights: [
+          "Tattoo machine knowledge — coil vs rotary, setup & maintenance",
+          "Needles, inks & sterile studio hygiene",
+          "Stencil making & transfer",
+          "Line work fundamentals on artificial skin",
+          "Skin preparation & cross-contamination prevention",
+          "Client interaction basics & pricing guidance",
+        ],
+      },
+      {
+        tier: "Advance",
+        price: 8000,
+        priceUnit: "/month",
+        highlights: [
+          "Portrait & realism training — proportion, gradients, likeness",
+          "Colour theory — blending, saturation, tattoos that age well",
+          "Advanced machine handling — voltage & depth control",
+          "Cover-up & redesign techniques",
+          "Real-skin practice on supervised client sessions",
+          "Studio setup, branding & portfolio building",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "nail-art-classes",
+    title: "Nail Art Classes",
+    short: "Nail anatomy to bridal-ready extensions and 3D art.",
+    poster: "/assets-mehndi/img-038.jpg",
+    reel: "https://www.instagram.com/reel/DLnxzgNzgwC/",
+    levels: [
+      {
+        tier: "Basic",
+        price: 7000,
+        priceUnit: "/month",
+        highlights: [
+          "Nail anatomy & product knowledge",
+          "Nail shapes & filing",
+          "Gel polish & soft gelx",
+          "Temporary & press-on extensions",
+          "French tip, ombre & marble art",
+          "Dotting, chrome & cat-eye techniques",
+        ],
+      },
+      {
+        tier: "Advance",
+        price: 8000,
+        priceUnit: "/month",
+        highlights: [
+          "Gel & acrylic extensions",
+          "3D nail art, foil & rhinestone application",
+          "Bridal & engagement nail art",
+          "Drill techniques & Russian manicure",
+          "Overlay, refill & removal",
+          "Vendor sourcing & kit building",
+        ],
+      },
+    ],
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Tattoo pricing — cost of a tattoo by size, hour & session          */
+/* ------------------------------------------------------------------ */
+
+export type PriceRate = { tier: string; rate: number; unit: string };
+
+export const tattooPricing: {
+  label: string;
+  note: string;
+  base?: { label: string; amount: number };
+  rates: PriceRate[];
+}[] = [
+  {
+    label: "By Size",
+    note: "Best for small tattoos",
+    base: { label: "First inch", amount: 1500 },
+    rates: [
+      { tier: "Junior Artist", rate: 500, unit: "/inch" },
+      { tier: "Senior Artist", rate: 700, unit: "/inch" },
+      { tier: "Dev", rate: 1000, unit: "/inch" },
+    ],
+  },
+  {
+    label: "By Hour",
+    note: "Best for single-session tattoos",
+    rates: [
+      { tier: "Junior Artist", rate: 3000, unit: "/hour" },
+      { tier: "Senior Artist", rate: 5000, unit: "/hour" },
+      { tier: "Dev", rate: 8000, unit: "/hour" },
+    ],
+  },
+  {
+    label: "By Session",
+    note: "Best for single / multiple session tattoos, up to 12 hours",
+    rates: [
+      { tier: "Junior Artist", rate: 20000, unit: "/session" },
+      { tier: "Senior Artist", rate: 40000, unit: "/session" },
+      { tier: "Dev", rate: 50000, unit: "/session" },
+    ],
+  },
+];
+
+export const tattooPricingNote = "Taxes applicable.";
+
+/* ------------------------------------------------------------------ */
+/* Nail art add-on pricing                                            */
+/* ------------------------------------------------------------------ */
+
+export const nailArtPricing: { service: string; price: number }[] = [
+  { service: "Gel Polish", price: 399 },
+  { service: "Cat Eye", price: 800 },
+  { service: "Press On Nails", price: 499 },
+  { service: "Gel Extensions", price: 999 },
+  { service: "Acrylic Extensions", price: 999 },
+  { service: "Nail Extensions + Art (French / Ombre / Glitter Ombre)", price: 1199 },
+  { service: "Toe Nail Extensions", price: 999 },
+  { service: "Removal", price: 199 },
+];
+
+/** A handful of real studio reels for the gallery/social sections. */
+export const instagramReels = [
+  "https://www.instagram.com/reel/DYxxNthyF2Q/",
+  "https://www.instagram.com/reel/DLVxvqhTtlk/",
+  "https://www.instagram.com/reel/DLnxzgNzgwC/",
 ];
 
 export type Review = {
@@ -150,13 +357,13 @@ export type Review = {
 export const reviews: Review[] = [
   {
     name: "Priya Sharma",
-    occasion: "Bridal Mehndi",
-    text: "Sai did my bridal mehndi and it was beyond beautiful. The design lasted for weeks and everyone kept asking who did it!",
+    occasion: "Bridal Mehandi",
+    text: "Sai did my bridal mehandi and it was beyond beautiful. The design lasted for weeks and everyone kept asking who did it!",
   },
   {
     name: "Anjali Verma",
     occasion: "Diwali Celebration",
-    text: "Super talented and so patient with all my requests. My whole family got their mehndi done for Diwali — everyone loved it.",
+    text: "Super talented and so patient with all my requests. My whole family got their mehandi done for Diwali — everyone loved it.",
   },
   {
     name: "Ritu Malhotra",
@@ -170,8 +377,8 @@ export const reviews: Review[] = [
   },
   {
     name: "Simran Kaur",
-    occasion: "Mehndi Classes",
-    text: "Joined the mehndi classes after 12th and I'm already taking my own small bookings. He teaches with so much patience.",
+    occasion: "Mehandi Classes",
+    text: "Joined the mehandi classes after 12th and I'm already taking my own small bookings. He teaches with so much patience.",
   },
   {
     name: "Aarti Joshi",
@@ -182,7 +389,7 @@ export const reviews: Review[] = [
 
 export const faqs = [
   {
-    q: "How early should I book for bridal mehndi?",
+    q: "How early should I book for bridal mehandi?",
     a: "For wedding season (October–February), 3–4 weeks in advance is ideal. Off-season, a week's notice usually works — but the earlier you book, the more time we have to design something personal.",
   },
   {
@@ -203,7 +410,7 @@ export const faqs = [
   },
   {
     q: "How do I join the classes?",
-    a: "Call or WhatsApp the studio to know the current batch timings. Courses in Mehndi, Tattoo Making and Nail Art are open to students (10th/12th pass) and hobbyists alike.",
+    a: "Call or WhatsApp the studio to know the current batch timings. Courses in Mehandi, Tattoo Making and Nail Art are open to students (10th/12th pass) and hobbyists alike, with Basic batches from ₹7,000/month and Advance batches from ₹8,000/month.",
   },
 ];
 
@@ -216,7 +423,7 @@ export const timeline = [
   {
     year: "2008",
     title: "The art moves to hands",
-    text: "After years of canvas and paper, the artistry found its true home — mehndi. Continuous practice turned passion into craft, and competition wins soon followed.",
+    text: "After years of canvas and paper, the artistry found its true home — mehandi. Continuous practice turned passion into craft, and competition wins soon followed.",
   },
   {
     year: "2011",
@@ -226,12 +433,12 @@ export const timeline = [
   {
     year: "Onwards",
     title: "Passing the art forward",
-    text: "Training young students so they too can earn a respectable livelihood through art — and expanding into professional tattooing, driven by one thought: \"If I can apply mehndi, why not create tattoos?\"",
+    text: "Training young students so they too can earn a respectable livelihood through art — and expanding into professional tattooing, driven by one thought: \"If I can apply mehandi, why not create tattoos?\"",
   },
   {
     year: "Today",
     title: "The studio in Patel Nagar",
-    text: "Eighteen years in, Sai Mehndi & Tattoo is a full studio — bridal mehndi, tattoos, nail art and classes — where every contest won taught something, and every one lost taught even more.",
+    text: "Eighteen years in, Sai Mehandi & Tattoo is a full studio — bridal mehandi, tattoos, nail art and classes — where every contest won taught something, and every one lost taught even more.",
   },
 ];
 
@@ -243,10 +450,10 @@ export const awards = [
 ];
 
 export const marqueeItems = [
-  "Bridal Mehndi",
+  "Bridal Mehandi",
   "Arabic Designs",
-  "Party Mehndi",
+  "Party Mehandi",
   "Tattoo Art",
   "Nail Art",
-  "Mehndi Classes",
+  "Mehandi Classes",
 ];

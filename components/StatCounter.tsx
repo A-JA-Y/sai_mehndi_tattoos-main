@@ -1,14 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import {
-  animate,
-  motion,
-  useInView,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
-import { EASE } from "@/lib/motion";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { loadGsap, prefersReducedMotion } from "@/lib/gsap";
 
 export default function StatCounter({
   value,
@@ -19,27 +13,74 @@ export default function StatCounter({
   suffix?: string;
   label: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v).toLocaleString("en-IN"));
+  const ref = useRef<HTMLSpanElement>(null);
+  const numRef = useRef<HTMLDivElement>(null);
+  const [display, setDisplay] = useState("0");
 
   useEffect(() => {
-    if (inView) {
-      const controls = animate(count, value, { duration: 2, ease: EASE });
-      return controls.stop;
+    if (!ref.current) return;
+
+    if (prefersReducedMotion()) {
+      setDisplay(value.toLocaleString("en-IN"));
+      return;
     }
-  }, [inView, count, value]);
+
+    let cancelled = false;
+    let trigger: { kill: () => void } | undefined;
+
+    loadGsap().then(({ gsap, ScrollTrigger }) => {
+      if (cancelled || !ref.current) return;
+      const counter = { val: 0 };
+      trigger = ScrollTrigger.create({
+        trigger: ref.current,
+        start: "top bottom-=40",
+        once: true,
+        onEnter: () => {
+          gsap.to(counter, {
+            val: value,
+            duration: 1.8,
+            ease: "power2.out",
+            snap: { val: 1 },
+            onUpdate: () =>
+              setDisplay(Math.round(counter.val).toLocaleString("en-IN")),
+            onComplete: () => {
+              if (numRef.current) {
+                gsap.fromTo(
+                  numRef.current,
+                  { scale: 1 },
+                  { scale: 1.08, duration: 0.14, yoyo: true, repeat: 1, ease: "power1.inOut" },
+                );
+              }
+            },
+          });
+        },
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      trigger?.kill();
+    };
+  }, [value]);
 
   return (
-    <div ref={ref} className="text-center">
-      <div className="font-serif text-5xl font-medium text-cream md:text-6xl">
-        <motion.span>{rounded}</motion.span>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.4 }}
+      className="text-center"
+    >
+      <div
+        ref={numRef}
+        className="font-serif text-5xl font-medium text-ink md:text-6xl"
+      >
+        <span ref={ref}>{display}</span>
         <span className="text-gold">{suffix}</span>
       </div>
       <p className="mt-2 text-xs font-semibold tracking-[0.28em] text-sand uppercase md:text-[13px]">
         {label}
       </p>
-    </div>
+    </motion.div>
   );
 }

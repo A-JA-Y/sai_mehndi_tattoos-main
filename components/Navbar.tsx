@@ -48,10 +48,10 @@ export default function Navbar() {
         className={cn(
           "transition-colors duration-500",
           open
-            ? "bg-transparent"
+            ? "bg-[#A71E22]"
             : scrolled
-              ? "border-b border-cream/10 bg-ink/90 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.7)] backdrop-blur-xl"
-              : "bg-ink/55 backdrop-blur-md",
+              ? "border-b border-cream/10 bg-[#A71E22] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.7)] backdrop-blur-xl"
+              : "bg-[#A71E22]/90 backdrop-blur-md",
         )}
       >
         {/* Main bar */}
@@ -62,7 +62,7 @@ export default function Navbar() {
           >
             Sai{" "}
             <span className="text-gold transition-colors duration-300 group-hover:text-cream">
-              Mehndi & Tattoo
+              Mehandi & Tattoo
             </span>
           </Link>
 
@@ -83,7 +83,10 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link href="/contact" className="btn-solid !px-6 !py-2.5 !text-[13px]">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gold px-6 py-2.5 text-[13px] font-semibold tracking-[0.16em] text-ink uppercase transition-all duration-300 hover:bg-cream"
+            >
               Book Now
             </Link>
           </nav>
@@ -147,8 +150,8 @@ export default function Navbar() {
             initial={{ y: "-100%" }}
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-ink px-8 pt-28 pb-10 lg:hidden"
+            transition={{ duration: 0.4, ease: EASE }}
+            className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-[#A71E22] px-8 pt-28 pb-10 lg:hidden"
           >
             <nav className="flex flex-col gap-2">
               {navLinks.map((link, i) => {
@@ -159,7 +162,7 @@ export default function Navbar() {
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, ease: EASE, delay: 0.15 + i * 0.06 }}
+                    transition={{ duration: 0.35, ease: EASE, delay: 0.1 + i * 0.04 }}
                   >
                     <Link
                       href={link.href}
@@ -168,7 +171,7 @@ export default function Navbar() {
                         active ? "text-gold" : "text-cream hover:text-gold",
                       )}
                     >
-                      <span className="text-xs tracking-[0.3em] text-sand/60">
+                      <span className="text-xs tracking-[0.3em] text-cream/50">
                         0{i + 1}
                       </span>
                       {link.label}
@@ -182,13 +185,13 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
+              transition={{ delay: 0.3, duration: 0.35 }}
               className="space-y-4 pt-8"
             >
               <Link href="/contact" className="btn-solid w-full sm:w-auto">
                 Book an Appointment
               </Link>
-              <div className="space-y-2 text-[15px] text-sand">
+              <div className="space-y-2 text-[15px] text-cream/85">
                 <a
                   href={waLink("Hello! I want to book an appointment.")}
                   className="block hover:text-gold"
@@ -198,7 +201,7 @@ export default function Navbar() {
                 <a href={`mailto:${site.email}`} className="block hover:text-gold">
                   {site.email}
                 </a>
-                <p className="pt-1 text-xs text-sand/70">{site.address}</p>
+                <p className="pt-1 text-xs text-cream/60">{site.address}</p>
               </div>
             </motion.div>
           </motion.div>

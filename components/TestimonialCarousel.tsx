@@ -38,7 +38,7 @@ export default function TestimonialCarousel() {
             initial={{ opacity: 0, x: direction >= 0 ? 60 : -60 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: direction >= 0 ? -60 : 60 }}
-            transition={{ duration: 0.55, ease: EASE }}
+            transition={{ duration: 0.4, ease: EASE }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
@@ -48,18 +48,18 @@ export default function TestimonialCarousel() {
             }}
             className="cursor-grab active:cursor-grabbing"
           >
-            <div className="mb-6 flex justify-center gap-1.5 text-gold">
+            <div className="mb-6 flex justify-center gap-1.5 text-henna">
               {Array.from({ length: 5 }).map((_, i) => (
                 <span key={i} aria-hidden>
                   ★
                 </span>
               ))}
             </div>
-            <p className="font-serif text-2xl leading-snug font-medium text-cream italic md:text-3xl">
+            <p className="font-serif text-2xl leading-snug font-medium text-ink italic md:text-3xl">
               &ldquo;{review.text}&rdquo;
             </p>
             <footer className="mt-7">
-              <p className="text-sm font-semibold tracking-[0.2em] text-gold uppercase">
+              <p className="text-sm font-semibold tracking-[0.2em] text-henna uppercase">
                 {review.name}
               </p>
               <p className="mt-1 text-[13px] tracking-wide text-sand">
@@ -75,7 +75,7 @@ export default function TestimonialCarousel() {
         <button
           onClick={() => paginate(-1)}
           aria-label="Previous review"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-all duration-300 hover:border-gold hover:text-gold active:scale-90"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-ink transition-all duration-300 hover:border-henna hover:text-henna active:scale-90"
         >
           <ArrowLeft className="h-4 w-4" />
         </button>
@@ -87,7 +87,7 @@ export default function TestimonialCarousel() {
               aria-label={`Go to review ${i + 1}`}
               className={cn(
                 "h-1.5 rounded-full transition-all duration-400",
-                i === index ? "w-7 bg-gold" : "w-1.5 bg-cream/25 hover:bg-cream/50",
+                i === index ? "w-7 bg-henna" : "w-1.5 bg-ink/25 hover:bg-ink/50",
               )}
             />
           ))}
@@ -95,7 +95,7 @@ export default function TestimonialCarousel() {
         <button
           onClick={() => paginate(1)}
           aria-label="Next review"
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-all duration-300 hover:border-gold hover:text-gold active:scale-90"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-ink transition-all duration-300 hover:border-henna hover:text-henna active:scale-90"
         >
           <ArrowRight className="h-4 w-4" />
         </button>

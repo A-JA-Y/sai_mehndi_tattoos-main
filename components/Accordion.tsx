@@ -14,7 +14,7 @@ export default function Accordion({
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-cream/10 border-y border-cream/10">
+    <div className="divide-y divide-ink/10 border-y border-ink/10">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
@@ -27,7 +27,7 @@ export default function Accordion({
               <span
                 className={cn(
                   "font-serif text-xl transition-colors duration-300 md:text-2xl",
-                  isOpen ? "text-gold" : "text-cream group-hover:text-gold",
+                  isOpen ? "text-henna" : "text-ink group-hover:text-henna",
                 )}
               >
                 {item.q}
@@ -36,8 +36,8 @@ export default function Accordion({
                 className={cn(
                   "flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-400",
                   isOpen
-                    ? "rotate-45 border-gold text-gold"
-                    : "border-cream/20 text-sand group-hover:border-gold group-hover:text-gold",
+                    ? "rotate-45 border-henna text-henna"
+                    : "border-ink/20 text-sand group-hover:border-henna group-hover:text-henna",
                 )}
               >
                 <Plus className="h-4 w-4" />
@@ -49,7 +49,7 @@ export default function Accordion({
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.45, ease: EASE }}
+                  transition={{ duration: 0.3, ease: EASE }}
                   className="overflow-hidden"
                 >
                   <p className="max-w-2xl pb-7 text-[15px] leading-relaxed text-sand">

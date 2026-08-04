@@ -47,7 +47,7 @@ export default function ContactForm() {
             key="success"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: EASE }}
+            transition={{ duration: 0.35, ease: EASE }}
             className="flex min-h-[420px] flex-col items-center justify-center rounded-2xl border border-henna/30 bg-mocha/40 p-10 text-center"
           >
             <svg viewBox="0 0 52 52" className="h-16 w-16">
@@ -56,25 +56,25 @@ export default function ContactForm() {
                 cy="26"
                 r="24"
                 fill="none"
-                stroke="#f7ebab"
+                stroke="#A81E22"
                 strokeWidth="1.5"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.7, ease: EASE }}
+                transition={{ duration: 0.5, ease: EASE }}
               />
               <motion.path
                 d="M15 27 L23 34 L38 19"
                 fill="none"
-                stroke="#f7ebab"
+                stroke="#A81E22"
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.5, delay: 0.5, ease: EASE }}
+                transition={{ duration: 0.35, delay: 0.35, ease: EASE }}
               />
             </svg>
-            <h3 className="mt-6 font-serif text-3xl text-cream">
+            <h3 className="mt-6 font-serif text-3xl text-ink">
               Almost there!
             </h3>
             <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-sand">
@@ -87,7 +87,7 @@ export default function ContactForm() {
                 setForm(initial);
                 setSent(false);
               }}
-              className="btn-outline mt-8 !px-6 !py-3 text-[11px]"
+              className="btn-outline-dark mt-8 !px-6 !py-3 text-[11px]"
             >
               Send another message
             </button>
@@ -98,7 +98,7 @@ export default function ContactForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.4, ease: EASE }}
+            transition={{ duration: 0.3, ease: EASE }}
             onSubmit={handleSubmit}
             className="space-y-7"
           >
@@ -168,7 +168,7 @@ export default function ContactForm() {
                   type="date"
                   value={form.date}
                   onChange={update("date")}
-                  className="field cursor-pointer [color-scheme:dark]"
+                  className="field cursor-pointer [color-scheme:light]"
                 />
               </div>
             </div>
@@ -180,7 +180,7 @@ export default function ContactForm() {
               <textarea
                 id="message"
                 rows={4}
-                placeholder="Wedding on 14th Dec — bridal mehndi for me and party mehndi for 8 family members…"
+                placeholder="Wedding on 14th Dec — bridal mehandi for me and party mehandi for 8 family members…"
                 value={form.message}
                 onChange={update("message")}
                 className="field resize-none"

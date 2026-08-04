@@ -8,7 +8,7 @@ import { reviews, waLink } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Reviews",
   description:
-    "What brides, families and students say about Sai Mehndi & Tattoo — five-star mehndi, tattoo and nail art experiences across Delhi NCR.",
+    "What brides, families and students say about Sai Mehandi & Tattoo — five-star mehandi, tattoo and nail art experiences across Delhi NCR.",
 };
 
 export default function ReviewsPage() {
@@ -29,7 +29,7 @@ export default function ReviewsPage() {
         <div className="container-x">
           <Reveal>
             <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha/60 to-coal px-6 py-10 text-center sm:px-8 sm:py-12">
-              <p className="font-serif text-7xl font-medium text-cream">
+              <p className="font-serif text-8xl font-medium tracking-tight text-ink">
                 5.0
               </p>
               <div className="flex gap-1.5 text-2xl text-gold" aria-label="5 out of 5 stars">
@@ -53,7 +53,7 @@ export default function ReviewsPage() {
         <div className="container-x grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review, i) => (
             <Reveal key={review.name} delay={(i % 3) * 0.1}>
-              <figure className="group relative flex h-full flex-col rounded-2xl border border-cream/10 bg-coal p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-henna/40 sm:p-8">
+              <figure className="group relative flex h-full flex-col rounded-2xl border border-ink/10 bg-coal p-6 transition-all duration-500 hover:-translate-y-1.5 hover:border-henna/40 sm:p-8">
                 <span
                   aria-hidden
                   className="pointer-events-none absolute top-3 right-6 font-serif text-7xl leading-none text-henna/12 transition-colors duration-500 select-none group-hover:text-henna/25"
@@ -67,10 +67,10 @@ export default function ReviewsPage() {
                     </span>
                   ))}
                 </div>
-                <blockquote className="mt-5 flex-1 font-serif text-xl leading-snug text-cream italic">
+                <blockquote className="mt-5 flex-1 font-serif text-xl leading-snug text-ink italic">
                   &ldquo;{review.text}&rdquo;
                 </blockquote>
-                <figcaption className="mt-7 border-t border-cream/10 pt-5">
+                <figcaption className="mt-7 border-t border-ink/10 pt-5">
                   <p className="text-sm font-semibold tracking-[0.18em] text-gold uppercase">
                     {review.name}
                   </p>
@@ -85,10 +85,10 @@ export default function ReviewsPage() {
       </section>
 
       {/* Leave a review CTA */}
-      <section className="border-t border-cream/8 bg-cream py-20 text-ink md:py-24">
+      <section className="border-t border-ink/8 bg-cream py-20 text-ink md:py-24">
         <div className="container-x flex flex-col items-center gap-6 text-center">
           <Reveal>
-            <h2 className="font-serif text-3xl font-medium md:text-5xl">
+            <h2 className="font-serif text-4xl font-medium tracking-[-0.01em] md:text-6xl">
               Celebrated with us recently?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-base text-ink/75">
@@ -99,7 +99,7 @@ export default function ReviewsPage() {
           <Reveal delay={0.1}>
             <Magnetic className="inline-block">
               <a
-                href={waLink("Hi! I'd love to share a review about my experience at Sai Mehndi & Tattoo.")}
+                href={waLink("Hi! I'd love to share a review about my experience at Sai Mehandi & Tattoo.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-solid"

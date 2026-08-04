@@ -6,7 +6,8 @@ type SectionHeadingProps = {
   title: React.ReactNode;
   description?: string;
   align?: "center" | "left";
-  invert?: boolean; // true when used on cream backgrounds
+  /** @deprecated the whole site is a single light theme now; kept for API compatibility */
+  invert?: boolean;
   className?: string;
 };
 
@@ -15,7 +16,6 @@ export default function SectionHeading({
   title,
   description,
   align = "center",
-  invert = false,
   className,
 }: SectionHeadingProps) {
   const centered = align === "center";
@@ -27,38 +27,16 @@ export default function SectionHeading({
         className,
       )}
     >
-      <p
-        className={cn(
-          "eyebrow",
-          centered && "justify-center",
-          invert && "text-henna",
-        )}
-      >
-        <span
-          aria-hidden
-          className={cn("h-px w-8", invert ? "bg-henna/60" : "bg-gold/50")}
-        />
+      <p className={cn("eyebrow text-henna", centered && "justify-center")}>
+        <span aria-hidden className="h-px w-8 bg-henna/60" />
         {eyebrow}
-        <span
-          aria-hidden
-          className={cn("h-px w-8", invert ? "bg-henna/60" : "bg-gold/50")}
-        />
+        <span aria-hidden className="h-px w-8 bg-henna/60" />
       </p>
-      <h2
-        className={cn(
-          "mt-4 font-serif text-4xl leading-[1.05] font-medium md:text-5xl lg:text-6xl",
-          invert ? "text-ink" : "text-cream",
-        )}
-      >
+      <h2 className="mt-5 font-serif text-[2.75rem] leading-[1.03] font-medium tracking-[-0.01em] text-ink md:text-6xl lg:text-7xl">
         {title}
       </h2>
       {description && (
-        <p
-          className={cn(
-            "mt-5 text-base leading-relaxed md:text-[17px]",
-            invert ? "text-ink/75" : "text-sand",
-          )}
-        >
+        <p className="mt-6 text-base leading-relaxed text-ink/75 md:text-[17px]">
           {description}
         </p>
       )}

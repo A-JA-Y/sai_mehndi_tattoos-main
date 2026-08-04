@@ -7,13 +7,14 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import StatCounter from "@/components/StatCounter";
 import Magnetic from "@/components/Magnetic";
+import GsapParallax from "@/components/GsapParallax";
 import { awards, site, stats, timeline, waLink } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet Dev Kumar — award-winning mehndi and tattoo artist with 18 years of artistry, from school sketching competitions to the Grihshobha National Certificate 2011.",
+    "Meet Dev Kumar — award-winning mehandi and tattoo artist with 18 years of artistry, from school sketching competitions to the Grihshobha National Certificate 2011.",
 };
 
 export default function AboutPage() {
@@ -26,7 +27,7 @@ export default function AboutPage() {
             The artist behind <em className="text-gold">the art</em>
           </>
         }
-        description="Painter, sketch artist, mehndi designer, tattooist and teacher — one pair of hands, eighteen years of practice."
+        description="Painter, sketch artist, mehandi designer, tattooist and teacher — one pair of hands, eighteen years of practice."
       />
 
       {/* Portrait + intro */}
@@ -39,15 +40,17 @@ export default function AboutPage() {
                 className="absolute -inset-3 rounded-2xl border border-henna/40 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 md:-inset-4"
               />
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <Image
-                  src="/images/artist.jpg"
-                  alt={`${site.artist}, mehndi and tattoo artist`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 45vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-104"
-                />
+                <GsapParallax speed={0.12} className="absolute inset-0">
+                  <Image
+                    src="/images/artist.jpg"
+                    alt={`${site.artist}, mehandi and tattoo artist`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 45vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-104"
+                  />
+                </GsapParallax>
               </div>
-              <div className="absolute -bottom-6 left-6 rounded-xl border border-cream/10 bg-coal/90 px-6 py-4 backdrop-blur">
+              <div className="absolute -bottom-6 left-6 rounded-xl border border-ink/10 bg-coal/90 px-6 py-4 backdrop-blur">
                 <p className="font-serif text-2xl text-gold italic">
                   {site.artist}
                 </p>
@@ -60,9 +63,9 @@ export default function AboutPage() {
 
           <div>
             <Reveal>
-              <h2 className="font-serif text-3xl leading-snug font-medium text-cream md:text-4xl">
-                &ldquo;If I can apply mehndi,{" "}
-                <em className="text-gold">why not create tattoos?</em>&rdquo;
+              <h2 className="font-serif text-4xl leading-[1.1] font-medium tracking-[-0.01em] text-ink md:text-5xl">
+                &ldquo;If I can apply mehandi,{" "}
+                <em className="text-henna">why not create tattoos?</em>&rdquo;
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
@@ -75,9 +78,9 @@ export default function AboutPage() {
                   portraits — before transitioning this art onto hands.
                 </p>
                 <p>
-                  With continuous dedication, I learned the art of mehndi in{" "}
+                  With continuous dedication, I learned the art of mehandi in{" "}
                   {site.since}. The passion only grew stronger: I began winning
-                  mehndi competitions, and started training young students so
+                  mehandi competitions, and started training young students so
                   they too could become skilled artisans and earn a respectable
                   livelihood.
                 </p>
@@ -99,7 +102,7 @@ export default function AboutPage() {
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href="/gallery" className="btn-outline">
+                  <Link href="/gallery" className="btn-outline-dark">
                     See my work
                   </Link>
                 </Magnetic>
@@ -110,7 +113,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="border-y border-cream/8 bg-coal/60">
+      <section className="border-y border-ink/8 bg-coal/60">
         <div className="container-x grid grid-cols-2 gap-x-6 gap-y-12 py-16 md:grid-cols-4">
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.1}>
@@ -134,7 +137,7 @@ export default function AboutPage() {
           <div className="relative mx-auto max-w-3xl">
             <span
               aria-hidden
-              className="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-henna/60 via-cream/15 to-transparent md:left-1/2"
+              className="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-henna/60 via-ink/15 to-transparent md:left-1/2"
             />
             <div className="space-y-14">
               {timeline.map((item, i) => (
@@ -157,7 +160,7 @@ export default function AboutPage() {
                     <p className="font-serif text-2xl text-gold italic">
                       {item.year}
                     </p>
-                    <h3 className="font-serif text-2xl text-cream md:text-3xl">
+                    <h3 className="font-serif text-2xl text-ink md:text-3xl">
                       {item.title}
                     </h3>
                     <p className="text-[15px] leading-relaxed text-sand">
@@ -172,7 +175,7 @@ export default function AboutPage() {
       </section>
 
       {/* Awards */}
-      <section className="border-y border-cream/8 bg-cream py-20 text-ink md:py-28">
+      <section className="border-y border-ink/8 bg-cream py-20 text-ink md:py-28">
         <div className="container-x">
           <SectionHeading
             eyebrow="Recognition"
@@ -207,33 +210,34 @@ export default function AboutPage() {
                 className="absolute -top-6 -right-6 h-40 w-40 text-henna/10"
               />
               <div className="max-w-2xl">
-                <p className="eyebrow">
-                  <span aria-hidden className="h-px w-8 bg-gold/50" />
+                <p className="eyebrow text-henna">
+                  <span aria-hidden className="h-px w-8 bg-henna/50" />
                   Beyond the studio
                 </p>
-                <h2 className="mt-4 font-serif text-3xl leading-tight font-medium text-cream md:text-5xl">
+                <h2 className="mt-4 font-serif text-4xl leading-tight font-medium tracking-[-0.01em] text-ink md:text-6xl">
                   Learn the craft.{" "}
-                  <em className="text-gold">Build a career.</em>
+                  <em className="text-henna">Build a career.</em>
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-sand">
-                  Mehndi, tattoo making and nail art classes for the next
+                  Mehandi, tattoo making and nail art classes for the next
                   generation of artists. Students who have completed 10th or
                   12th grade can turn this art into a real, respectable
-                  livelihood — exactly the way I did.
+                  livelihood — exactly the way I did. Basic batches start at
+                  ₹7,000/month, Advance batches at ₹8,000/month.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Magnetic>
-                    <Link href="/services#classes" className="btn-solid">
+                    <Link href="/services#classes-detail" className="btn-solid">
                       About the classes
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Magnetic>
                   <Magnetic>
                     <a
-                      href={waLink("Hello! I want to know about the Mehndi/Tattoo/Nail Art classes.")}
+                      href={waLink("Hello! I want to know about the Mehandi/Tattoo/Nail Art classes.")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-outline"
+                      className="btn-outline-dark"
                     >
                       <WhatsAppIcon className="h-4 w-4" />
                       Ask about batches

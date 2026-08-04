@@ -16,7 +16,7 @@ const PAGE_SIZE = 18;
 
 const categories = [
   { key: "all", label: "All" },
-  { key: "mehndi", label: "Mehndi" },
+  { key: "mehndi", label: "Mehandi" },
   { key: "tattoo", label: "Tattoos" },
   { key: "sketch", label: "Sketches" },
   { key: "nail-art", label: "Nail Art" },
@@ -109,13 +109,13 @@ export default function GalleryGrid() {
             onClick={() => selectFilter(cat.key)}
             className={cn(
               "relative rounded-full px-5 py-2.5 text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-300 md:px-6",
-              filter === cat.key ? "text-cream" : "text-sand hover:text-cream",
+              filter === cat.key ? "text-cream" : "text-sand hover:text-ink",
             )}
           >
             {filter === cat.key && (
               <motion.span
                 layoutId="gallery-pill"
-                transition={{ duration: 0.5, ease: EASE }}
+                transition={{ duration: 0.4, ease: EASE }}
                 className="absolute inset-0 rounded-full bg-henna"
               />
             )}
@@ -148,7 +148,7 @@ export default function GalleryGrid() {
                     "rounded-full border px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300",
                     style === s.key
                       ? "border-gold/70 text-gold"
-                      : "border-cream/15 text-sand hover:border-cream/40 hover:text-cream",
+                      : "border-ink/15 text-sand hover:border-ink/40 hover:text-ink",
                   )}
                 >
                   {s.label}
@@ -174,7 +174,7 @@ export default function GalleryGrid() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.5, ease: EASE }}
+              transition={{ duration: 0.35, ease: EASE }}
               onClick={() => setSelected(i)}
               aria-label={`View ${item.alt}`}
               className="group relative aspect-[3/4] cursor-zoom-in overflow-hidden rounded-xl"
@@ -203,7 +203,7 @@ export default function GalleryGrid() {
         <div className="mt-12 text-center">
           <button
             onClick={() => setShown((s) => s + PAGE_SIZE)}
-            className="btn-outline"
+            className="btn-outline-dark"
           >
             <Plus className="h-4 w-4" />
             Show more ({remaining} left)
@@ -303,7 +303,7 @@ function Lightbox({
             priority
           />
         </div>
-        <figcaption className="mt-4 flex items-center justify-between text-xs tracking-[0.2em] text-sand uppercase">
+        <figcaption className="mt-4 flex items-center justify-between text-xs tracking-[0.2em] text-cream/70 uppercase">
           <span>{labelFor(item)}</span>
           <span>
             {index + 1} / {total}

@@ -32,7 +32,7 @@ function Action({
       aria-label={label}
       initial={{ opacity: 0, scale: 0.5, y: 16 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ delay, duration: 0.6, ease: EASE }}
+      transition={{ delay, duration: 0.4, ease: EASE }}
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.92 }}
       className={cn(
@@ -63,7 +63,7 @@ export default function FloatingActions() {
         href={`mailto:${site.email}`}
         label="Email us"
         delay={1.7}
-        className="h-12 w-12 bg-gold text-ink shadow-[0_10px_30px_-8px_rgba(247,235,171,0.45)]"
+        className="h-12 w-12 bg-gold text-ink shadow-[0_10px_30px_-8px_rgba(192,138,46,0.45)]"
       >
         <Mail className="h-5 w-5" />
       </Action>
@@ -71,7 +71,7 @@ export default function FloatingActions() {
         href={phoneHref}
         label="Call us"
         delay={1.55}
-        className="h-12 w-12 bg-henna text-cream shadow-[0_10px_30px_-8px_rgba(167,30,34,0.55)]"
+        className="h-12 w-12 bg-sky text-cream shadow-[0_10px_30px_-8px_rgba(0,132,255,0.55)]"
       >
         <Phone className="h-5 w-5" />
       </Action>

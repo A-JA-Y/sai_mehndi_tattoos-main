@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
@@ -7,13 +6,17 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import Accordion from "@/components/Accordion";
 import Magnetic from "@/components/Magnetic";
+import ClassesGrid from "@/components/ClassesGrid";
+import CoverMedia from "@/components/CoverMedia";
+import TiltCard from "@/components/TiltCard";
+import { TattooPricingTable, NailArtPricingTable } from "@/components/PricingTables";
 import { WhatsAppIcon } from "@/components/icons";
 import { faqs, services, waLink } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Bridal mehndi, party & festival designs, Arabic patterns, tattoo art, nail art and professional classes — every service offered at Sai Mehndi & Tattoo, New Delhi.",
+    "Bridal mehandi, party & festival designs, Arabic patterns, tattoo art, nail art and professional classes — every service offered at Sai Mehandi & Tattoo, New Delhi.",
 };
 
 const process = [
@@ -56,33 +59,33 @@ export default function ServicesPage() {
       <section className="py-20 md:py-28">
         <div className="container-x grid gap-6 md:grid-cols-2 md:gap-8">
           {services.map((service, i) => (
-            <Reveal key={service.slug} delay={(i % 2) * 0.12}>
+            <Reveal key={service.slug} delay={(i % 2) * 0.1}>
+              <TiltCard strength={5} className="h-full rounded-2xl">
               <article
                 id={service.slug}
-                className="group relative flex h-full scroll-mt-36 flex-col overflow-hidden rounded-2xl border border-cream/10 bg-coal transition-all duration-500 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(167,30,34,0.3)]"
+                className="group relative flex h-full scroll-mt-36 flex-col overflow-hidden rounded-2xl border border-ink/10 bg-coal transition-all duration-300 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(168,30,34,0.3)]"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={service.image}
+                  <CoverMedia
+                    src={service.video}
+                    poster={service.image}
                     alt={service.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-106"
+                    className="transition-transform duration-500 ease-out group-hover:scale-106"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/25 to-transparent" />
-                  <span className="absolute top-4 right-5 font-serif text-6xl text-cream/20 italic transition-colors duration-500 group-hover:text-gold/60">
+                  <span className="absolute top-4 right-5 font-serif text-6xl text-cream/20 italic transition-colors duration-300 group-hover:text-gold/60">
                     {service.number}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <h2 className="font-serif text-3xl text-cream transition-colors duration-300 group-hover:text-gold">
+                  <h2 className="font-serif text-3xl text-ink transition-colors duration-300 group-hover:text-henna">
                     {service.title}
                   </h2>
                   <p className="mt-4 text-base leading-relaxed text-sand">
                     {service.description}
                   </p>
-                  <ul className="mt-6 grid gap-2.5 text-[15px] text-cream/90 sm:grid-cols-2">
+                  <ul className="mt-6 grid gap-2.5 text-[15px] text-ink/90 sm:grid-cols-2">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2.5">
                         <span aria-hidden className="mt-0.5 text-gold">
@@ -92,27 +95,52 @@ export default function ServicesPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-auto pt-8">
+                  <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
                     <a
                       href={waLink(`Hello! I'd like to enquire about ${service.title}.`)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-gold uppercase transition-colors hover:text-cream"
+                      className="group/link inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-gold uppercase transition-colors hover:text-henna"
                     >
                       <WhatsAppIcon className="h-4 w-4" />
                       Enquire about this
                       <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
                     </a>
+                    {service.slug === "classes" && (
+                      <Link
+                        href="/services#classes-detail"
+                        className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                      >
+                        Curriculum &amp; pricing →
+                      </Link>
+                    )}
+                    {service.slug === "tattoo-art" && (
+                      <Link
+                        href="/services#tattoo-pricing"
+                        className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                      >
+                        Full price list →
+                      </Link>
+                    )}
+                    {service.slug === "nail-art" && (
+                      <Link
+                        href="/services#nail-art-pricing"
+                        className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                      >
+                        Price menu →
+                      </Link>
+                    )}
                   </div>
                 </div>
               </article>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
       </section>
 
       {/* Process */}
-      <section className="border-y border-cream/8 bg-cream py-24 text-ink md:py-32">
+      <section className="border-y border-ink/8 bg-cream py-24 text-ink md:py-32">
         <div className="container-x">
           <SectionHeading
             eyebrow="How It Works"
@@ -144,6 +172,54 @@ export default function ServicesPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Classes & Training — detailed curriculum */}
+      <section id="classes-detail" className="scroll-mt-28 py-24 md:py-32">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Classes & Training"
+            title={
+              <>
+                Learn the craft, <em className="text-gold">batch by batch</em>
+              </>
+            }
+            description="Three career-ready courses, each with a Basic and Advance track. Basic batches start at ₹7,000/month, Advance batches at ₹8,000/month — tap Read more for the full curriculum."
+          />
+          <ClassesGrid />
+        </div>
+      </section>
+
+      {/* Tattoo pricing */}
+      <section id="tattoo-pricing" className="scroll-mt-28 border-y border-ink/8 bg-coal/40 py-24 md:py-32">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Cost of a Tattoo"
+            title={
+              <>
+                Priced by size, <em className="text-gold">hour or session</em>
+              </>
+            }
+            description="Pick whichever suits your design — a small first inch starts at ₹1,500, single sittings can be booked by the hour, and full-day pieces run by session."
+          />
+          <TattooPricingTable />
+        </div>
+      </section>
+
+      {/* Nail art pricing */}
+      <section id="nail-art-pricing" className="scroll-mt-28 py-24 md:py-32">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Nail Art Menu"
+            title={
+              <>
+                Add-on <em className="text-gold">nail styling</em>
+              </>
+            }
+            description="From a quick gel polish to full bridal extensions — pair any of these with your mehandi or tattoo booking."
+          />
+          <NailArtPricingTable />
         </div>
       </section>
 

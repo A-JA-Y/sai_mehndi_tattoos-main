@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import { Instagram } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import GalleryGrid from "@/components/GalleryGrid";
+import InstagramEmbed from "@/components/InstagramEmbed";
 import Reveal from "@/components/Reveal";
 import Magnetic from "@/components/Magnetic";
-import { site } from "@/lib/data";
+import { instagramReels, site } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "The full portfolio of Sai Mehndi & Tattoo, New Delhi — bridal, Arabic and festive mehndi, tattoos, pencil sketches, nail art and event moments.",
+    "The full portfolio of Sai Mehandi & Tattoo, New Delhi — bridal, Arabic and festive mehandi, tattoos, pencil sketches, nail art and event moments.",
 };
 
 export default function GalleryPage() {
@@ -22,7 +23,7 @@ export default function GalleryPage() {
             Ink, henna &amp; <em className="text-gold">detail</em>
           </>
         }
-        description="Mehndi, tattoos, sketches, nail art and moments from events — filter by category, tap any piece to view it up close. Every design here was drawn freehand — no stencils, no shortcuts."
+        description="Mehandi, tattoos, sketches, nail art and moments from events — filter by category, tap any piece to view it up close. Every design here was drawn freehand — no stencils, no shortcuts."
       />
 
       <section className="py-20 md:py-28">
@@ -34,20 +35,30 @@ export default function GalleryPage() {
       </section>
 
       {/* Instagram CTA */}
-      <section className="border-t border-cream/8 bg-coal/60 py-20 md:py-24">
+      <section className="border-t border-ink/8 bg-coal/60 py-20 md:py-24">
         <div className="container-x flex flex-col items-center gap-6 text-center">
           <Reveal>
-            <p className="eyebrow justify-center">
-              <span aria-hidden className="h-px w-8 bg-gold/50" />
+            <p className="eyebrow text-henna justify-center">
+              <span aria-hidden className="h-px w-8 bg-henna/50" />
               Fresh work every week
-              <span aria-hidden className="h-px w-8 bg-gold/50" />
+              <span aria-hidden className="h-px w-8 bg-henna/50" />
             </p>
-            <h2 className="mt-4 font-serif text-3xl font-medium text-cream md:text-5xl">
+            <h2 className="mt-4 font-serif text-4xl font-medium tracking-[-0.01em] text-ink md:text-6xl">
               See the latest designs on{" "}
-              <em className="text-gold">Instagram</em>
+              <em className="text-henna">Instagram</em>
             </h2>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} className="grid w-full max-w-4xl gap-5 sm:grid-cols-3">
+            {instagramReels.map((url) => (
+              <div
+                key={url}
+                className="overflow-hidden rounded-2xl border border-ink/10 bg-cream"
+              >
+                <InstagramEmbed url={url} />
+              </div>
+            ))}
+          </Reveal>
+          <Reveal delay={0.15}>
             <Magnetic className="inline-block">
               <a
                 href={site.socials.instagram}

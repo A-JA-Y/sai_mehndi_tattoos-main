@@ -21,23 +21,23 @@ const jost = Jost({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} — Bridal Mehndi & Tattoo Artist in New Delhi`,
+    default: `${site.name} — Bridal Mehandi & Tattoo Artist in New Delhi`,
     template: `%s — ${site.name}`,
   },
   description:
-    "Award-winning bridal, party & Arabic mehndi, tattoo art, nail art and professional classes by Dev Kumar — 18 years of artistry in West Patel Nagar, New Delhi.",
+    "Award-winning bridal, party & Arabic mehandi, tattoo art, nail art and professional classes by Dev Kumar — 18 years of artistry in West Patel Nagar, New Delhi.",
   keywords: [
-    "mehndi artist delhi",
-    "bridal mehndi",
-    "arabic mehndi",
+    "mehandi artist delhi",
+    "bridal mehandi",
+    "arabic mehandi",
     "tattoo artist delhi",
-    "mehndi classes",
+    "mehandi classes",
     "nail art",
   ],
 };
 
 export const viewport: Viewport = {
-  themeColor: "#140d08",
+  themeColor: "#A71E22",
 };
 
 export default function RootLayout({

@@ -9,7 +9,7 @@ import { WhatsAppIcon } from "@/components/icons";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book bridal, party or Arabic mehndi, tattoos, nail art or classes at Sai Mehndi & Tattoo — West Patel Nagar, New Delhi. Call, WhatsApp or send the booking form.",
+    "Book bridal, party or Arabic mehandi, tattoos, nail art or classes at Sai Mehandi & Tattoo — West Patel Nagar, New Delhi. Call, WhatsApp or send the booking form.",
 };
 
 const infoCards = [
@@ -57,18 +57,18 @@ export default function ContactPage() {
             {infoCards.map((card, i) => {
               const Icon = card.icon;
               const content = (
-                <div className="flex gap-4 rounded-2xl border border-cream/10 bg-coal p-5 transition-all duration-400 hover:-translate-y-1 hover:border-henna/40 sm:gap-5 sm:p-6">
+                <div className="flex gap-4 rounded-2xl border border-ink/10 bg-coal p-5 transition-all duration-400 hover:-translate-y-1 hover:border-henna/40 sm:gap-5 sm:p-6">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-henna/15 text-gold">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>
-                    <h3 className="text-xs font-semibold tracking-[0.25em] text-cream/70 uppercase">
+                    <h3 className="text-xs font-semibold tracking-[0.25em] text-ink/70 uppercase">
                       {card.title}
                     </h3>
                     {card.lines.map((line) => (
                       <p
                         key={line}
-                        className="mt-1.5 text-[15px] leading-relaxed text-cream"
+                        className="mt-1.5 text-[15px] leading-relaxed text-ink"
                       >
                         {line}
                       </p>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                     <WhatsAppIcon className="h-6 w-6" />
                   </span>
                   <div>
-                    <p className="font-serif text-xl text-cream">
+                    <p className="font-serif text-xl text-ink">
                       Fastest reply on WhatsApp
                     </p>
                     <p className="mt-0.5 text-[13px] text-sand">
@@ -115,9 +115,9 @@ export default function ContactPage() {
 
           {/* Form */}
           <Reveal delay={0.15}>
-            <div className="rounded-3xl border border-cream/10 bg-coal p-6 sm:p-8 md:p-12">
-              <h2 className="font-serif text-3xl text-cream md:text-4xl">
-                Tell us about your <em className="text-gold">occasion</em>
+            <div className="rounded-3xl border border-ink/10 bg-coal p-6 sm:p-8 md:p-12">
+              <h2 className="font-serif text-4xl leading-[1.1] tracking-[-0.01em] text-ink md:text-5xl">
+                Tell us about your <em className="text-henna">occasion</em>
               </h2>
               <p className="mt-3 mb-9 text-[15px] text-sand">
                 Fields marked * are required — everything else helps us prepare
@@ -133,9 +133,9 @@ export default function ContactPage() {
       <section className="pb-24 md:pb-32">
         <div className="container-x">
           <Reveal>
-            <div className="overflow-hidden rounded-3xl border border-cream/10">
+            <div className="overflow-hidden rounded-3xl border border-ink/10">
               <iframe
-                title="Sai Mehndi & Tattoo studio location on Google Maps"
+                title="Sai Mehandi & Tattoo studio location on Google Maps"
                 src={site.mapEmbed}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

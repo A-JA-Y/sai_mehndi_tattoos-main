@@ -5,16 +5,17 @@
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
 
-  /* Palette applied from palette.css (previous values saved in colors.css) */
-  --color-ink: var(--black-500); /* #1c0f0a */
-  --color-coal: var(--black-700); /* #2b1710 */
-  --color-mocha: var(--darkslategray); /* #383030 */
-  --color-bark: var(--dimgray-200); /* #5a4237 */
-  --color-cream: var(--linen-100); /* #f7eee3 */
-  --color-sand: var(--rosybrown-100); /* #d8afae */
-  --color-henna: var(--firebrick-100); /* #a71e22 */
-  --color-gold: var(--palegoldenrod-100); /* #f7ebab */
-  --color-blush: var(--peachpuff-100); /* #e9c9b9 */
+  /* Light theme, built from the brand palette (previous dark theme in colors.css) */
+  --color-ink: var(--black-500); /* #2a0e10 — primary text / borders, dark */
+  --color-coal: var(--black-700); /* #fbf6ea — card surfaces, light */
+  --color-mocha: var(--darkslategray); /* #ead9a0 — decorative gradients, light */
+  --color-bark: var(--dimgray-200); /* #c7a868 — muted borders/accents, light */
+  --color-cream: var(--linen-100); /* #f2e6a9 — page background, brand primary */
+  --color-sand: var(--rosybrown-100); /* #6b4a42 — secondary text, muted dark */
+  --color-henna: var(--firebrick-100); /* #a81e22 — brand accent (red) */
+  --color-gold: var(--palegoldenrod-100); /* #c08a2e — brand accent (gold) */
+  --color-blush: var(--peachpuff-100); /* #d9a98f */
+  --color-sky: var(--dodgerblue-100); /* #0084ff — floating call button */
 }
 
 @theme {
@@ -43,7 +44,7 @@
   }
 
   body {
-    @apply bg-ink font-sans text-cream antialiased;
+    @apply bg-cream font-sans text-ink antialiased;
     text-rendering: optimizeLegibility;
   }
 
@@ -56,14 +57,14 @@
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-ink);
+    background: var(--color-coal);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-mocha);
+    background: var(--color-henna);
     border-radius: 8px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-henna);
+    background: var(--color-gold);
   }
 }
 
@@ -72,7 +73,6 @@
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
-  /* Gold reads best on dark sections; add `text-henna` in markup on cream sections */
   .eyebrow {
     @apply inline-flex items-center gap-3 text-xs font-semibold tracking-[0.32em] text-gold uppercase md:text-[13px];
   }
@@ -80,11 +80,11 @@
   .btn-solid,
   .btn-outline,
   .btn-outline-dark {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold tracking-[0.16em] uppercase transition-all duration-300;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold tracking-[0.16em] uppercase transition-all duration-200 active:scale-[0.96];
   }
 
   .btn-solid {
-    @apply bg-henna text-cream hover:bg-gold hover:text-ink hover:shadow-[0_10px_36px_-10px_rgba(167,30,34,0.65)];
+    @apply bg-henna text-cream hover:bg-gold hover:text-ink hover:shadow-[0_10px_36px_-10px_rgba(168,30,34,0.65)];
   }
 
   .btn-outline {
@@ -110,7 +110,7 @@
 
   /* Minimal form fields */
   .field {
-    @apply w-full border-b border-cream/25 bg-transparent py-3 text-base text-cream transition-colors duration-300 outline-none placeholder:text-sand/60 focus:border-gold;
+    @apply w-full border-b border-ink/25 bg-transparent py-3 text-base text-ink transition-colors duration-300 outline-none placeholder:text-sand/60 focus:border-henna;
   }
 
   .field-label {
@@ -120,7 +120,32 @@
   /* Outlined watermark text */
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(247, 238, 227, 0.2);
+    -webkit-text-stroke: 1px rgba(42, 14, 16, 0.15);
+  }
+
+  /* Bold outlined numerals — big background-style digits with no fill */
+  .text-outline-henna {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-henna);
+  }
+  .text-outline-gold {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-gold);
+  }
+  .text-outline-cream {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-cream);
+  }
+
+  /* Hand-drawn-style underline flourish under emphasized words in headings */
+  .font-serif em,
+  .font-serif i {
+    font-style: italic;
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.12em;
+    text-decoration-skip-ink: none;
   }
 
   /* Film-grain overlay */

@@ -20,7 +20,7 @@ function Line({ children, delay }: { children: React.ReactNode; delay: number })
         className="block"
         initial={{ y: "110%" }}
         animate={{ y: 0 }}
-        transition={{ duration: 1, ease: EASE, delay }}
+        transition={{ duration: 0.75, ease: EASE, delay }}
       >
         {children}
       </motion.span>
@@ -48,7 +48,7 @@ export default function HomeHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.6, ease: "easeInOut" }}
+          transition={{ duration: 1.1, ease: "easeInOut" }}
           className="absolute inset-0"
         >
           <motion.div
@@ -80,7 +80,7 @@ export default function HomeHero() {
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6, duration: 1 }}
+        transition={{ delay: 1, duration: 0.7 }}
         className="absolute left-7 top-1/2 hidden origin-left -translate-y-1/2 -rotate-90 text-[10px] font-medium tracking-[0.5em] text-cream/45 uppercase xl:block"
       >
         Est. {site.since} · New Delhi
@@ -91,16 +91,16 @@ export default function HomeHero() {
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
+          transition={{ duration: 0.55, ease: EASE, delay: 0.15 }}
           className="eyebrow"
         >
           <span aria-hidden className="h-px w-10 bg-gold/60" />
           Bridal · Party · Arabic · Tattoo
         </motion.p>
 
-        <h1 className="mt-6 font-serif text-[clamp(3.2rem,9.5vw,7.6rem)] leading-[0.98] font-medium text-cream">
-          <Line delay={0.35}>Every hand</Line>
-          <Line delay={0.5}>
+        <h1 className="mt-6 font-serif text-[clamp(3.4rem,9.8vw,8.2rem)] leading-[0.96] font-medium tracking-[-0.01em] text-cream drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)]">
+          <Line delay={0.25}>Every hand</Line>
+          <Line delay={0.35}>
             tells a <em className="text-gold">story.</em>
           </Line>
         </h1>
@@ -108,10 +108,10 @@ export default function HomeHero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
+          transition={{ duration: 0.55, ease: EASE, delay: 0.55 }}
           className="mt-7 max-w-lg text-base leading-relaxed text-cream/90 md:text-[17px]"
         >
-          Bridal &amp; festive mehndi, tattoos and nail art by{" "}
+          Bridal &amp; festive mehandi, tattoos and nail art by{" "}
           <span className="text-gold">{site.artist}</span> — eighteen years of
           artistry, drawn with patience and a personal touch in the heart of
           New Delhi.
@@ -120,7 +120,7 @@ export default function HomeHero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: EASE, delay: 1.05 }}
+          transition={{ duration: 0.55, ease: EASE, delay: 0.72 }}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
           <Magnetic>
@@ -156,7 +156,7 @@ export default function HomeHero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 1 }}
+        transition={{ delay: 1.1, duration: 0.7 }}
         className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
       >
         <span className="text-[10px] font-medium tracking-[0.4em] text-cream/50 uppercase">
