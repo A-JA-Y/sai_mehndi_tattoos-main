@@ -222,8 +222,9 @@ export default function AboutPage() {
                   Mehandi, tattoo making and nail art classes for the next
                   generation of artists. Students who have completed 10th or
                   12th grade can turn this art into a real, respectable
-                  livelihood — exactly the way I did. Basic batches start at
-                  ₹7,000/month, Advance batches at ₹8,000/month.
+                  livelihood — exactly the way I did. Mehandi starts at
+                  ₹7,000 / ₹15,000, Nail Art at ₹10,000 / ₹18,000, and
+                  Tattoo at ₹80,000 / ₹1,50,000 for Basic and Advance courses.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Magnetic>

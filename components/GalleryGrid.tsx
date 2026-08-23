@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Expand, Plus, X } from "lucide-react";
@@ -15,7 +16,6 @@ import { cn } from "@/lib/utils";
 const PAGE_SIZE = 18;
 
 const categories = [
-  { key: "all", label: "All" },
   { key: "mehndi", label: "Mehandi" },
   { key: "tattoo", label: "Tattoos" },
   { key: "sketch", label: "Sketches" },
@@ -34,13 +34,27 @@ const mehndiStyles: { key: MehndiStyle | "all"; label: string }[] = [
 ];
 
 export default function GalleryGrid() {
-  const [filter, setFilter] = useState<CategoryKey>("all");
+  const searchParams = useSearchParams();
+  const [filter, setFilter] = useState<CategoryKey>("mehndi");
   const [style, setStyle] = useState<MehndiStyle | "all">("all");
   const [shown, setShown] = useState(PAGE_SIZE);
   const [selected, setSelected] = useState<number | null>(null);
 
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    if (!categoryParam) return;
+
+    const validCategory = categories.some((cat) => cat.key === categoryParam);
+    if (validCategory) {
+      setFilter(categoryParam as CategoryKey);
+      setStyle("all");
+      setShown(PAGE_SIZE);
+      setSelected(null);
+    }
+  }, [searchParams]);
+
   const items = galleryImages.filter((item) => {
-    if (filter !== "all" && item.category !== filter) return false;
+    if (item.category !== filter) return false;
     if (filter === "mehndi" && style !== "all" && item.style !== style)
       return false;
     return true;
@@ -50,9 +64,7 @@ export default function GalleryGrid() {
   const remaining = items.length - visible.length;
 
   const countFor = (key: CategoryKey) =>
-    key === "all"
-      ? galleryImages.length
-      : galleryImages.filter((i) => i.category === key).length;
+    galleryImages.filter((i) => i.category === key).length;
 
   const styleCountFor = (key: MehndiStyle | "all") =>
     key === "all"
