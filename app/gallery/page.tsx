@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Instagram } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import GalleryGrid from "@/components/GalleryGrid";
@@ -29,7 +30,9 @@ export default function GalleryPage() {
       <section className="py-20 md:py-28">
         <div className="container-x">
           <Reveal>
-            <GalleryGrid />
+            <Suspense fallback={<GalleryGridFallback />}>
+              <GalleryGrid />
+            </Suspense>
           </Reveal>
         </div>
       </section>
@@ -75,5 +78,18 @@ export default function GalleryPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function GalleryGridFallback() {
+  return (
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div
+          key={i}
+          className="aspect-[3/4] animate-pulse rounded-xl bg-ink/5"
+        />
+      ))}
+    </div>
   );
 }
