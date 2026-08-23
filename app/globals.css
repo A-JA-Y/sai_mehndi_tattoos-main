@@ -5,17 +5,17 @@
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
 
-  /* Light theme, built from the brand palette (previous dark theme in colors.css) */
-  --color-ink: var(--black-500); /* #2a0e10 — primary text / borders, dark */
-  --color-coal: var(--black-700); /* #fbf6ea — card surfaces, light */
-  --color-mocha: var(--darkslategray); /* #ead9a0 — decorative gradients, light */
-  --color-bark: var(--dimgray-200); /* #c7a868 — muted borders/accents, light */
-  --color-cream: var(--linen-100); /* #f2e6a9 — page background, brand primary */
-  --color-sand: var(--rosybrown-100); /* #6b4a42 — secondary text, muted dark */
-  --color-henna: var(--firebrick-100); /* #a81e22 — brand accent (red) */
-  --color-gold: var(--palegoldenrod-100); /* #c08a2e — brand accent (gold) */
-  --color-blush: var(--peachpuff-100); /* #d9a98f */
-  --color-sky: var(--dodgerblue-100); /* #0084ff — floating call button */
+  /* Brand palette aligned to the provided terracotta / teal / olive direction */
+  --color-ink: var(--brand-charcoal); /* #222222 — primary text */
+  --color-coal: #ffffff; /* #FFFFFF — white card/background surfaces */
+  --color-mocha: var(--brand-olive); /* #759B4B — decorative accents */
+  --color-bark: var(--brand-teal); /* #2D6072 — secondary accents */
+  --color-cream: var(--brand-white); /* #FFFFFF — main background */
+  --color-sand: var(--brand-teal); /* #2D6072 — muted secondary text */
+  --color-henna: var(--brand-terracotta); /* #D85631 — primary action color */
+  --color-gold: var(--brand-olive); /* #759B4B — logo / highlight accents */
+  --color-blush: var(--brand-teal); /* #2D6072 — subtle container fills */
+  --color-sky: var(--brand-cyan); /* #14C8FF — media / digital accent */
 }
 
 @theme {
@@ -45,11 +45,14 @@
 
   body {
     @apply bg-cream font-sans text-ink antialiased;
+    background-color: #ffffff;
+    color: #222222;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    @apply bg-henna text-cream;
+    background: #D85631;
+    color: #ffffff;
   }
 
   /* Slim themed scrollbar */

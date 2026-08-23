@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
@@ -12,12 +14,6 @@ import TiltCard from "@/components/TiltCard";
 import { TattooPricingTable, NailArtPricingTable } from "@/components/PricingTables";
 import { WhatsAppIcon } from "@/components/icons";
 import { faqs, services, waLink } from "@/lib/data";
-
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Bridal mehandi, party & festival designs, Arabic patterns, tattoo art, nail art and professional classes — every service offered at Sai Mehandi & Tattoo, New Delhi.",
-};
 
 const process = [
   {
@@ -43,6 +39,8 @@ const process = [
 ];
 
 export default function ServicesPage() {
+  const [expandedService, setExpandedService] = useState<string | null>(null);
+
   return (
     <>
       <PageHeader
@@ -58,84 +56,156 @@ export default function ServicesPage() {
       {/* Service cards */}
       <section className="py-20 md:py-28">
         <div className="container-x grid gap-6 md:grid-cols-2 md:gap-8">
-          {services.map((service, i) => (
-            <Reveal key={service.slug} delay={(i % 2) * 0.1}>
-              <TiltCard strength={5} className="h-full rounded-2xl">
-              <article
-                id={service.slug}
-                className="group relative flex h-full scroll-mt-36 flex-col overflow-hidden rounded-2xl border border-ink/10 bg-coal transition-all duration-300 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(168,30,34,0.3)]"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <CoverMedia
-                    src={service.video}
-                    poster={service.image}
-                    alt={service.title}
-                    className="transition-transform duration-500 ease-out group-hover:scale-106"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/25 to-transparent" />
-                  <span className="absolute top-4 right-5 font-serif text-6xl text-cream/20 italic transition-colors duration-300 group-hover:text-gold/60">
-                    {service.number}
-                  </span>
-                </div>
+          {services.map((service, i) => {
+            const isExpanded = expandedService === service.slug;
 
-                <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <h2 className="font-serif text-3xl text-ink transition-colors duration-300 group-hover:text-henna">
-                    {service.title}
-                  </h2>
-                  <p className="mt-4 text-base leading-relaxed text-sand">
-                    {service.description}
-                  </p>
-                  <ul className="mt-6 grid gap-2.5 text-[15px] text-ink/90 sm:grid-cols-2">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2.5">
-                        <span aria-hidden className="mt-0.5 text-gold">
-                          ✦
-                        </span>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
-                    <a
-                      href={waLink(`Hello! I'd like to enquire about ${service.title}.`)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/link inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-gold uppercase transition-colors hover:text-henna"
-                    >
-                      <WhatsAppIcon className="h-4 w-4" />
-                      Enquire about this
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
-                    </a>
-                    {service.slug === "classes" && (
-                      <Link
-                        href="/services#classes-detail"
-                        className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+            return (
+              <Reveal key={service.slug} delay={(i % 2) * 0.1}>
+                <TiltCard strength={5} className="h-full rounded-2xl">
+                  <article
+                    id={service.slug}
+                    className="group relative h-full scroll-mt-36 rounded-2xl border border-ink/10 bg-coal transition-all duration-300 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(168,30,34,0.3)]"
+                  >
+                    <div className="[perspective:1200px]">
+                      <div
+                        className={`relative h-full rounded-2xl transition-transform duration-700 [transform-style:preserve-3d] ${
+                          isExpanded ? "[transform:rotateY(180deg)]" : ""
+                        }`}
                       >
-                        Curriculum &amp; pricing →
-                      </Link>
-                    )}
-                    {service.slug === "tattoo-art" && (
-                      <Link
-                        href="/services#tattoo-pricing"
-                        className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
-                      >
-                        Full price list →
-                      </Link>
-                    )}
-                    {service.slug === "nail-art" && (
-                      <Link
-                        href="/services#nail-art-pricing"
-                        className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
-                      >
-                        Price menu →
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              </article>
-              </TiltCard>
-            </Reveal>
-          ))}
+                        <div className="[backface-visibility:hidden]">
+                          <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl">
+                            <CoverMedia
+                              src={service.video}
+                              poster={service.image}
+                              alt={service.title}
+                              className="transition-transform duration-500 ease-out group-hover:scale-106"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/25 to-transparent" />
+                            <span className="absolute top-4 right-5 font-serif text-6xl text-cream/20 italic transition-colors duration-300 group-hover:text-gold/60">
+                              {service.number}
+                            </span>
+                          </div>
+
+                          <div className="flex flex-1 flex-col p-6 sm:p-8">
+                            <h2 className="font-serif text-3xl text-ink transition-colors duration-300 group-hover:text-henna">
+                              {service.title}
+                            </h2>
+                            <p className="mt-4 text-base leading-relaxed text-sand">
+                              {service.description}
+                            </p>
+                            <ul className="mt-6 grid gap-2.5 text-[15px] text-ink/90 sm:grid-cols-2">
+                              {service.features.map((feature) => (
+                                <li key={feature} className="flex items-start gap-2.5">
+                                  <span aria-hidden className="mt-0.5 text-gold">
+                                    ✦
+                                  </span>
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                            <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
+                              <a
+                                href={waLink(`Hello! I'd like to enquire about ${service.title}.`)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group/link inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-gold uppercase transition-colors hover:text-henna"
+                              >
+                                <WhatsAppIcon className="h-4 w-4" />
+                                Enquire about this
+                                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
+                              </a>
+                              <button
+                                type="button"
+                                onClick={() => setExpandedService(isExpanded ? null : service.slug)}
+                                className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                              >
+                                {isExpanded ? "Hide details" : "Get more info"}
+                              </button>
+                              <Link
+                                href={
+                                  service.slug === "bridal-mehandi" || service.slug === "party-mehandi" || service.slug === "arabic-designs"
+                                    ? "/gallery?category=mehndi"
+                                    : service.slug === "tattoo-art"
+                                      ? "/gallery?category=tattoo"
+                                      : service.slug === "nail-art"
+                                        ? "/gallery?category=nail-art"
+                                        : "/gallery?category=mehndi"
+                                }
+                                className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                              >
+                                See more photos →
+                              </Link>
+                              {service.slug === "classes" && (
+                                <Link
+                                  href="/services#classes-detail"
+                                  className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                                >
+                                  Curriculum &amp; pricing →
+                                </Link>
+                              )}
+                              {service.slug === "tattoo-art" && (
+                                <Link
+                                  href="/services#tattoo-pricing"
+                                  className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                                >
+                                  Full price list →
+                                </Link>
+                              )}
+                              {service.slug === "nail-art" && (
+                                <Link
+                                  href="/services#nail-art-pricing"
+                                  className="text-xs font-semibold tracking-[0.25em] text-ink/50 uppercase transition-colors hover:text-henna"
+                                >
+                                  Price menu →
+                                </Link>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="absolute inset-0 rounded-2xl border border-ink/10 bg-coal px-6 py-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                          <div className="flex h-full flex-col">
+                            <div className="flex items-center justify-between gap-3">
+                              <h3 className="font-serif text-2xl text-henna">{service.title}</h3>
+                              <button
+                                type="button"
+                                onClick={() => setExpandedService(null)}
+                                className="text-[11px] font-semibold tracking-[0.2em] text-ink/60 uppercase transition-colors hover:text-henna"
+                              >
+                                Close
+                              </button>
+                            </div>
+                            <p className="mt-3 text-sm leading-relaxed text-sand">
+                              {service.description}
+                            </p>
+                            <ul className="mt-5 space-y-2.5 text-[14px] leading-relaxed text-ink/90">
+                              {service.details.map((detail) => (
+                                <li key={detail} className="flex items-start gap-2.5">
+                                  <span aria-hidden className="mt-1 text-gold">
+                                    ✦
+                                  </span>
+                                  <span>{detail}</span>
+                                </li>
+                              ))}
+                            </ul>
+                            <a
+                              href={waLink(`Hello! I want more information about ${service.title}.`)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-henna px-5 py-3 text-[11px] font-semibold tracking-[0.2em] text-cream uppercase transition-colors hover:bg-[#2D6072]"
+                            >
+                              Enquire now
+                              <ArrowRight className="h-3.5 w-3.5" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </TiltCard>
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 
@@ -185,7 +255,7 @@ export default function ServicesPage() {
                 Learn the craft, <em className="text-gold">batch by batch</em>
               </>
             }
-            description="Three career-ready courses, each with a Basic and Advance track. Basic batches start at ₹7,000/month, Advance batches at ₹8,000/month — tap Read more for the full curriculum."
+            description="Three career-ready courses, each with a Basic and Advance track. Mehandi starts at ₹7,000 / ₹15,000, Nail Art at ₹10,000 / ₹18,000, and Tattoo at ₹80,000 / ₹1,50,000 — tap Read more for the full curriculum."
           />
           <ClassesGrid />
         </div>

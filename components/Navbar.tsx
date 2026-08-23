@@ -48,10 +48,10 @@ export default function Navbar() {
         className={cn(
           "transition-colors duration-500",
           open
-            ? "bg-[#A71E22]"
+            ? "bg-[#D85631]"
             : scrolled
-              ? "border-b border-cream/10 bg-[#A71E22] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.7)] backdrop-blur-xl"
-              : "bg-[#A71E22]/90 backdrop-blur-md",
+              ? "border-b border-cream/10 bg-[#D85631] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+              : "bg-[#D85631] backdrop-blur-md",
         )}
       >
         {/* Main bar */}
@@ -151,7 +151,7 @@ export default function Navbar() {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-[#A71E22] px-8 pt-28 pb-10 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-[#D85631] px-8 pt-28 pb-10 lg:hidden"
           >
             <nav className="flex flex-col gap-2">
               {navLinks.map((link, i) => {

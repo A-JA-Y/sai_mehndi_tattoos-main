@@ -1,69 +1,77 @@
 :root {
+/* Core brand palette */
+--brand-terracotta: #D85631;
+--brand-teal: #2D6072;
+--brand-olive: #759B4B;
+--brand-white: #FFFFFF;
+--brand-charcoal: #222222;
+--brand-cyan: #14C8FF;
+
 /* whitesmoke */
---whitesmoke-100: #eee;
+--whitesmoke-100: #f5f5f5;
 /* white */
 --white-100: #fff;
 --white-200: #ffffff;
 /* black */
---black-100: rgba(0,0,0,0.5);
---black-200: rgba(0,0,0,0.3);
---black-300: rgba(0,0,0,0.4);
---black-400: rgba(0,0,0,0);
+--black-100: rgba(34,34,34,0.5);
+--black-200: rgba(34,34,34,0.3);
+--black-300: rgba(34,34,34,0.4);
+--black-400: rgba(34,34,34,0);
 /* Light theme: ink is now a TEXT/border colour (dark), never a flat background */
---black-500: #2a0e10;
---black-600: rgba(28,15,10,0.85);
+--black-500: #222222;
+--black-600: rgba(34,34,34,0.85);
 /* coal is now the light CARD surface colour (was dark) */
---black-700: #fbf6ea;
---black-800: rgba(43,23,16,0.35);
---black-900: #2a0710;
---black-1000: rgba(42,7,16,0.5);
+--black-700: #ffffff;
+--black-800: rgba(34,34,34,0.35);
+--black-900: #1d1d1d;
+--black-1000: rgba(34,34,34,0.5);
 /* sienna */
---sienna-100: #a9552e;
+--sienna-100: #D85631;
 /* peru */
---peru-100: #c67746;
---peru-200: #c9974d;
+--peru-100: #D85631;
+--peru-200: #759B4B;
 /* firebrick */
---firebrick-100: #a81e22;
+--firebrick-100: #D85631;
 /* palegoldenrod — deepened so it still reads as an accent against the cream page bg */
---palegoldenrod-100: #c08a2e;
+--palegoldenrod-100: #759B4B;
 /* navbar maroon (brand-specified, distinct from --firebrick-100) */
---navbar-maroon: #a71e22;
+--navbar-maroon: #2D6072;
 /* linen — the page background colour, brand cream */
---linen-100: #f2e6a9;
---linen-200: rgba(247,238,227,0.15);
---linen-300: rgba(247,238,227,0.4);
---linen-400: rgba(247,238,227,0.3);
---linen-500: rgba(247,238,227,0.05);
---linen-600: #f3e8e5;
+--linen-100: #ffffff;
+--linen-200: rgba(117,155,75,0.15);
+--linen-300: rgba(45,96,114,0.12);
+--linen-400: rgba(34,34,34,0.06);
+--linen-500: rgba(34,34,34,0.04);
+--linen-600: #f7f7f7;
 /* rosybrown — secondary text, now a muted dark brown for the light theme */
---rosybrown-100: #6b4a42;
+--rosybrown-100: #2D6072;
 /* peachpuff */
---peachpuff-100: #d9a98f;
+--peachpuff-100: #A9D9E8;
 /* dimgray — mocha/bark accents, lightened for the light theme */
---dimgray-100: #ead9a0;
---dimgray-200: #c7a868;
+--dimgray-100: #D5E7E8;
+--dimgray-200: #759B4B;
 /* mediumspringgreen */
 --mediumspringgreen-100: #25d366;
 /* dodgerblue */
---dodgerblue-100: #0084ff;
+--dodgerblue-100: #14C8FF;
 /* tomato */
---tomato-100: #ea4335;
+--tomato-100: #D85631;
 /* darkred */
---darkred-100: rgb(139,0,0);
+--darkred-100: rgb(42, 78, 90);
 /* darkkhaki */
---darkkhaki-100: rgb(142,130,62);
+--darkkhaki-100: rgb(117,155,75);
 /* gray */
---gray-100: rgba(128,128,128,0.4);
+--gray-100: rgba(34,34,34,0.12);
 /* Brand Colors */
---black: #000000;
+--black: #222222;
 /* mocha — decorative gradient accent, lightened for the light theme */
---darkslategray: #ead9a0;
---black: #181010;
+--darkslategray: #759B4B;
+--black: #222222;
 /* Homepage Colors */
---black: #47241F;
---rosybrown: #997055;
---rosybrown: #D5B4A8;
---black: #3A2333;
---sienna: #964326;
---black: #011E00;
+--black: #222222;
+--rosybrown: #2D6072;
+--rosybrown: #2D6072;
+--black: #222222;
+--sienna: #D85631;
+--black: #222222;
 }
