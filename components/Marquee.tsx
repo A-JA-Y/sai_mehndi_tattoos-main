@@ -25,7 +25,7 @@ export default function Marquee({
             )}
           >
             {item}
-            <span aria-hidden className="text-base opacity-60">
+            <span aria-hidden className="text-[17px] opacity-60">
               ✦
             </span>
           </span>

@@ -40,7 +40,7 @@ export default function Footer() {
             <Link href="/" className="font-serif text-2xl text-ink">
               Sai <span className="text-henna">Mehandi & Tattoo</span>
             </Link>
-            <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-sand">
+            <p className="mt-4 max-w-xs text-[17px] leading-relaxed text-sand">
               {site.tagline}
             </p>
             <div className="mt-6 flex gap-3">
@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold tracking-[0.3em] text-ink/60 uppercase">
+            <h3 className="text-[13px] font-semibold tracking-[0.3em] text-ink/75 uppercase">
               Explore
             </h3>
             <ul className="mt-5 space-y-3">
@@ -101,7 +101,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="link-underline text-[15px] text-sand hover:text-ink"
+                    className="link-underline text-[17px] text-sand hover:text-ink"
                   >
                     {link.label}
                   </Link>
@@ -111,7 +111,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold tracking-[0.3em] text-ink/60 uppercase">
+            <h3 className="text-[13px] font-semibold tracking-[0.3em] text-ink/75 uppercase">
               Services
             </h3>
             <ul className="mt-5 space-y-3">
@@ -119,7 +119,7 @@ export default function Footer() {
                 <li key={s.slug}>
                   <Link
                     href={`/services#${s.slug}`}
-                    className="link-underline text-[15px] text-sand hover:text-ink"
+                    className="link-underline text-[17px] text-sand hover:text-ink"
                   >
                     {s.title}
                   </Link>
@@ -129,10 +129,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-xs font-semibold tracking-[0.3em] text-ink/60 uppercase">
+            <h3 className="text-[13px] font-semibold tracking-[0.3em] text-ink/75 uppercase">
               Visit
             </h3>
-            <ul className="mt-5 space-y-4 text-[15px] text-sand">
+            <ul className="mt-5 space-y-4 text-[17px] text-sand">
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-henna" />
                 {site.address}
@@ -156,7 +156,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-3 border-t border-ink/10 py-7 text-xs tracking-wide text-sand/70 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 border-t border-ink/10 py-7 text-[13px] tracking-wide text-sand md:flex-row">
           <p>
             © {year} {site.name}. All rights reserved.
           </p>

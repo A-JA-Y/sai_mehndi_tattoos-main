@@ -44,7 +44,7 @@ export default function HomePage() {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="text-base leading-relaxed text-ink/80 md:text-lg">
+            <p className="text-[17px] leading-relaxed text-ink/80 md:text-lg">
               With over {new Date().getFullYear() - site.since} years of
               experience creating intricate bridal and festive designs, every
               pattern is drawn with care, patience and a personal touch — so
@@ -55,7 +55,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/about"
-              className="group mt-8 inline-flex items-center gap-2 text-xs font-medium tracking-[0.25em] text-henna uppercase"
+              className="group mt-8 inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.25em] text-henna uppercase"
             >
               Read my journey
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -71,7 +71,7 @@ export default function HomePage() {
             eyebrow="What I Offer"
             title={
               <>
-                Artistry for every <em className="text-gold">occasion</em>
+                Artistry for every <em className="text-henna">occasion</em>
               </>
             }
             description="From eight-hour bridal sittings to fifteen-minute festive designs — and tattoos, nail art and classes beyond the cone."
@@ -93,7 +93,7 @@ export default function HomePage() {
                       className="transition-transform duration-500 ease-out group-hover:scale-108"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/20 to-transparent" />
-                    <span className="absolute top-4 right-5 font-serif text-5xl text-cream/25 italic transition-colors duration-300 group-hover:text-gold/70">
+                    <span className="absolute top-4 right-5 font-serif text-5xl text-cream/25 italic transition-colors duration-300 group-hover:text-cream/70">
                       {service.number}
                     </span>
                   </div>
@@ -101,10 +101,10 @@ export default function HomePage() {
                     <h3 className="font-serif text-2xl text-ink transition-colors duration-300 group-hover:text-henna">
                       {service.title}
                     </h3>
-                    <p className="mt-3 text-[15px] leading-relaxed text-sand">
+                    <p className="mt-3 text-[17px] leading-relaxed text-sand">
                       {service.short}
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-gold uppercase">
+                    <span className="mt-5 inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.25em] text-henna uppercase">
                       Explore
                       <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
@@ -133,7 +133,7 @@ export default function HomePage() {
             eyebrow="Find Your Service"
             title={
               <>
-                Jump straight to <em className="text-gold">your occasion</em>
+                Jump straight to <em className="text-henna">your occasion</em>
               </>
             }
             description="Know exactly what you need? Head directly to any of the six services offered at the studio."
@@ -152,7 +152,7 @@ export default function HomePage() {
                     <h3 className="font-serif text-2xl text-ink transition-colors duration-300 group-hover:text-henna md:text-3xl">
                       {service.title}
                     </h3>
-                    <p className="mt-1 hidden text-[15px] text-sand sm:block">
+                    <p className="mt-1 hidden text-[17px] text-sand sm:block">
                       {service.short}
                     </p>
                   </div>
@@ -212,7 +212,7 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/35" />
                   <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                    <span className="rounded-full bg-cream/90 px-5 py-2 text-[10px] font-medium tracking-[0.3em] text-ink uppercase backdrop-blur">
+                    <span className="rounded-full bg-cream/90 px-5 py-2 text-[11px] font-medium tracking-[0.3em] text-ink uppercase backdrop-blur">
                       View
                     </span>
                   </span>
@@ -240,7 +240,7 @@ export default function HomePage() {
             eyebrow="Kind Words"
             title={
               <>
-                Loved by <em className="text-gold">brides</em> across Delhi
+                Loved by <em className="text-henna">brides</em> across Delhi
               </>
             }
           />
@@ -248,7 +248,7 @@ export default function HomePage() {
           <Reveal className="mt-12 text-center" delay={0.1}>
             <Link
               href="/reviews"
-              className="group inline-flex items-center gap-2 text-xs font-semibold tracking-[0.25em] text-gold uppercase"
+              className="group inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.25em] text-henna uppercase"
             >
               Read all reviews
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
@@ -272,15 +272,15 @@ export default function HomePage() {
         <div className="container-x relative text-center">
           <Reveal>
             <p className="eyebrow justify-center">
-              <span aria-hidden className="h-px w-8 bg-gold/50" />
+              <span aria-hidden className="h-px w-8 bg-cream/50" />
               Limited slots each season
-              <span aria-hidden className="h-px w-8 bg-gold/50" />
+              <span aria-hidden className="h-px w-8 bg-cream/50" />
             </p>
             <h2 className="mx-auto mt-5 max-w-2xl font-serif text-[2.75rem] leading-[1.03] font-medium tracking-[-0.01em] text-cream drop-shadow-[0_6px_28px_rgba(0,0,0,0.4)] md:text-7xl">
               Have a date circled on the{" "}
-              <em className="text-gold">calendar?</em>
+              <em className="text-cream">calendar?</em>
             </h2>
-            <p className="mx-auto mt-6 max-w-md text-base text-cream/80">
+            <p className="mx-auto mt-6 max-w-md text-[17px] text-cream/80">
               Wedding-season books up fast. Share your date and let&apos;s
               reserve your sitting before it fills.
             </p>

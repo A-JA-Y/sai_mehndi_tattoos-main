@@ -47,7 +47,7 @@ function Action({
         />
       )}
       {children}
-      <span className="pointer-events-none absolute right-full mr-3 rounded-full bg-cream px-4 py-2 text-xs font-medium whitespace-nowrap text-ink opacity-0 shadow-lg transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
+      <span className="pointer-events-none absolute right-full mr-3 rounded-full bg-cream px-4 py-2 text-[13px] font-medium whitespace-nowrap text-ink opacity-0 shadow-lg transition-all duration-300 group-hover:-translate-x-1 group-hover:opacity-100">
         {label}
       </span>
     </motion.a>
@@ -63,7 +63,7 @@ export default function FloatingActions() {
         href={`mailto:${site.email}`}
         label="Email us"
         delay={1.7}
-        className="h-12 w-12 bg-gold text-ink shadow-[0_10px_30px_-8px_rgba(192,138,46,0.45)]"
+        className="h-12 w-12 bg-henna text-cream shadow-[0_10px_30px_-8px_rgba(192,138,46,0.45)]"
       >
         <Mail className="h-5 w-5" />
       </Action>
@@ -71,7 +71,7 @@ export default function FloatingActions() {
         href={phoneHref}
         label="Call us"
         delay={1.55}
-        className="h-12 w-12 bg-sky text-cream shadow-[0_10px_30px_-8px_rgba(0,132,255,0.55)]"
+        className="h-12 w-12 bg-sky text-ink shadow-[0_10px_30px_-8px_rgba(0,132,255,0.55)]"
       >
         <Phone className="h-5 w-5" />
       </Action>

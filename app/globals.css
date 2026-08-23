@@ -5,15 +5,20 @@
   --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
 
-  /* Brand palette aligned to the provided terracotta / teal / olive direction */
-  --color-ink: var(--brand-charcoal); /* #222222 — primary text */
-  --color-coal: #ffffff; /* #FFFFFF — white card/background surfaces */
+  /* Text colour is a two-value system, chosen by what is behind it:
+       white surface      -> text-ink (body) / text-sand (secondary) / text-henna (accent)
+       anything not white -> text-cream, dimmed with /85 /70 for hierarchy
+     There is deliberately no third accent hue. */
+  --color-ink: var(--brand-charcoal); /* #222222 — 15.9:1 — primary text */
+  --color-sand: var(--brand-teal-deep); /* #275666 — 8.1:1 — secondary text */
+  --color-henna: var(--brand-terracotta-deep); /* #B23F1E — 5.8:1 — accent + fills */
+  --color-henna-deep: var(--brand-terracotta-deeper); /* #8F3115 — hover states */
+  --color-cream: var(--brand-white); /* #FFFFFF — 5.8:1 on the henna bar */
+
+  /* Surfaces & decoration (never used as a text colour) */
+  --color-coal: var(--brand-surface); /* #F7F6F3 — card / band surface */
   --color-mocha: var(--brand-olive); /* #759B4B — decorative accents */
   --color-bark: var(--brand-teal); /* #2D6072 — secondary accents */
-  --color-cream: var(--brand-white); /* #FFFFFF — main background */
-  --color-sand: var(--brand-teal); /* #2D6072 — muted secondary text */
-  --color-henna: var(--brand-terracotta); /* #D85631 — primary action color */
-  --color-gold: var(--brand-olive); /* #759B4B — logo / highlight accents */
   --color-blush: var(--brand-teal); /* #2D6072 — subtle container fills */
   --color-sky: var(--brand-cyan); /* #14C8FF — media / digital accent */
 }
@@ -47,6 +52,9 @@
     @apply bg-cream font-sans text-ink antialiased;
     background-color: #ffffff;
     color: #222222;
+    /* Jost runs small for its em size — 17px base keeps body copy comfortable */
+    font-size: 17px;
+    line-height: 1.65;
     text-rendering: optimizeLegibility;
   }
 
@@ -67,7 +75,7 @@
     border-radius: 8px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gold);
+    background: var(--color-henna-deep);
   }
 }
 
@@ -76,22 +84,32 @@
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
+  /* Wide tracking eats legibility at small sizes, so the eyebrow starts at 13px.
+     Bare `.eyebrow` is only used on dark surfaces — light pages add `text-henna`. */
   .eyebrow {
-    @apply inline-flex items-center gap-3 text-xs font-semibold tracking-[0.32em] text-gold uppercase md:text-[13px];
+    @apply inline-flex items-center gap-3 text-[13px] font-semibold tracking-[0.28em] text-cream uppercase md:text-[14px];
   }
 
   .btn-solid,
   .btn-outline,
   .btn-outline-dark {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold tracking-[0.16em] uppercase transition-all duration-200 active:scale-[0.96];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-[15px] font-semibold tracking-[0.14em] uppercase transition-all duration-200 active:scale-[0.96];
   }
 
   .btn-solid {
-    @apply bg-henna text-cream hover:bg-gold hover:text-ink hover:shadow-[0_10px_36px_-10px_rgba(168,30,34,0.65)];
+    @apply bg-henna text-cream hover:bg-henna-deep hover:text-cream hover:shadow-[0_10px_36px_-10px_rgba(168,30,34,0.65)];
   }
 
+  /* The mobile nav overlay is filled with henna, so the solid button would
+     vanish into it — this inverts to a cream pill with henna text (5.8:1). */
+  .btn-on-henna {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 rounded-full bg-cream px-7 py-3.5 text-[15px] font-semibold tracking-[0.14em] text-henna uppercase transition-all duration-200 hover:bg-cream/90 active:scale-[0.96];
+  }
+
+  /* Sits on dark hero imagery — hovering to henna would sink it into the
+     backdrop, so it brightens to the pale accent instead. */
   .btn-outline {
-    @apply border border-cream/25 text-cream hover:border-henna hover:text-henna;
+    @apply border border-cream/50 text-cream hover:border-cream hover:bg-cream/15;
   }
 
   .btn-outline-dark {
@@ -113,11 +131,11 @@
 
   /* Minimal form fields */
   .field {
-    @apply w-full border-b border-ink/25 bg-transparent py-3 text-base text-ink transition-colors duration-300 outline-none placeholder:text-sand/60 focus:border-henna;
+    @apply w-full border-b border-ink/40 bg-transparent py-3 text-[17px] text-ink transition-colors duration-300 outline-none placeholder:text-sand focus:border-henna;
   }
 
   .field-label {
-    @apply mb-1.5 block text-xs font-semibold tracking-[0.25em] text-sand uppercase;
+    @apply mb-1.5 block text-[13px] font-semibold tracking-[0.2em] text-sand uppercase;
   }
 
   /* Outlined watermark text */
@@ -130,10 +148,6 @@
   .text-outline-henna {
     color: transparent;
     -webkit-text-stroke: 1.5px var(--color-henna);
-  }
-  .text-outline-gold {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--color-gold);
   }
   .text-outline-cream {
     color: transparent;
@@ -157,7 +171,7 @@
     inset: 0;
     z-index: 90;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.025;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
   }

@@ -24,7 +24,7 @@ export default function AboutPage() {
         eyebrow="About Me"
         title={
           <>
-            The artist behind <em className="text-gold">the art</em>
+            The artist behind <em className="text-henna">the art</em>
           </>
         }
         description="Painter, sketch artist, mehandi designer, tattooist and teacher — one pair of hands, eighteen years of practice."
@@ -51,10 +51,10 @@ export default function AboutPage() {
                 </GsapParallax>
               </div>
               <div className="absolute -bottom-6 left-6 rounded-xl border border-ink/10 bg-coal/90 px-6 py-4 backdrop-blur">
-                <p className="font-serif text-2xl text-gold italic">
+                <p className="font-serif text-2xl text-henna italic">
                   {site.artist}
                 </p>
-                <p className="mt-0.5 text-[11px] tracking-[0.3em] text-sand uppercase">
+                <p className="mt-0.5 text-[13px] tracking-[0.3em] text-sand uppercase">
                   Founder · Artist · Teacher
                 </p>
               </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="mt-7 space-y-5 text-base leading-relaxed text-sand md:text-[17px]">
+              <div className="mt-7 space-y-5 text-[17px] leading-relaxed text-sand md:text-[18px]">
                 <p>
                   Ever since childhood, I have had a deep passion for design and
                   painting. During my school days, I participated in numerous
@@ -130,7 +130,7 @@ export default function AboutPage() {
             eyebrow="The Journey"
             title={
               <>
-                From sketchbook to <em className="text-gold">studio</em>
+                From sketchbook to <em className="text-henna">studio</em>
               </>
             }
           />
@@ -149,21 +149,24 @@ export default function AboutPage() {
                         : "md:ml-auto md:pl-14"
                     }`}
                   >
+                    {/* Each side sets exactly one of left/right — never both, or
+                        `md:left-auto` and `md:-left-*` fight and the dot falls
+                        back onto the text. */}
                     <span
                       aria-hidden
-                      className={`absolute top-1.5 left-0 h-[15px] w-[15px] rounded-full border-2 border-henna bg-ink md:left-auto ${
+                      className={`absolute top-[9px] h-[15px] w-[15px] shrink-0 rounded-full border-2 border-henna bg-cream ${
                         i % 2 === 0
-                          ? "md:-right-[8px]"
-                          : "md:-left-[7px]"
+                          ? "left-0 md:left-auto md:-right-[7px]"
+                          : "left-0 md:-left-[7px] md:right-auto"
                       }`}
                     />
-                    <p className="font-serif text-2xl text-gold italic">
+                    <p className="font-serif text-2xl text-henna italic">
                       {item.year}
                     </p>
                     <h3 className="font-serif text-2xl text-ink md:text-3xl">
                       {item.title}
                     </h3>
-                    <p className="text-[15px] leading-relaxed text-sand">
+                    <p className="text-[17px] leading-relaxed text-sand">
                       {item.text}
                     </p>
                   </div>
@@ -190,7 +193,7 @@ export default function AboutPage() {
           <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-6">
             {awards.map((award, i) => (
               <Reveal key={award} delay={i * 0.08}>
-                <p className="flex items-center gap-3 text-sm font-medium tracking-[0.18em] text-ink/70 uppercase transition-colors duration-300 hover:text-henna">
+                <p className="flex items-center gap-3 text-[15px] font-medium tracking-[0.18em] text-ink/70 uppercase transition-colors duration-300 hover:text-henna">
                   <Award className="h-4 w-4 text-henna" />
                   {award}
                 </p>
@@ -218,7 +221,7 @@ export default function AboutPage() {
                   Learn the craft.{" "}
                   <em className="text-henna">Build a career.</em>
                 </h2>
-                <p className="mt-5 text-base leading-relaxed text-sand">
+                <p className="mt-5 text-[17px] leading-relaxed text-sand">
                   Mehandi, tattoo making and nail art classes for the next
                   generation of artists. Students who have completed 10th or
                   12th grade can turn this art into a real, respectable

@@ -7,6 +7,15 @@
 --brand-charcoal: #222222;
 --brand-cyan: #14C8FF;
 
+/* Accent text is exactly two values: terracotta on white surfaces, white on
+   everything else. No third hue — olive stays a decorative fill colour only. */
+--brand-terracotta-deep: #B23F1E;   /* 5.80:1 on white — accent text + fills */
+--brand-terracotta-deeper: #8F3115; /* 8.06:1 on white — hover/pressed states */
+--brand-teal-deep: #275666;         /* 8.05:1 on white — secondary body text */
+
+/* Card / band surface — a hair off the white page so panels read as panels */
+--brand-surface: #F7F6F3;
+
 /* whitesmoke */
 --whitesmoke-100: #f5f5f5;
 /* white */

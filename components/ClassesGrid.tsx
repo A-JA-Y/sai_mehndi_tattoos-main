@@ -41,7 +41,7 @@ export default function ClassesGrid() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6">
                 <h3 className="font-serif text-2xl text-cream">{program.title}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-cream/75">
+                <p className="mt-1.5 text-[15px] leading-relaxed text-cream/90">
                   {program.short}
                 </p>
               </div>
@@ -52,7 +52,7 @@ export default function ClassesGrid() {
                 {program.levels.map((level) => (
                   <span
                     key={level.tier}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-gold uppercase"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-henna/30 px-3.5 py-1.5 text-[13px] font-semibold tracking-[0.15em] text-henna uppercase"
                   >
                     {level.tier} · ₹{level.price.toLocaleString("en-IN")}
                     {level.priceUnit}
@@ -62,7 +62,7 @@ export default function ClassesGrid() {
 
               <button
                 onClick={() => setActive(program)}
-                className="group/btn mt-6 inline-flex items-center gap-2.5 text-xs font-semibold tracking-[0.25em] text-ink uppercase transition-colors hover:text-henna"
+                className="group/btn mt-6 inline-flex items-center gap-2.5 text-[13px] font-semibold tracking-[0.25em] text-ink uppercase transition-colors hover:text-henna"
               >
                 <Plus className="h-4 w-4" />
                 Read more
@@ -109,7 +109,7 @@ function ProgramModal({
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 bg-ink/60 text-cream backdrop-blur transition-colors hover:border-gold hover:text-gold"
+          className="absolute top-5 right-5 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 bg-ink/60 text-cream backdrop-blur transition-colors hover:border-cream hover:text-cream"
         >
           <X className="h-4 w-4" />
         </button>
@@ -138,16 +138,16 @@ function ProgramModal({
                 <h4 className="font-serif text-xl text-henna">{level.tier}</h4>
                 <p className="text-lg font-semibold text-ink">
                   ₹{level.price.toLocaleString("en-IN")}
-                  <span className="text-xs text-sand">{level.priceUnit}</span>
+                  <span className="text-[13px] text-sand">{level.priceUnit}</span>
                 </p>
               </div>
               {level.admissionFee && (
-                <p className="mt-1 text-[12px] text-sand">
+                <p className="mt-1 text-[14px] text-sand">
                   + ₹{level.admissionFee.toLocaleString("en-IN")} one-time
                   registration
                 </p>
               )}
-              <ul className="mt-4 space-y-2.5 text-[14px] leading-relaxed text-ink/85">
+              <ul className="mt-4 space-y-2.5 text-[15px] leading-relaxed text-ink/85">
                 {level.highlights.map((h) => (
                   <li key={h} className="flex items-start gap-2.5">
                     <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-henna" />
@@ -160,7 +160,7 @@ function ProgramModal({
         </div>
 
         {program.note && (
-          <p className="px-6 pb-2 text-[12px] text-sand/80 sm:px-8">
+          <p className="px-6 pb-2 text-[14px] text-sand sm:px-8">
             {program.note}
           </p>
         )}

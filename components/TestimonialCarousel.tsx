@@ -59,10 +59,10 @@ export default function TestimonialCarousel() {
               &ldquo;{review.text}&rdquo;
             </p>
             <footer className="mt-7">
-              <p className="text-sm font-semibold tracking-[0.2em] text-henna uppercase">
+              <p className="text-[15px] font-semibold tracking-[0.2em] text-henna uppercase">
                 {review.name}
               </p>
-              <p className="mt-1 text-[13px] tracking-wide text-sand">
+              <p className="mt-1 text-[14px] tracking-wide text-sand">
                 {review.occasion}
               </p>
             </footer>

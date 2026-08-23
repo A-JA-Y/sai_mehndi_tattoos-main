@@ -40,17 +40,25 @@ export default function GalleryGrid() {
   const [shown, setShown] = useState(PAGE_SIZE);
   const [selected, setSelected] = useState<number | null>(null);
 
+  // Deep links from the services page: /gallery?category=tattoo,
+  // /gallery?category=mehndi&style=bridal, ... Both filters are applied so the
+  // visitor lands on exactly the work they clicked through for.
   useEffect(() => {
     const categoryParam = searchParams.get("category");
     if (!categoryParam) return;
 
     const validCategory = categories.some((cat) => cat.key === categoryParam);
-    if (validCategory) {
-      setFilter(categoryParam as CategoryKey);
-      setStyle("all");
-      setShown(PAGE_SIZE);
-      setSelected(null);
-    }
+    if (!validCategory) return;
+
+    const styleParam = searchParams.get("style");
+    const validStyle =
+      categoryParam === "mehndi" &&
+      mehndiStyles.some((s) => s.key !== "all" && s.key === styleParam);
+
+    setFilter(categoryParam as CategoryKey);
+    setStyle(validStyle ? (styleParam as MehndiStyle) : "all");
+    setShown(PAGE_SIZE);
+    setSelected(null);
   }, [searchParams]);
 
   const items = galleryImages.filter((item) => {
@@ -120,7 +128,7 @@ export default function GalleryGrid() {
             key={cat.key}
             onClick={() => selectFilter(cat.key)}
             className={cn(
-              "relative rounded-full px-5 py-2.5 text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-300 md:px-6",
+              "relative rounded-full px-5 py-2.5 text-[13px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300 md:px-6",
               filter === cat.key ? "text-cream" : "text-sand hover:text-ink",
             )}
           >
@@ -133,7 +141,7 @@ export default function GalleryGrid() {
             )}
             <span className="relative">
               {cat.label}
-              <span className="ml-1.5 text-[9px] opacity-60">
+              <span className="ml-1.5 text-[11px] opacity-60">
                 {countFor(cat.key)}
               </span>
             </span>
@@ -157,9 +165,9 @@ export default function GalleryGrid() {
                   key={s.key}
                   onClick={() => selectStyle(s.key)}
                   className={cn(
-                    "rounded-full border px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300",
+                    "rounded-full border px-4 py-1.5 text-[13px] font-semibold tracking-[0.2em] uppercase transition-colors duration-300",
                     style === s.key
-                      ? "border-gold/70 text-gold"
+                      ? "border-henna/70 text-henna"
                       : "border-ink/15 text-sand hover:border-ink/40 hover:text-ink",
                   )}
                 >
@@ -172,7 +180,7 @@ export default function GalleryGrid() {
       </AnimatePresence>
 
       {/* Count */}
-      <p className="mb-8 text-center text-xs tracking-[0.25em] text-sand/80 uppercase">
+      <p className="mb-8 text-center text-[13px] tracking-[0.25em] text-sand uppercase">
         Showing {visible.length} of {items.length}
       </p>
 
@@ -200,10 +208,10 @@ export default function GalleryGrid() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="absolute inset-x-0 bottom-0 flex translate-y-3 items-center justify-between p-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                <span className="text-[11px] font-semibold tracking-[0.25em] text-cream uppercase">
+                <span className="text-[13px] font-semibold tracking-[0.25em] text-cream uppercase">
                   {labelFor(item)}
                 </span>
-                <Expand className="h-4 w-4 text-gold" />
+                <Expand className="h-4 w-4 text-cream" />
               </div>
             </motion.button>
           ))}
@@ -271,7 +279,7 @@ function Lightbox({
       <button
         onClick={onClose}
         aria-label="Close"
-        className="absolute top-5 right-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold"
+        className="absolute top-5 right-5 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-cream hover:text-cream"
       >
         <X className="h-5 w-5" />
       </button>
@@ -282,7 +290,7 @@ function Lightbox({
           onStep(-1);
         }}
         aria-label="Previous image"
-        className="absolute left-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold md:left-8"
+        className="absolute left-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-cream hover:text-cream md:left-8"
       >
         <ArrowLeft className="h-5 w-5" />
       </button>
@@ -292,7 +300,7 @@ function Lightbox({
           onStep(1);
         }}
         aria-label="Next image"
-        className="absolute right-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-gold hover:text-gold md:right-8"
+        className="absolute right-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-cream hover:text-cream md:right-8"
       >
         <ArrowRight className="h-5 w-5" />
       </button>
@@ -315,7 +323,7 @@ function Lightbox({
             priority
           />
         </div>
-        <figcaption className="mt-4 flex items-center justify-between text-xs tracking-[0.2em] text-cream/70 uppercase">
+        <figcaption className="mt-4 flex items-center justify-between text-[13px] tracking-[0.2em] text-cream/90 uppercase">
           <span>{labelFor(item)}</span>
           <span>
             {index + 1} / {total}

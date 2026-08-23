@@ -4,7 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { navLinks, services, site, waLink } from "@/lib/data";
+import { navLinks, serviceCategories, site, waLink } from "@/lib/data";
 import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
@@ -48,20 +48,20 @@ export default function Navbar() {
         className={cn(
           "transition-colors duration-500",
           open
-            ? "bg-[#D85631]"
+            ? "bg-henna"
             : scrolled
-              ? "border-b border-cream/10 bg-[#D85631] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-              : "bg-[#D85631] backdrop-blur-md",
+              ? "border-b border-cream/25 bg-henna shadow-[0_12px_40px_-18px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+              : "bg-henna backdrop-blur-md",
         )}
       >
         {/* Main bar */}
         <div className="container-x flex h-[72px] items-center justify-between">
           <Link
             href="/"
-            className="group relative z-50 font-serif text-[22px] tracking-wide text-cream md:text-2xl"
+            className="group relative z-50 font-serif text-[24px] tracking-wide text-cream md:text-2xl"
           >
             Sai{" "}
-            <span className="text-gold transition-colors duration-300 group-hover:text-cream">
+            <span className="text-cream/85 transition-colors duration-300 group-hover:text-cream">
               Mehandi & Tattoo
             </span>
           </Link>
@@ -75,8 +75,8 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "link-underline text-sm font-semibold tracking-[0.16em] uppercase transition-colors duration-300",
-                    active ? "is-active text-gold" : "text-cream hover:text-gold",
+                    "link-underline text-[15px] font-semibold tracking-[0.16em] uppercase transition-colors duration-300",
+                    active ? "is-active text-cream" : "text-cream/85 hover:text-cream",
                   )}
                 >
                   {link.label}
@@ -85,7 +85,7 @@ export default function Navbar() {
             })}
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gold px-6 py-2.5 text-[13px] font-semibold tracking-[0.16em] text-ink uppercase transition-all duration-300 hover:bg-cream"
+              className="inline-flex items-center justify-center gap-2.5 rounded-full bg-cream px-6 py-2.5 text-[14px] font-semibold tracking-[0.16em] text-henna uppercase transition-all duration-300 hover:bg-cream/90"
             >
               Book Now
             </Link>
@@ -117,22 +117,22 @@ export default function Navbar() {
         <nav
           aria-label="Our services"
           className={cn(
-            "border-t border-cream/10 transition-opacity duration-300",
+            "border-t border-cream/25 transition-opacity duration-300",
             open && "pointer-events-none opacity-0",
           )}
         >
           <div className="no-scrollbar overflow-x-auto">
             <div className="mx-auto flex h-11 w-max items-center gap-5 px-5 sm:px-8 md:gap-6">
-              {services.map((service, i) => (
-                <Fragment key={service.slug}>
+              {serviceCategories.map((category, i) => (
+                <Fragment key={category.key}>
                   <Link
-                    href={`/services#${service.slug}`}
-                    className="shrink-0 text-[11px] font-semibold tracking-[0.14em] whitespace-nowrap text-cream/75 uppercase transition-colors duration-300 hover:text-gold md:text-xs"
+                    href={category.href}
+                    className="shrink-0 text-[13px] font-semibold tracking-[0.14em] whitespace-nowrap text-cream/85 uppercase transition-colors duration-300 hover:text-cream md:text-[13px]"
                   >
-                    {service.title}
+                    {category.label}
                   </Link>
-                  {i < services.length - 1 && (
-                    <span aria-hidden className="shrink-0 text-[8px] text-gold/50">
+                  {i < serviceCategories.length - 1 && (
+                    <span aria-hidden className="shrink-0 text-[10px] text-cream/70">
                       ✦
                     </span>
                   )}
@@ -151,7 +151,7 @@ export default function Navbar() {
             animate={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-[#D85631] px-8 pt-28 pb-10 lg:hidden"
+            className="fixed inset-0 z-40 flex flex-col justify-between overflow-y-auto bg-henna px-8 pt-28 pb-10 lg:hidden"
           >
             <nav className="flex flex-col gap-2">
               {navLinks.map((link, i) => {
@@ -168,10 +168,10 @@ export default function Navbar() {
                       href={link.href}
                       className={cn(
                         "group flex items-baseline gap-4 py-1.5 font-serif text-4xl transition-colors",
-                        active ? "text-gold" : "text-cream hover:text-gold",
+                        active ? "text-cream" : "text-cream/80 hover:text-cream",
                       )}
                     >
-                      <span className="text-xs tracking-[0.3em] text-cream/50">
+                      <span className="text-[13px] tracking-[0.3em] text-cream/85">
                         0{i + 1}
                       </span>
                       {link.label}
@@ -188,20 +188,20 @@ export default function Navbar() {
               transition={{ delay: 0.3, duration: 0.35 }}
               className="space-y-4 pt-8"
             >
-              <Link href="/contact" className="btn-solid w-full sm:w-auto">
+              <Link href="/contact" className="btn-on-henna w-full sm:w-auto">
                 Book an Appointment
               </Link>
-              <div className="space-y-2 text-[15px] text-cream/85">
+              <div className="space-y-2 text-[17px] text-cream">
                 <a
                   href={waLink("Hello! I want to book an appointment.")}
-                  className="block hover:text-gold"
+                  className="block underline-offset-4 hover:underline"
                 >
                   {site.phones[0]}
                 </a>
-                <a href={`mailto:${site.email}`} className="block hover:text-gold">
+                <a href={`mailto:${site.email}`} className="block underline-offset-4 hover:underline">
                   {site.email}
                 </a>
-                <p className="pt-1 text-xs text-cream/60">{site.address}</p>
+                <p className="pt-1 text-[13px] text-cream/90">{site.address}</p>
               </div>
             </motion.div>
           </motion.div>

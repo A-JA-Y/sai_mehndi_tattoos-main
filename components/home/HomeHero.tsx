@@ -81,7 +81,7 @@ export default function HomeHero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.7 }}
-        className="absolute left-7 top-1/2 hidden origin-left -translate-y-1/2 -rotate-90 text-[10px] font-medium tracking-[0.5em] text-cream/45 uppercase xl:block"
+        className="absolute left-7 top-1/2 hidden origin-left -translate-y-1/2 -rotate-90 text-[11px] font-medium tracking-[0.5em] text-cream/80 uppercase xl:block"
       >
         Est. {site.since} · New Delhi
       </motion.p>
@@ -94,14 +94,14 @@ export default function HomeHero() {
           transition={{ duration: 0.55, ease: EASE, delay: 0.15 }}
           className="eyebrow"
         >
-          <span aria-hidden className="h-px w-10 bg-gold/60" />
+          <span aria-hidden className="h-px w-10 bg-cream/60" />
           Bridal · Party · Arabic · Tattoo
         </motion.p>
 
         <h1 className="mt-6 font-serif text-[clamp(3.4rem,9.8vw,8.2rem)] leading-[0.96] font-medium tracking-[-0.01em] text-cream drop-shadow-[0_6px_28px_rgba(0,0,0,0.35)]">
           <Line delay={0.25}>Every hand</Line>
           <Line delay={0.35}>
-            tells a <em className="text-gold">story.</em>
+            tells a <em className="text-cream">story.</em>
           </Line>
         </h1>
 
@@ -109,10 +109,10 @@ export default function HomeHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: EASE, delay: 0.55 }}
-          className="mt-7 max-w-lg text-base leading-relaxed text-cream/90 md:text-[17px]"
+          className="mt-7 max-w-lg text-[17px] leading-relaxed text-cream/90 md:text-[18px]"
         >
           Bridal &amp; festive mehandi, tattoos and nail art by{" "}
-          <span className="text-gold">{site.artist}</span> — eighteen years of
+          <span className="text-cream">{site.artist}</span> — eighteen years of
           artistry, drawn with patience and a personal touch in the heart of
           New Delhi.
         </motion.p>
@@ -146,7 +146,7 @@ export default function HomeHero() {
             aria-label={`Go to slide ${i + 1}`}
             className={cn(
               "h-1 rounded-full transition-all duration-500",
-              i === current ? "w-8 bg-gold" : "w-3 bg-cream/30 hover:bg-cream/60",
+              i === current ? "w-8 bg-cream" : "w-3 bg-cream/30 hover:bg-cream/60",
             )}
           />
         ))}
@@ -159,14 +159,14 @@ export default function HomeHero() {
         transition={{ delay: 1.1, duration: 0.7 }}
         className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex"
       >
-        <span className="text-[10px] font-medium tracking-[0.4em] text-cream/50 uppercase">
+        <span className="text-[11px] font-medium tracking-[0.4em] text-cream/80 uppercase">
           Scroll
         </span>
         <span className="relative h-12 w-px overflow-hidden bg-cream/15">
           <motion.span
             animate={{ y: ["-100%", "100%"] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-x-0 h-1/2 bg-gold"
+            className="absolute inset-x-0 h-1/2 bg-cream"
           />
         </span>
       </motion.div>

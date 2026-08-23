@@ -33,7 +33,7 @@ export default function PageHeader({
         </GsapTitleReveal>
         {description && (
           <Reveal delay={0.2}>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/75 md:text-[17px]">
+            <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink/75 md:text-[18px]">
               {description}
             </p>
           </Reveal>

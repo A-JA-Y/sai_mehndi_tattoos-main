@@ -1,3 +1,5 @@
+import { galleryImages, type GalleryCategory, type MehndiStyle } from "@/lib/gallery";
+
 export const site = {
   name: "Sai Mehandi & Tattoo",
   shortName: "Sai",
@@ -33,27 +35,75 @@ export const navLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** The four crafts the studio actually advertises. */
+export type ServiceCategoryKey = "mehandi" | "tattoo" | "nail-art" | "classes";
+
 export type Service = {
   slug: string;
   number: string;
   title: string;
+  /** Which top-level craft this service belongs to. Drives the navbar strip. */
+  category: ServiceCategoryKey;
   short: string;
   description: string;
+  /**
+   * `features` / `details` are intentionally NOT rendered on the services page —
+   * they enumerate sub-styles of each craft, which the studio does not want listed.
+   * Kept here only so the copy isn't lost; render neither without asking first.
+   */
   features: string[];
   details: string[];
   image: string;
   /** Autoplay/muted background video shown once footage is added to /public/videos/. */
   video: string;
+  /**
+   * The slice of the gallery this service's "Show more" opens. Single source of
+   * truth for the services -> gallery deep link; omit for services with no
+   * matching gallery category (e.g. classes).
+   */
+  gallery?: { category: GalleryCategory; style?: MehndiStyle };
+};
+
+/** Below this a style filter lands the visitor on a near-empty grid. */
+const MIN_STYLE_MATCHES = 6;
+
+/**
+ * Resolves a service's intended gallery filter against what the manifest really
+ * holds. Style tagging is thin for some categories (currently 1 arabic and 2
+ * festive images), so the style is only kept when enough photos carry it —
+ * otherwise the visitor gets the whole category rather than a one-photo grid.
+ * Self-corrects as more images are tagged in lib/gallery.ts.
+ */
+export function resolveGallery(gallery: NonNullable<Service["gallery"]>) {
+  const inCategory = galleryImages.filter(
+    (img) => img.category === gallery.category,
+  );
+  if (!gallery.style) {
+    return { category: gallery.category, images: inCategory };
+  }
+  const styled = inCategory.filter((img) => img.style === gallery.style);
+  return styled.length >= MIN_STYLE_MATCHES
+    ? { category: gallery.category, style: gallery.style, images: styled }
+    : { category: gallery.category, images: inCategory };
+}
+
+/** Builds the /gallery deep link for a service, pre-filtered to its own work. */
+export const galleryLink = (gallery: NonNullable<Service["gallery"]>) => {
+  const resolved = resolveGallery(gallery);
+  const params = new URLSearchParams({ category: resolved.category });
+  if (resolved.style) params.set("style", resolved.style);
+  return `/gallery?${params.toString()}`;
 };
 
 export const services: Service[] = [
   {
     slug: "bridal-mehandi",
+    category: "mehandi",
     number: "01",
     title: "Bridal Mehandi",
     short: "Elaborate full-hand & full-leg designs for your big day.",
     description:
-      "The centrepiece of every wedding. Elaborate, story-woven bridal designs crafted over hours of fine detailing — portraits, motifs and moments from your journey, finished with a rich, deep stain that photographs beautifully.",
+      "The centrepiece of every wedding. Elaborate, story-woven designs built up over hours of fine detailing and personalised to your celebration, finished with a rich, deep stain that photographs beautifully.",
     features: [
       "Custom motifs woven with your love story",
       "100% natural, hand-mixed henna cones",
@@ -68,9 +118,11 @@ export const services: Service[] = [
     ],
     image: "/assets-mehndi/img-096.jpg",
     video: "/videos/bridal-mehandi.mp4",
+    gallery: { category: "mehndi", style: "bridal" },
   },
   {
     slug: "party-mehandi",
+    category: "mehandi",
     number: "02",
     title: "Party & Festival Mehandi",
     short: "Quick, elegant designs for sangeet, Diwali, Eid & more.",
@@ -90,9 +142,11 @@ export const services: Service[] = [
     ],
     image: "/assets-mehndi/img-121.jpg",
     video: "/videos/party-mehandi.mp4",
+    gallery: { category: "mehndi", style: "festive" },
   },
   {
     slug: "arabic-designs",
+    category: "mehandi",
     number: "03",
     title: "Arabic Designs",
     short: "Bold, flowing florals with clean modern lines.",
@@ -112,14 +166,16 @@ export const services: Service[] = [
     ],
     image: "/assets-mehndi/img-070.jpg",
     video: "/videos/arabic-designs.mp4",
+    gallery: { category: "mehndi", style: "arabic" },
   },
   {
     slug: "tattoo-art",
+    category: "tattoo",
     number: "04",
     title: "Tattoo Art",
     short: "Professional tattoos, from fine line work to portraits.",
     description:
-      "Born from a sketch artist's hand. Professional tattoo work spanning minimal line art, script, ornamental patterns and detailed portraits — drawn first, inked with care. Priced by size, by hour or by session — see the full price list below.",
+      "Born from a sketch artist’s hand. Every piece is drawn before it is inked — sized, placed and worked with a sterile, single-use setup and unhurried attention. Priced by size, by hour or by session; the full rate card is below.",
     features: [
       "Custom design consultation",
       "Hygienic, single-use equipment",
@@ -134,14 +190,16 @@ export const services: Service[] = [
     ],
     image: "/assets-mehndi/img-062.jpg",
     video: "/videos/tattoo-art.mp4",
+    gallery: { category: "tattoo" },
   },
   {
     slug: "nail-art",
+    category: "nail-art",
     number: "05",
     title: "Nail Art",
     short: "Creative nail art to complete your occasion look.",
     description:
-      "The finishing touch. Hand-painted nail art that echoes your mehandi and outfit — from subtle festive shimmer to detailed statement nails for brides.",
+      "The finishing touch. Hand-painted nail art shaped around your mehandi and your outfit, prepped and finished so it lasts through the whole celebration.",
     features: [
       "French tip, ombre & marble art",
       "Chrome, cat-eye & glitter finishes",
@@ -156,9 +214,11 @@ export const services: Service[] = [
     ],
     image: "/assets-mehndi/img-014.jpg",
     video: "/videos/nail-art.mp4",
+    gallery: { category: "nail-art" },
   },
   {
     slug: "classes",
+    category: "classes",
     number: "06",
     title: "Classes & Training",
     short: "Learn Mehandi, Tattoo & Nail Art as a career skill.",
@@ -180,6 +240,27 @@ export const services: Service[] = [
     video: "/videos/classes.mp4",
   },
 ];
+
+const SERVICE_CATEGORY_LABELS: Record<ServiceCategoryKey, string> = {
+  mehandi: "Mehandi",
+  tattoo: "Tattoo",
+  "nail-art": "Nail Art",
+  classes: "Classes",
+};
+
+/**
+ * The strip under the navbar. Only the four top-level crafts belong here —
+ * sub-styles (bridal, party, arabic, …) are deliberately not advertised
+ * separately. Each entry jumps to the first service card of that craft.
+ */
+export const serviceCategories = (
+  Object.keys(SERVICE_CATEGORY_LABELS) as ServiceCategoryKey[]
+).flatMap((key) => {
+  const first = services.find((service) => service.category === key);
+  return first
+    ? [{ key, label: SERVICE_CATEGORY_LABELS[key], href: `/services#${first.slug}` }]
+    : [];
+});
 
 export const stats = [
   { value: 18, suffix: "+", label: "Years of Artistry" },

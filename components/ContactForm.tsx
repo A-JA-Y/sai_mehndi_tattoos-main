@@ -77,7 +77,7 @@ export default function ContactForm() {
             <h3 className="mt-6 font-serif text-3xl text-ink">
               Almost there!
             </h3>
-            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-sand">
+            <p className="mt-3 max-w-sm text-[17px] leading-relaxed text-sand">
               Your booking details have been prepared in WhatsApp — just press
               send there and we&apos;ll get back to you shortly. You can also
               call us directly at {site.phones[0]}.
@@ -87,7 +87,7 @@ export default function ContactForm() {
                 setForm(initial);
                 setSent(false);
               }}
-              className="btn-outline-dark mt-8 !px-6 !py-3 text-[11px]"
+              className="btn-outline-dark mt-8 !px-6 !py-3 text-[13px]"
             >
               Send another message
             </button>
@@ -197,7 +197,7 @@ export default function ContactForm() {
                 <Send className="h-4 w-4" />
                 Send via WhatsApp
               </motion.button>
-              <p className="flex items-center gap-2 text-[13px] text-sand">
+              <p className="flex items-center gap-2 text-[14px] text-sand">
                 <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
                 Opens WhatsApp with your details pre-filled
               </p>

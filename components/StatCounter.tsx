@@ -76,9 +76,9 @@ export default function StatCounter({
         className="font-serif text-5xl font-medium text-ink md:text-6xl"
       >
         <span ref={ref}>{display}</span>
-        <span className="text-gold">{suffix}</span>
+        <span className="text-henna">{suffix}</span>
       </div>
-      <p className="mt-2 text-xs font-semibold tracking-[0.28em] text-sand uppercase md:text-[13px]">
+      <p className="mt-2 text-[13px] font-semibold tracking-[0.28em] text-sand uppercase md:text-[14px]">
         {label}
       </p>
     </motion.div>

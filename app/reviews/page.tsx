@@ -18,7 +18,7 @@ export default function ReviewsPage() {
         eyebrow="Kind Words"
         title={
           <>
-            Stories our clients <em className="text-gold">tell</em>
+            Stories our clients <em className="text-henna">tell</em>
           </>
         }
         description="Real words from brides, families and students — the reason this studio has run on referrals for eighteen years."
@@ -32,14 +32,14 @@ export default function ReviewsPage() {
               <p className="font-serif text-8xl font-medium tracking-tight text-ink">
                 5.0
               </p>
-              <div className="flex gap-1.5 text-2xl text-gold" aria-label="5 out of 5 stars">
+              <div className="flex gap-1.5 text-2xl text-henna" aria-label="5 out of 5 stars">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <span key={i} aria-hidden>
                     ★
                   </span>
                 ))}
               </div>
-              <p className="max-w-md text-[15px] text-sand">
+              <p className="max-w-md text-[17px] text-sand">
                 Rated by brides, festive clients and students — every review
                 below came from a real occasion we were lucky to be part of.
               </p>
@@ -60,7 +60,7 @@ export default function ReviewsPage() {
                 >
                   &rdquo;
                 </span>
-                <div className="flex gap-1 text-sm text-gold" aria-label="5 stars">
+                <div className="flex gap-1 text-[15px] text-henna" aria-label="5 stars">
                   {Array.from({ length: 5 }).map((_, s) => (
                     <span key={s} aria-hidden>
                       ★
@@ -71,10 +71,10 @@ export default function ReviewsPage() {
                   &ldquo;{review.text}&rdquo;
                 </blockquote>
                 <figcaption className="mt-7 border-t border-ink/10 pt-5">
-                  <p className="text-sm font-semibold tracking-[0.18em] text-gold uppercase">
+                  <p className="text-[15px] font-semibold tracking-[0.18em] text-henna uppercase">
                     {review.name}
                   </p>
-                  <p className="mt-1 text-[13px] text-sand">
+                  <p className="mt-1 text-[14px] text-sand">
                     {review.occasion}
                   </p>
                 </figcaption>
@@ -91,7 +91,7 @@ export default function ReviewsPage() {
             <h2 className="font-serif text-4xl font-medium tracking-[-0.01em] md:text-6xl">
               Celebrated with us recently?
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-base text-ink/75">
+            <p className="mx-auto mt-4 max-w-md text-[17px] text-ink/75">
               Your words help other brides find us. Share a line about your
               experience — it means the world.
             </p>

@@ -15,7 +15,7 @@ export default function NotFound() {
         <h1 className="mt-4 font-serif text-8xl font-medium text-ink md:text-9xl">
           4<span className="text-henna">0</span>4
         </h1>
-        <p className="mx-auto mt-4 max-w-xs text-[15px] text-sand">
+        <p className="mx-auto mt-4 max-w-xs text-[17px] text-sand">
           This page seems unadorned. Let&apos;s take you back to the beautiful
           part.
         </p>

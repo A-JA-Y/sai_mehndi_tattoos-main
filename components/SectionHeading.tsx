@@ -36,7 +36,7 @@ export default function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className="mt-6 text-base leading-relaxed text-ink/75 md:text-[17px]">
+        <p className="mt-6 text-[17px] leading-relaxed text-ink/75 md:text-[18px]">
           {description}
         </p>
       )}

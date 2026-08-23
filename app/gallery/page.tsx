@@ -21,7 +21,7 @@ export default function GalleryPage() {
         eyebrow="A Peek Into My Work"
         title={
           <>
-            Ink, henna &amp; <em className="text-gold">detail</em>
+            Ink, henna &amp; <em className="text-henna">detail</em>
           </>
         }
         description="Mehandi, tattoos, sketches, nail art and moments from events — filter by category, tap any piece to view it up close. Every design here was drawn freehand — no stencils, no shortcuts."

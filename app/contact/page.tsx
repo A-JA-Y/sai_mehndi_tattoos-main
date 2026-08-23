@@ -44,7 +44,7 @@ export default function ContactPage() {
         eyebrow="Get in Touch"
         title={
           <>
-            Book your <em className="text-gold">appointment</em>
+            Book your <em className="text-henna">appointment</em>
           </>
         }
         description="Tell us about your occasion — we usually reply within the hour during studio time."
@@ -58,17 +58,17 @@ export default function ContactPage() {
               const Icon = card.icon;
               const content = (
                 <div className="flex gap-4 rounded-2xl border border-ink/10 bg-coal p-5 transition-all duration-400 hover:-translate-y-1 hover:border-henna/40 sm:gap-5 sm:p-6">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-henna/15 text-gold">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-henna/15 text-henna">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>
-                    <h3 className="text-xs font-semibold tracking-[0.25em] text-ink/70 uppercase">
+                    <h3 className="text-[13px] font-semibold tracking-[0.25em] text-ink/70 uppercase">
                       {card.title}
                     </h3>
                     {card.lines.map((line) => (
                       <p
                         key={line}
-                        className="mt-1.5 text-[15px] leading-relaxed text-ink"
+                        className="mt-1.5 text-[17px] leading-relaxed text-ink"
                       >
                         {line}
                       </p>
@@ -104,7 +104,7 @@ export default function ContactPage() {
                     <p className="font-serif text-xl text-ink">
                       Fastest reply on WhatsApp
                     </p>
-                    <p className="mt-0.5 text-[13px] text-sand">
+                    <p className="mt-0.5 text-[14px] text-sand">
                       Tap to start a chat instantly
                     </p>
                   </div>
@@ -119,7 +119,7 @@ export default function ContactPage() {
               <h2 className="font-serif text-4xl leading-[1.1] tracking-[-0.01em] text-ink md:text-5xl">
                 Tell us about your <em className="text-henna">occasion</em>
               </h2>
-              <p className="mt-3 mb-9 text-[15px] text-sand">
+              <p className="mt-3 mb-9 text-[17px] text-sand">
                 Fields marked * are required — everything else helps us prepare
                 a better quote.
               </p>
