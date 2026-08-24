@@ -1,5 +1,10 @@
 import { nailArtPricing, tattooPricing, tattooPricingNote } from "@/lib/data";
 
+/**
+ * Rate cards share one column grid and one left edge so the tables line up with
+ * the card copy above them rather than floating centred. Mehandi has no table
+ * by design — it is quoted per booking.
+ */
 export function TattooPricingTable() {
   return (
     <div>
@@ -25,10 +30,10 @@ export function TattooPricingTable() {
               {group.rates.map((rate) => (
                 <li
                   key={rate.tier}
-                  className="flex items-center justify-between text-[17px]"
+                  className="flex items-baseline justify-between gap-4 text-[17px]"
                 >
                   <span className="text-sand">{rate.tier}</span>
-                  <span className="font-semibold text-ink">
+                  <span className="shrink-0 font-semibold text-ink">
                     ₹{rate.rate.toLocaleString("en-IN")}
                     <span className="text-[13px] text-sand">{rate.unit}</span>
                   </span>
@@ -38,7 +43,7 @@ export function TattooPricingTable() {
           </div>
         ))}
       </div>
-      <p className="mt-6 text-center text-[13px] tracking-[0.2em] text-sand uppercase">
+      <p className="mt-6 text-[13px] tracking-[0.2em] text-sand uppercase">
         {tattooPricingNote}
       </p>
     </div>
@@ -47,11 +52,11 @@ export function TattooPricingTable() {
 
 export function NailArtPricingTable() {
   return (
-    <div className="mx-auto grid max-w-3xl gap-3 sm:grid-cols-2">
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {nailArtPricing.map((item) => (
         <div
           key={item.service}
-          className="flex items-center justify-between gap-4 rounded-xl border border-ink/10 bg-coal px-5 py-4"
+          className="flex items-baseline justify-between gap-4 rounded-xl border border-ink/10 bg-coal px-5 py-4"
         >
           <span className="text-[15px] text-ink/90">{item.service}</span>
           <span className="shrink-0 font-serif text-lg text-henna">

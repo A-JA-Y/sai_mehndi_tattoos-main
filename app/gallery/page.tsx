@@ -14,6 +14,17 @@ export const metadata: Metadata = {
     "The full portfolio of Sai Mehandi & Tattoo, New Delhi — bridal, Arabic and festive mehandi, tattoos, pencil sketches, nail art and event moments.",
 };
 
+/**
+ * The embed row sizes itself to however many portrait posts `instagramReels`
+ * holds, so dropping or adding one never leaves a hole in the grid.
+ */
+const EMBED_GRID: Record<number, string> = {
+  1: "max-w-xs",
+  2: "max-w-2xl sm:grid-cols-2",
+  3: "max-w-4xl sm:grid-cols-3",
+};
+const embedGrid = EMBED_GRID[Math.min(instagramReels.length, 3)] ?? EMBED_GRID[3];
+
 export default function GalleryPage() {
   return (
     <>
@@ -51,7 +62,7 @@ export default function GalleryPage() {
               <em className="text-henna">Instagram</em>
             </h2>
           </Reveal>
-          <Reveal delay={0.1} className="grid w-full max-w-4xl gap-5 sm:grid-cols-3">
+          <Reveal delay={0.1} className={`grid w-full gap-5 ${embedGrid}`}>
             {instagramReels.map((url) => (
               <div
                 key={url}

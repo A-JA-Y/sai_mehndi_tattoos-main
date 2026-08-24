@@ -1,14 +1,15 @@
 :root {
-/* Core brand palette */
+/* Core brand palette. Deliberately contains no green — the decorative fill is
+   a warm off-white so panels read as paper, not as a third hue. */
 --brand-terracotta: #D85631;
 --brand-teal: #2D6072;
---brand-olive: #759B4B;
+--brand-offwhite: #EFECE4;
 --brand-white: #FFFFFF;
 --brand-charcoal: #222222;
 --brand-cyan: #14C8FF;
 
 /* Accent text is exactly two values: terracotta on white surfaces, white on
-   everything else. No third hue — olive stays a decorative fill colour only. */
+   everything else. No third hue — off-white stays a decorative fill only. */
 --brand-terracotta-deep: #B23F1E;   /* 5.80:1 on white — accent text + fills */
 --brand-terracotta-deeper: #8F3115; /* 8.06:1 on white — hover/pressed states */
 --brand-teal-deep: #275666;         /* 8.05:1 on white — secondary body text */
@@ -38,16 +39,16 @@
 --sienna-100: #D85631;
 /* peru */
 --peru-100: #D85631;
---peru-200: #759B4B;
+--peru-200: #EFECE4;
 /* firebrick */
 --firebrick-100: #D85631;
-/* palegoldenrod — deepened so it still reads as an accent against the cream page bg */
---palegoldenrod-100: #759B4B;
+/* palegoldenrod — now the warm off-white decorative fill */
+--palegoldenrod-100: #EFECE4;
 /* navbar maroon (brand-specified, distinct from --firebrick-100) */
 --navbar-maroon: #2D6072;
 /* linen — the page background colour, brand cream */
 --linen-100: #ffffff;
---linen-200: rgba(117,155,75,0.15);
+--linen-200: rgba(239,236,228,0.9);
 --linen-300: rgba(45,96,114,0.12);
 --linen-400: rgba(34,34,34,0.06);
 --linen-500: rgba(34,34,34,0.04);
@@ -56,11 +57,11 @@
 --rosybrown-100: #2D6072;
 /* peachpuff */
 --peachpuff-100: #A9D9E8;
-/* dimgray — mocha/bark accents, lightened for the light theme */
+/* dimgray — off-white/bark accents, lightened for the light theme */
 --dimgray-100: #D5E7E8;
---dimgray-200: #759B4B;
-/* mediumspringgreen */
---mediumspringgreen-100: #25d366;
+--dimgray-200: #EFECE4;
+/* messaging accent — was WhatsApp green, now the brand terracotta */
+--mediumspringgreen-100: #B23F1E;
 /* dodgerblue */
 --dodgerblue-100: #14C8FF;
 /* tomato */
@@ -68,13 +69,13 @@
 /* darkred */
 --darkred-100: rgb(42, 78, 90);
 /* darkkhaki */
---darkkhaki-100: rgb(117,155,75);
+--darkkhaki-100: rgb(239,236,228);
 /* gray */
 --gray-100: rgba(34,34,34,0.12);
 /* Brand Colors */
 --black: #222222;
-/* mocha — decorative gradient accent, lightened for the light theme */
---darkslategray: #759B4B;
+/* mocha — decorative gradient accent, now a warm off-white */
+--darkslategray: #EFECE4;
 --black: #222222;
 /* Homepage Colors */
 --black: #222222;

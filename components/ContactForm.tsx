@@ -48,7 +48,7 @@ export default function ContactForm() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.35, ease: EASE }}
-            className="flex min-h-[420px] flex-col items-center justify-center rounded-2xl border border-henna/30 bg-mocha/40 p-10 text-center"
+            className="flex min-h-[420px] flex-col items-center justify-center rounded-2xl border border-henna/30 bg-gradient-to-br from-mocha via-coal to-cream p-10 text-center"
           >
             <svg viewBox="0 0 52 52" className="h-16 w-16">
               <motion.circle
@@ -198,7 +198,7 @@ export default function ContactForm() {
                 Send via WhatsApp
               </motion.button>
               <p className="flex items-center gap-2 text-[14px] text-sand">
-                <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
+                <WhatsAppIcon className="h-4 w-4 text-henna" />
                 Opens WhatsApp with your details pre-filled
               </p>
             </div>

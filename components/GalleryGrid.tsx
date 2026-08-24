@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Expand, Plus, X } from "lucide-react";
+import FitImage from "@/components/FitImage";
 import {
   galleryImages,
   type GalleryImage,
@@ -184,28 +185,30 @@ export default function GalleryGrid() {
         Showing {visible.length} of {items.length}
       </p>
 
-      {/* Grid */}
-      <motion.div layout className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
-        <AnimatePresence mode="popLayout">
+      {/* Masonry rather than a fixed-aspect grid: every tile takes its own
+          image's shape, so nothing is cropped and no tile shows filler bars.
+          CSS columns handle the flow, so tiles are not layout-animated. */}
+      <div className="columns-2 gap-3 md:columns-3 md:gap-5">
+        <AnimatePresence initial={false}>
           {visible.map((item, i) => (
             <motion.button
-              layout
               key={item.src}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
+              exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.35, ease: EASE }}
               onClick={() => setSelected(i)}
               aria-label={`View ${item.alt}`}
-              className="group relative aspect-[3/4] cursor-zoom-in overflow-hidden rounded-xl"
+              style={{ aspectRatio: `${item.w} / ${item.h}` }}
+              className="group relative mb-3 block w-full cursor-zoom-in overflow-hidden rounded-xl break-inside-avoid md:mb-5"
             >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                sizes="(max-width: 768px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-              />
+              <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-108">
+                <FitImage
+                  src={item.src}
+                  alt={item.alt}
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="absolute inset-x-0 bottom-0 flex translate-y-3 items-center justify-between p-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                 <span className="text-[13px] font-semibold tracking-[0.25em] text-cream uppercase">
@@ -216,7 +219,7 @@ export default function GalleryGrid() {
             </motion.button>
           ))}
         </AnimatePresence>
-      </motion.div>
+      </div>
 
       {/* Show more */}
       {remaining > 0 && (
@@ -313,7 +316,12 @@ function Lightbox({
         onClick={(e) => e.stopPropagation()}
         className="relative max-h-full w-full max-w-3xl"
       >
-        <div className="relative aspect-[3/4] max-h-[80vh] w-full overflow-hidden rounded-2xl md:aspect-[4/3]">
+        {/* The frame takes the photo's own ratio rather than a fixed one, so a
+            tall bridal shot and a landscape collage each open at full size. */}
+        <div
+          style={{ aspectRatio: `${item.w} / ${item.h}` }}
+          className="relative mx-auto max-h-[80vh] w-full overflow-hidden rounded-2xl"
+        >
           <Image
             src={item.src}
             alt={item.alt}

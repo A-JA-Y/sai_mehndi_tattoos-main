@@ -241,6 +241,90 @@ export const services: Service[] = [
   },
 ];
 
+/**
+ * The services page gives mehandi a single section covering all three styles,
+ * so every craft has exactly one anchor to link to: mehandi gets the
+ * craft-level id, and the other crafts are one service each and keep their own
+ * slug. Bridal / party / Arabic have no section of their own, so anything that
+ * pointed at them links to their slice of the gallery instead.
+ */
+export const MEHANDI_ANCHOR = "mehandi";
+
+export function craftAnchor(key: ServiceCategoryKey) {
+  if (key === "mehandi") return MEHANDI_ANCHOR;
+  return services.find((service) => service.category === key)?.slug ?? key;
+}
+
+/**
+ * Where a link naming a single service should go. Bridal, party and Arabic
+ * have no section of their own, so they land on their slice of the gallery —
+ * the work is what tells the styles apart. Everything else has a section.
+ */
+export function serviceHref(service: Service) {
+  if (service.category === "mehandi" && service.gallery) {
+    return galleryLink(service.gallery);
+  }
+  return `/services#${service.slug}`;
+}
+
+/** Everything that is its own standalone section on the services page. */
+export const standaloneServices = services.filter(
+  (service) => service.category !== "mehandi",
+);
+
+/**
+ * The three cards in the homepage services preview. Deliberately the *crafts*
+ * rather than individual services — the mehandi sub-styles (bridal, party,
+ * arabic) are not advertised separately on the homepage. Artwork and the link
+ * target follow the first service of each craft so this stays in sync with
+ * `services` on its own.
+ */
+export const homeFeatured = (
+  [
+    {
+      key: "mehandi",
+      title: "Mehandi",
+      short:
+        "Bridal, festive and Arabic designs — from eight-hour bridal sittings to fifteen-minute party patterns.",
+      image: "/assets-mehndi/img-153.jpg",
+    },
+    {
+      key: "tattoo",
+      title: "Tattoo",
+      short:
+        "Professional tattoos drawn before they are inked — fine line work, script, ornamental and portraits.",
+      image: "/assets-mehndi/img-062.jpg",
+    },
+    {
+      key: "nail-art",
+      title: "Nail Art",
+      short:
+        "Hand-painted nail art, gel and acrylic extensions, chrome and cat-eye finishes to complete the look.",
+      image: "/assets-mehndi/img-080.jpg",
+    },
+    // Artwork is chosen here rather than inherited from the first service:
+    // these three all sit near 4:5, which is the card's frame, so each card
+    // fills edge to edge with no crop worth seeing and no filler bars.
+  ] satisfies {
+    key: ServiceCategoryKey;
+    title: string;
+    short: string;
+    image: string;
+  }[]
+).flatMap((craft, i) => {
+  const first = services.find((service) => service.category === craft.key);
+  return first
+    ? [
+        {
+          ...craft,
+          number: String(i + 1).padStart(2, "0"),
+          video: first.video,
+          href: `/services#${craftAnchor(craft.key)}`,
+        },
+      ]
+    : [];
+});
+
 const SERVICE_CATEGORY_LABELS: Record<ServiceCategoryKey, string> = {
   mehandi: "Mehandi",
   tattoo: "Tattoo",
@@ -258,7 +342,13 @@ export const serviceCategories = (
 ).flatMap((key) => {
   const first = services.find((service) => service.category === key);
   return first
-    ? [{ key, label: SERVICE_CATEGORY_LABELS[key], href: `/services#${first.slug}` }]
+    ? [
+        {
+          key,
+          label: SERVICE_CATEGORY_LABELS[key],
+          href: `/services#${craftAnchor(key)}`,
+        },
+      ]
     : [];
 });
 
@@ -296,7 +386,7 @@ export const classPrograms: ClassProgram[] = [
     slug: "mehandi-classes",
     title: "Mehandi Classes",
     short: "From your first outline to full bridal artistry.",
-    poster: "/assets-mehndi/img-171.jpg",
+    poster: "/assets-mehndi/img-149.jpg",
     reel: "https://www.instagram.com/reel/DYxxNthyF2Q/",
     levels: [
       {
@@ -337,7 +427,7 @@ export const classPrograms: ClassProgram[] = [
     slug: "tattoo-training",
     title: "Tattoo Training",
     short: "Machine handling to full portrait realism, taught hands-on.",
-    poster: "/assets-mehndi/img-057.jpg",
+    poster: "/assets-mehndi/img-005.jpg",
     reel: "https://www.instagram.com/reel/DLVxvqhTtlk/",
     levels: [
       {
@@ -376,7 +466,7 @@ export const classPrograms: ClassProgram[] = [
     slug: "nail-art-classes",
     title: "Nail Art Classes",
     short: "Nail anatomy to bridal-ready extensions and 3D art.",
-    poster: "/assets-mehndi/img-038.jpg",
+    poster: "/assets-mehndi/img-170.jpg",
     reel: "https://www.instagram.com/reel/DLnxzgNzgwC/",
     levels: [
       {
@@ -483,11 +573,19 @@ export const nailArtPricing: { service: string; price: number }[] = [
   { service: "Removal", price: 199 },
 ];
 
-/** A handful of real studio reels for the gallery/social sections. */
+/**
+ * Real studio posts embedded on the gallery page.
+ *
+ * PORTRAIT POSTS ONLY. Instagram's widget sizes each embed to the post it is
+ * showing, so a landscape or square post renders short and leaves a band of
+ * dead white space inside the card while the portrait ones next to it stay
+ * full. `DLnxzgNzgwC` was dropped for exactly that reason — check a permalink
+ * renders portrait before adding it here. The gallery lays itself out from the
+ * length of this list, so adding a third is all that is needed.
+ */
 export const instagramReels = [
   "https://www.instagram.com/reel/DYxxNthyF2Q/",
   "https://www.instagram.com/reel/DLVxvqhTtlk/",
-  "https://www.instagram.com/reel/DLnxzgNzgwC/",
 ];
 
 export type Review = {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Instagram, Facebook, Youtube, MapPin, Phone, Mail } from "lucide-react";
-import { navLinks, services, site, waLink } from "@/lib/data";
+import { navLinks, serviceHref, services, site, waLink } from "@/lib/data";
 import { WhatsAppIcon, XIcon } from "@/components/icons";
 import Reveal from "@/components/Reveal";
 
@@ -118,7 +118,7 @@ export default function Footer() {
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/services#${s.slug}`}
+                    href={serviceHref(s)}
                     className="link-underline text-[17px] text-sand hover:text-ink"
                   >
                     {s.title}

@@ -8,7 +8,16 @@ declare global {
   }
 }
 
-/** Renders a real Instagram reel/post via Instagram's own embed widget. */
+/**
+ * Renders a real Instagram reel/post via Instagram's own embed widget, locked
+ * into a portrait frame.
+ *
+ * The widget sizes its iframe itself, so an embed's natural height depends on
+ * the post — square and landscape posts come back short and wide and break the
+ * row. `.ig-portrait` (app/globals.css) pins the injected iframe to a 9:16 box
+ * so every embed on the page reads as a portrait card whatever was posted; the
+ * overflow it clips is Instagram's own footer chrome.
+ */
 export default function InstagramEmbed({ url }: { url: string }) {
   const ref = useRef<HTMLQuoteElement>(null);
 
@@ -32,16 +41,18 @@ export default function InstagramEmbed({ url }: { url: string }) {
   }, [url]);
 
   return (
-    <blockquote
-      ref={ref}
-      className="instagram-media"
-      data-instgrm-permalink={url}
-      data-instgrm-version="14"
-      style={{ margin: 0, width: "100%", minWidth: "unset" }}
-    >
-      <a href={url} target="_blank" rel="noopener noreferrer">
-        View on Instagram
-      </a>
-    </blockquote>
+    <div className="ig-portrait">
+      <blockquote
+        ref={ref}
+        className="instagram-media"
+        data-instgrm-permalink={url}
+        data-instgrm-version="14"
+        style={{ margin: 0, width: "100%", minWidth: "unset" }}
+      >
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          View on Instagram
+        </a>
+      </blockquote>
+    </div>
   );
 }

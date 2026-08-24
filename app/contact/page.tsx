@@ -94,10 +94,10 @@ export default function ContactPage() {
                 href={waLink("Hello! I want to book an appointment.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between rounded-2xl border border-[#25D366]/30 bg-[#25D366]/10 p-6 transition-all duration-400 hover:-translate-y-1 hover:bg-[#25D366]/15"
+                className="flex items-center justify-between rounded-2xl border border-henna/30 bg-henna/10 p-6 transition-all duration-400 hover:-translate-y-1 hover:bg-henna/15"
               >
                 <div className="flex items-center gap-5">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-ink">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-henna text-cream">
                     <WhatsAppIcon className="h-6 w-6" />
                   </span>
                   <div>

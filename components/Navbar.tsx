@@ -4,6 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import SocialLinks from "@/components/SocialLinks";
 import { navLinks, serviceCategories, site, waLink } from "@/lib/data";
 import { EASE } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -121,24 +122,32 @@ export default function Navbar() {
             open && "pointer-events-none opacity-0",
           )}
         >
-          <div className="no-scrollbar overflow-x-auto">
-            <div className="mx-auto flex h-11 w-max items-center gap-5 px-5 sm:px-8 md:gap-6">
-              {serviceCategories.map((category, i) => (
-                <Fragment key={category.key}>
-                  <Link
-                    href={category.href}
-                    className="shrink-0 text-[13px] font-semibold tracking-[0.14em] whitespace-nowrap text-cream/85 uppercase transition-colors duration-300 hover:text-cream md:text-[13px]"
-                  >
-                    {category.label}
-                  </Link>
-                  {i < serviceCategories.length - 1 && (
-                    <span aria-hidden className="shrink-0 text-[10px] text-cream/70">
-                      ✦
-                    </span>
-                  )}
-                </Fragment>
-              ))}
+          {/* Crafts on the left, socials pinned to the right on wider screens —
+              the crafts strip keeps its own horizontal scroll on mobile. */}
+          <div className="container-x flex h-11 items-center justify-between gap-6">
+            <div className="no-scrollbar min-w-0 flex-1 overflow-x-auto">
+              <div className="flex w-max items-center gap-5 md:gap-6">
+                {serviceCategories.map((category, i) => (
+                  <Fragment key={category.key}>
+                    <Link
+                      href={category.href}
+                      className="shrink-0 text-[13px] font-semibold tracking-[0.14em] whitespace-nowrap text-cream/85 uppercase transition-colors duration-300 hover:text-cream md:text-[13px]"
+                    >
+                      {category.label}
+                    </Link>
+                    {i < serviceCategories.length - 1 && (
+                      <span aria-hidden className="shrink-0 text-[10px] text-cream/70">
+                        ✦
+                      </span>
+                    )}
+                  </Fragment>
+                ))}
+              </div>
             </div>
+            <SocialLinks
+              className="hidden shrink-0 sm:flex"
+              iconClassName="h-8 w-8"
+            />
           </div>
         </nav>
       </div>
@@ -203,6 +212,7 @@ export default function Navbar() {
                 </a>
                 <p className="pt-1 text-[13px] text-cream/90">{site.address}</p>
               </div>
+              <SocialLinks className="-ml-2 pt-2" iconClassName="h-11 w-11" />
             </motion.div>
           </motion.div>
         )}

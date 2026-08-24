@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award, GraduationCap } from "lucide-react";
+import FitImage from "@/components/FitImage";
 import PageHeader from "@/components/PageHeader";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -39,14 +39,15 @@ export default function AboutPage() {
                 aria-hidden
                 className="absolute -inset-3 rounded-2xl border border-henna/40 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 md:-inset-4"
               />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              {/* Square, because the portrait itself is — a 4:5 frame took a
+                  slice off the artists standing either side of Dev. */}
+              <div className="relative aspect-square overflow-hidden rounded-2xl">
                 <GsapParallax speed={0.12} className="absolute inset-0">
-                  <Image
+                  <FitImage
                     src="/images/artist.jpg"
                     alt={`${site.artist}, mehandi and tattoo artist`}
-                    fill
                     sizes="(max-width: 768px) 100vw, 45vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-104"
+                    className="transition-transform duration-700 group-hover:scale-104"
                   />
                 </GsapParallax>
               </div>
@@ -207,7 +208,7 @@ export default function AboutPage() {
       <section className="py-24 md:py-32">
         <div className="container-x">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha/70 to-coal p-7 sm:p-10 md:p-16">
+            <div className="relative overflow-hidden rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha via-coal to-cream p-7 sm:p-10 md:p-16">
               <GraduationCap
                 aria-hidden
                 className="absolute -top-6 -right-6 h-40 w-40 text-henna/10"

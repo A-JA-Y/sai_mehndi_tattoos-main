@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import FitImage from "@/components/FitImage";
 import Magnetic from "@/components/Magnetic";
 import Mandala from "@/components/Mandala";
 import { site } from "@/lib/data";
@@ -57,13 +57,14 @@ export default function HomeHero() {
             transition={{ duration: 9, ease: "linear" }}
             className="absolute inset-0"
           >
-            <Image
+            {/* Full-bleed. The crop is art-directed per slide (see
+                `heroSlides`) so filling the frame never costs a face. */}
+            <FitImage
               src={slides[current].src}
               alt={slides[current].alt}
-              fill
               priority
               sizes="100vw"
-              className="object-cover"
+              position={slides[current].focus}
             />
           </motion.div>
         </motion.div>

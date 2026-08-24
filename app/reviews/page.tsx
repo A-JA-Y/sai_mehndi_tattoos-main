@@ -28,7 +28,7 @@ export default function ReviewsPage() {
       <section className="py-16 md:py-20">
         <div className="container-x">
           <Reveal>
-            <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha/60 to-coal px-6 py-10 text-center sm:px-8 sm:py-12">
+            <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 rounded-3xl border border-henna/25 bg-gradient-to-br from-mocha via-coal to-cream px-6 py-10 text-center sm:px-8 sm:py-12">
               <p className="font-serif text-8xl font-medium tracking-tight text-ink">
                 5.0
               </p>

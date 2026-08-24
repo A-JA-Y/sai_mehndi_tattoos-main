@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Check, Plus, X } from "lucide-react";
 import { classPrograms, type ClassProgram, waLink } from "@/lib/data";
 import { EASE } from "@/lib/motion";
+import CoverMedia from "@/components/CoverMedia";
+import FitImage from "@/components/FitImage";
 import { WhatsAppIcon } from "@/components/icons";
 import TiltCard from "@/components/TiltCard";
 
@@ -27,17 +28,12 @@ export default function ClassesGrid() {
             <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-ink/10 bg-coal transition-all duration-300 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(168,30,34,0.35)]"
           >
             <div className="relative aspect-[4/5] overflow-hidden">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
+              <CoverMedia
+                src={`/videos/${program.slug}.mp4`}
                 poster={program.poster}
-                className="h-full w-full object-cover"
-              >
-                <source src={`/videos/${program.slug}.mp4`} type="video/mp4" />
-              </video>
+                alt={program.title}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6">
                 <h3 className="font-serif text-2xl text-cream">{program.title}</h3>
@@ -54,7 +50,7 @@ export default function ClassesGrid() {
                     key={level.tier}
                     className="inline-flex items-center gap-1.5 rounded-full border border-henna/30 px-3.5 py-1.5 text-[13px] font-semibold tracking-[0.15em] text-henna uppercase"
                   >
-                    {level.tier} · ₹{level.price.toLocaleString("en-IN")}
+                    {level.tier} · ₹{level.price.toLocaleString("en-IN")} /{" "}
                     {level.priceUnit}
                   </span>
                 ))}
@@ -115,12 +111,13 @@ function ProgramModal({
         </button>
 
         <div className="relative aspect-[16/7] overflow-hidden">
-          <Image
+          {/* A wide banner over a portrait poster — shown whole rather than
+              cropped to a letterbox strip through the middle of the design. */}
+          <FitImage
             src={program.poster}
             alt={program.title}
-            fill
             sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
+            fit="contain"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-transparent" />
           <h3 className="absolute bottom-6 left-6 font-serif text-3xl text-cream md:text-4xl">
@@ -138,7 +135,10 @@ function ProgramModal({
                 <h4 className="font-serif text-xl text-henna">{level.tier}</h4>
                 <p className="text-lg font-semibold text-ink">
                   ₹{level.price.toLocaleString("en-IN")}
-                  <span className="text-[13px] text-sand">{level.priceUnit}</span>
+                  <span className="text-[13px] text-sand">
+                    {" "}
+                    / {level.priceUnit}
+                  </span>
                 </p>
               </div>
               {level.admissionFee && (

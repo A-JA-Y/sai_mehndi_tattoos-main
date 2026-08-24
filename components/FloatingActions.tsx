@@ -43,7 +43,7 @@ function Action({
       {ping && (
         <span
           aria-hidden
-          className="absolute inset-0 -z-10 animate-ping rounded-full bg-[#25D366]/40 [animation-duration:2.4s]"
+          className="absolute inset-0 -z-10 animate-ping rounded-full bg-henna/40 [animation-duration:2.4s]"
         />
       )}
       {children}
@@ -81,7 +81,7 @@ export default function FloatingActions() {
         delay={1.4}
         external
         ping
-        className="h-14 w-14 bg-[#25D366] text-ink shadow-[0_10px_30px_-8px_rgba(37,211,102,0.55)]"
+        className="h-14 w-14 bg-henna text-cream shadow-[0_10px_30px_-8px_rgba(178,63,30,0.55)]"
       >
         <WhatsAppIcon className="h-7 w-7" />
       </Action>

@@ -11,13 +11,22 @@ import GsapParallax from "@/components/GsapParallax";
 import Magnetic from "@/components/Magnetic";
 import Mandala from "@/components/Mandala";
 import CoverMedia from "@/components/CoverMedia";
+import FitImage from "@/components/FitImage";
 import TiltCard from "@/components/TiltCard";
 import { WhatsAppIcon } from "@/components/icons";
-import { marqueeItems, services, site, stats, waLink } from "@/lib/data";
+import {
+  homeFeatured,
+  marqueeItems,
+  serviceHref,
+  services,
+  site,
+  stats,
+  waLink,
+} from "@/lib/data";
 import { ctaBannerSrc, homePreview } from "@/lib/gallery";
 
 export default function HomePage() {
-  const featured = services.slice(0, 3);
+  const featured = homeFeatured;
   const previews = homePreview;
 
   return (
@@ -53,6 +62,19 @@ export default function HomePage() {
             <p className="mt-6 font-serif text-2xl text-ink/80 italic">
               — {site.artist}, Founder &amp; Artist
             </p>
+            <div className="group relative mt-7 w-full max-w-[320px]">
+              <div
+                aria-hidden
+                className="absolute -inset-2 rounded-2xl border border-henna/40 transition-transform duration-500 group-hover:translate-x-1.5 group-hover:translate-y-1.5"
+              />
+              <div className="relative aspect-square overflow-hidden rounded-2xl">
+                <FitImage
+                  src="/images/artist.jpg"
+                  alt={`${site.artist}, founder of ${site.name}`}
+                  sizes="320px"
+                />
+              </div>
+            </div>
             <Link
               href="/about"
               className="group mt-8 inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.25em] text-henna uppercase"
@@ -78,31 +100,34 @@ export default function HomePage() {
           />
 
           <div className="grid gap-5 md:grid-cols-3">
-            {featured.map((service, i) => (
-              <Reveal key={service.slug} delay={i * 0.1}>
+            {featured.map((craft, i) => (
+              <Reveal key={craft.key} delay={i * 0.1}>
                 <TiltCard className="rounded-2xl">
                 <Link
-                  href={`/services#${service.slug}`}
+                  href={craft.href}
                   className="group relative block overflow-hidden rounded-2xl border border-ink/10 bg-coal transition-all duration-300 hover:-translate-y-2 hover:border-henna/40 hover:shadow-[0_24px_60px_-24px_rgba(168,30,34,0.35)]"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  {/* 4:5 to match the artwork chosen in `homeFeatured` — a
+                      4:3 card letterboxed every portrait shot in the library. */}
+                  <div className="relative aspect-[4/5] overflow-hidden">
                     <CoverMedia
-                      src={service.video}
-                      poster={service.image}
-                      alt={service.title}
+                      src={craft.video}
+                      poster={craft.image}
+                      alt={craft.title}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="transition-transform duration-500 ease-out group-hover:scale-108"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-coal via-coal/20 to-transparent" />
                     <span className="absolute top-4 right-5 font-serif text-5xl text-cream/25 italic transition-colors duration-300 group-hover:text-cream/70">
-                      {service.number}
+                      {craft.number}
                     </span>
                   </div>
                   <div className="p-7">
                     <h3 className="font-serif text-2xl text-ink transition-colors duration-300 group-hover:text-henna">
-                      {service.title}
+                      {craft.title}
                     </h3>
                     <p className="mt-3 text-[17px] leading-relaxed text-sand">
-                      {service.short}
+                      {craft.short}
                     </p>
                     <span className="mt-5 inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.25em] text-henna uppercase">
                       Explore
@@ -142,7 +167,7 @@ export default function HomePage() {
             {services.map((service, i) => (
               <Reveal key={service.slug} delay={i * 0.06}>
                 <Link
-                  href={`/services#${service.slug}`}
+                  href={serviceHref(service)}
                   className="group flex items-center gap-4 border-b border-ink/10 py-5 transition-all duration-300 hover:border-henna/40 hover:pl-2 sm:gap-8 md:py-6"
                 >
                   <span className="w-14 shrink-0 font-serif text-4xl text-outline-henna italic transition-all duration-300 group-hover:text-henna group-hover:[-webkit-text-stroke:0] md:w-16 md:text-5xl">
@@ -190,26 +215,27 @@ export default function HomePage() {
             }
           />
 
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
+          {/* Masonry: each tile takes its own photo's shape, so the preview
+              crops nothing and shows no filler bars. */}
+          <div className="columns-2 gap-3 md:columns-3 md:gap-5">
             {previews.map((item, i) => (
               <Reveal
                 key={item.src}
                 delay={(i % 3) * 0.1}
-                className={i === 0 ? "row-span-2" : ""}
+                className="mb-3 break-inside-avoid md:mb-5"
               >
                 <Link
                   href="/gallery"
-                  className={`group relative block overflow-hidden rounded-xl ${
-                    i === 0 ? "h-full min-h-[420px] md:min-h-[520px]" : "aspect-[4/3]"
-                  }`}
+                  style={{ aspectRatio: `${item.w} / ${item.h}` }}
+                  className="group relative block overflow-hidden rounded-xl"
                 >
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-107"
-                  />
+                  <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-107">
+                    <FitImage
+                      src={item.src}
+                      alt={item.alt}
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/35" />
                   <span className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                     <span className="rounded-full bg-cream/90 px-5 py-2 text-[11px] font-medium tracking-[0.3em] text-ink uppercase backdrop-blur">

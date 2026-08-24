@@ -17,7 +17,7 @@
 
   /* Surfaces & decoration (never used as a text colour) */
   --color-coal: var(--brand-surface); /* #F7F6F3 — card / band surface */
-  --color-mocha: var(--brand-olive); /* #759B4B — decorative accents */
+  --color-mocha: var(--brand-offwhite); /* #EFECE4 — decorative off-white fills */
   --color-bark: var(--brand-teal); /* #2D6072 — secondary accents */
   --color-blush: var(--brand-teal); /* #2D6072 — subtle container fills */
   --color-sky: var(--brand-cyan); /* #14C8FF — media / digital accent */
@@ -174,6 +174,30 @@
     opacity: 0.025;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+
+  /* Instagram's widget sets the iframe's width/height/min-width inline once it
+     measures the post, so every rule here needs !important to win. Pinning the
+     iframe to a 9:16 box keeps all embeds portrait and the same height however
+     the original post was shot — what gets clipped is Instagram's own footer. */
+  .ig-portrait {
+    position: relative;
+    /* Tuned so the cut lands just under the like/comment bar rather than
+       through the middle of the "Add a comment" row below it. */
+    aspect-ratio: 3 / 5;
+    overflow: hidden;
+  }
+  .ig-portrait .instagram-media {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
   }
 
   .no-scrollbar {

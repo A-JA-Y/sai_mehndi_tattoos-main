@@ -7,8 +7,9 @@ import SectionHeading from "@/components/SectionHeading";
 import Accordion from "@/components/Accordion";
 import Magnetic from "@/components/Magnetic";
 import ClassesGrid from "@/components/ClassesGrid";
+import MehandiSection from "@/components/MehandiSection";
 import ServiceCard from "@/components/ServiceCard";
-import { faqs, services } from "@/lib/data";
+import { faqs, standaloneServices } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -52,12 +53,21 @@ export default function ServicesPage() {
         description="Six crafts under one roof — each priced by design size and detail. Share your occasion and get a quote in minutes on WhatsApp."
       />
 
-      {/* Service cards — About / previews / show more / rate card */}
+      {/* Service cards — About / previews / show more / rate card.
+          Mehandi leads as one section that opens into its three styles; the
+          remaining crafts are one section each. Numbering runs down the page
+          rather than following each service's stored number. */}
       <section className="py-20 md:py-28">
         <div className="container-x flex flex-col gap-10 md:gap-14">
-          {services.map((service, i) => (
-            <Reveal key={service.slug} delay={i === 0 ? 0 : 0.05}>
-              <ServiceCard service={service} />
+          <Reveal>
+            <MehandiSection number="01" />
+          </Reveal>
+          {standaloneServices.map((service, i) => (
+            <Reveal key={service.slug} delay={0.05}>
+              <ServiceCard
+                service={service}
+                number={String(i + 2).padStart(2, "0")}
+              />
             </Reveal>
           ))}
         </div>
