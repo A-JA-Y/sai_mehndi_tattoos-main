@@ -7,7 +7,6 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import StatCounter from "@/components/StatCounter";
 import Magnetic from "@/components/Magnetic";
-import GsapParallax from "@/components/GsapParallax";
 import { awards, site, stats, timeline, waLink } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/icons";
 
@@ -39,17 +38,19 @@ export default function AboutPage() {
                 aria-hidden
                 className="absolute -inset-3 rounded-2xl border border-henna/40 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2 md:-inset-4"
               />
-              {/* Square, because the portrait itself is — a 4:5 frame took a
-                  slice off the artists standing either side of Dev. */}
+              {/* Square to match the portrait's own shape, and deliberately not
+                  wrapped in GsapParallax: that adds 96px of vertical bleed top
+                  and bottom for the drift to hide in, which turned this into a
+                  458x650 box and made `cover` slice ~14% off either side —
+                  taking the artists standing next to Dev with it. Sized to the
+                  frame, the same crop costs about 2% and everyone survives. */}
               <div className="relative aspect-square overflow-hidden rounded-2xl">
-                <GsapParallax speed={0.12} className="absolute inset-0">
-                  <FitImage
-                    src="/images/artist.jpg"
-                    alt={`${site.artist}, mehandi and tattoo artist`}
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                    className="transition-transform duration-700 group-hover:scale-104"
-                  />
-                </GsapParallax>
+                <FitImage
+                  src="/images/artist.jpg"
+                  alt={`${site.artist}, mehandi and tattoo artist`}
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                  className="transition-transform duration-700 group-hover:scale-104"
+                />
               </div>
               <div className="absolute -bottom-6 left-6 rounded-xl border border-ink/10 bg-coal/90 px-6 py-4 backdrop-blur">
                 <p className="font-serif text-2xl text-henna italic">
