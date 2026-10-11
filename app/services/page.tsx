@@ -10,11 +10,14 @@ import ClassesGrid from "@/components/ClassesGrid";
 import MehandiSection from "@/components/MehandiSection";
 import ServiceCard from "@/components/ServiceCard";
 import { faqs, standaloneServices } from "@/lib/data";
+import SeoJsonLd from "@/components/SeoJsonLd";
+import { breadcrumbSchema, absoluteUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
     "Bridal, party and Arabic mehandi, tattoo art, nail art and professional classes at Sai Mehandi & Tattoo, New Delhi — each with its own gallery and rate card.",
+  alternates: { canonical: "/services" },
 };
 
 const process = [
@@ -43,6 +46,35 @@ const process = [
 export default function ServicesPage() {
   return (
     <>
+      <SeoJsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+          ]),
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Mehndi, tattoo, nail art and training services",
+            itemListElement: standaloneServices.map((service, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              name: service.title,
+              url: absoluteUrl("/services"),
+              description: service.description,
+            })),
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.q,
+              acceptedAnswer: { "@type": "Answer", text: faq.a },
+            })),
+          },
+        ]}
+      />
       <PageHeader
         eyebrow="What I Offer"
         title={

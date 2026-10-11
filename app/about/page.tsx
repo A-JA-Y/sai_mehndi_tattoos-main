@@ -9,16 +9,25 @@ import StatCounter from "@/components/StatCounter";
 import Magnetic from "@/components/Magnetic";
 import { awards, site, stats, timeline, waLink } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/icons";
+import SeoJsonLd from "@/components/SeoJsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "Meet Dev Kumar — award-winning mehandi and tattoo artist with 18 years of artistry, from school sketching competitions to the Grihshobha National Certificate 2011.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <SeoJsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
       <PageHeader
         eyebrow="About Me"
         title={

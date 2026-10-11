@@ -5,11 +5,14 @@ import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import { site, waLink } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/icons";
+import SeoJsonLd from "@/components/SeoJsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
     "Book bridal, party or Arabic mehandi, tattoos, nail art or classes at Sai Mehandi & Tattoo — West Patel Nagar, New Delhi. Call, WhatsApp or send the booking form.",
+  alternates: { canonical: "/contact" },
 };
 
 const infoCards = [
@@ -40,6 +43,12 @@ const infoCards = [
 export default function ContactPage() {
   return (
     <>
+      <SeoJsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
       <PageHeader
         eyebrow="Get in Touch"
         title={

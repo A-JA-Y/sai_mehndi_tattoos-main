@@ -7,11 +7,14 @@ import InstagramEmbed from "@/components/InstagramEmbed";
 import Reveal from "@/components/Reveal";
 import Magnetic from "@/components/Magnetic";
 import { instagramReels, site } from "@/lib/data";
+import SeoJsonLd from "@/components/SeoJsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Gallery",
   description:
     "The full portfolio of Sai Mehandi & Tattoo, New Delhi — bridal, Arabic and festive mehandi, tattoos, pencil sketches, nail art and event moments.",
+  alternates: { canonical: "/gallery" },
 };
 
 /**
@@ -28,6 +31,12 @@ const embedGrid = EMBED_GRID[Math.min(instagramReels.length, 3)] ?? EMBED_GRID[3
 export default function GalleryPage() {
   return (
     <>
+      <SeoJsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Gallery", path: "/gallery" },
+        ])}
+      />
       <PageHeader
         eyebrow="A Peek Into My Work"
         title={

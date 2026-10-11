@@ -24,6 +24,16 @@ import {
   waLink,
 } from "@/lib/data";
 import { ctaBannerSrc, homePreview } from "@/lib/gallery";
+import SeoJsonLd from "@/components/SeoJsonLd";
+import { breadcrumbSchema, siteUrl } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Bridal Mehndi & Tattoo Artist in New Delhi",
+  description:
+    "Sai Mehandi & Tattoo offers bridal mehndi, party and Arabic mehandi, custom tattoos, nail art and artist classes in West Patel Nagar, New Delhi.",
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   const featured = homeFeatured;
@@ -31,6 +41,19 @@ export default function HomePage() {
 
   return (
     <>
+      <SeoJsonLd data={breadcrumbSchema([{ name: "Home", path: "/" }])} />
+      <SeoJsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `${siteUrl}/#webpage`,
+          url: siteUrl,
+          name: "Bridal Mehndi & Tattoo Artist in New Delhi",
+          description:
+            "Bridal mehndi, party and Arabic mehandi, custom tattoos, nail art and professional classes in New Delhi.",
+          isPartOf: { "@id": `${siteUrl}/#website` },
+        }}
+      />
       <HomeHero />
 
       {/* Marquee strip */}

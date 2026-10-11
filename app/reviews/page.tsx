@@ -4,16 +4,25 @@ import Reveal from "@/components/Reveal";
 import Magnetic from "@/components/Magnetic";
 import { WhatsAppIcon } from "@/components/icons";
 import { reviews, waLink } from "@/lib/data";
+import SeoJsonLd from "@/components/SeoJsonLd";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Reviews",
   description:
     "What brides, families and students say about Sai Mehandi & Tattoo — five-star mehandi, tattoo and nail art experiences across Delhi NCR.",
+  alternates: { canonical: "/reviews" },
 };
 
 export default function ReviewsPage() {
   return (
     <>
+      <SeoJsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Reviews", path: "/reviews" },
+        ])}
+      />
       <PageHeader
         eyebrow="Kind Words"
         title={
